@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Hakkımızda</value>
+  </data>
+  <data name="anasayfa" xml:space="preserve">
+    <value>Anasayfa</value>
+  </data>
+  <data name="Ara" xml:space="preserve">
+    <value>Ara</value>
+  </data>
+  <data name="category_name" xml:space="preserve">
+    <value>bölüm Adi</value>
+  </data>
+  <data name="categoryImage" xml:space="preserve">
+    <value>bölüm fotoğrafi</value>
+  </data>
+  <data name="categories" xml:space="preserve">
+    <value>Bölümler</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Adi</value>
+  </data>
+  <data name="images" xml:space="preserve">
+    <value>Fotoğraflar</value>
+  </data>
+  <data name="galeri" xml:space="preserve">
+    <value>galeri</value>
+  </data>
+  <data name="gallery" xml:space="preserve">
+    <value>galeri</value>
+  </data>
+  <data name="iletişim" xml:space="preserve">
+    <value>iletişim</value>
+  </data>
+  <data name="index" xml:space="preserve">
+    <value>Anasayfa</value>
+  </data>
+  <data name="Kategori" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="bookAcıklama" xml:space="preserve">
+    <value>book Açıklama</value>
+  </data>
+  <data name="book_name" xml:space="preserve">
+    <value>book Adi</value>
+  </data>
+  <data name="bookDetayli" xml:space="preserve">
+    <value>book Detayli</value>
+  </data>
+  <data name="Edit_book" xml:space="preserve">
+    <value>book Düzenle </value>
+  </data>
+  <data name="add_book" xml:space="preserve">
+    <value>book Ekle</value>
+  </data>
+  <data name="bookImage" xml:space="preserve">
+    <value>book fotoğrafi</value>
+  </data>
+  <data name="books" xml:space="preserve">
+    <value>books</value>
+  </data>
+  <data name="KullanciAdi" xml:space="preserve">
+    <value>Kullanci Adi</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Soyadi</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefon Numurası</value>
+  </data>
+  <data name="author_name" xml:space="preserve">
+    <value>author Adi</value>
+  </data>
+  <data name="şifre" xml:space="preserve">
+    <value>şifre</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="adminişleri" xml:space="preserve">
+    <value>Admin İşleri</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Anasayfa</value>
+  </data>
+  <data name="bookarayin" xml:space="preserve">
+    <value>book Arayin</value>
+  </data>
+  <data name="Profilim" xml:space="preserve">
+    <value>Profilim</value>
+  </data>
+  <data name="universite" xml:space="preserve">
+    <value>Ünvirsite</value>
+  </data>
+  <data name="UyeGiriş" xml:space="preserve">
+    <value>Uye Giriş</value>
+  </data>
+  <data name="uyeol" xml:space="preserve">
+    <value>Uye Ol</value>
+  </data>
+  <data name="writers" xml:space="preserve">
+    <value>writers</value>
+  </data>
+  <data name="yenibooks" xml:space="preserve">
+    <value>Yeni books</value>
+  </data>
+  <data name="yoneticiAdi" xml:space="preserve">
+    <value>Yonetici Adi</value>
+  </data>
+  <data name="Zekitaplari" xml:space="preserve">
+    <value>Zekitaplari</value>
+  </data>
+  <data name="çikiş" xml:space="preserve">
+    <value>Çıkış</value>
+  </data>
+  <data name="şiirler" xml:space="preserve">
+    <value>Şiirler</value>
+  </data>
+  <data name="şifreDeğiştir" xml:space="preserve">
+    <value>şifre Değiştir</value>
+  </data>
+  <data name="Ar" xml:space="preserve">
+    <value>Arabça</value>
+  </data>
+  <data name="cokindirilen" xml:space="preserve">
+    <value>Çok İndirilen</value>
+  </data>
+  <data name="cokOkunan" xml:space="preserve">
+    <value>Çok Okunan</value>
+  </data>
+  <data name="Degerbooks" xml:space="preserve">
+    <value>Değer books</value>
+  </data>
+  <data name="devam" xml:space="preserve">
+    <value>Devam</value>
+  </data>
+  <data name="Dil" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="En" xml:space="preserve">
+    <value>ingilizce</value>
+  </data>
+  <data name="Kategorler" xml:space="preserve">
+    <value>Kategorler</value>
+  </data>
+  <data name="mybooks" xml:space="preserve">
+    <value>mybooks</value>
+  </data>
+  <data name="Tr" xml:space="preserve">
+    <value>Türkçe</value>
+  </data>
+  <data name="Yoneticiprofil" xml:space="preserve">
+    <value>Yonetici Profili</value>
+  </data>
+  <data name="işleri" xml:space="preserve">
+    <value>işleri</value>
+  </data>
+  <data name="Kullanci" xml:space="preserve">
+    <value>Kullanci</value>
+  </data>
+  <data name="personel" xml:space="preserve">
+    <value>kullanci özellikleri</value>
+  </data>
+  <data name="AdminManage" xml:space="preserve">
+    <value>Admin Manage</value>
+  </data>
+  <data name="AdminProfile" xml:space="preserve">
+    <value>Admin Profile</value>
+  </data>
+  <data name="arabic" xml:space="preserve">
+    <value>Arapça</value>
+  </data>
+  <data name="bookAbout" xml:space="preserve">
+    <value>Kitap ilgili</value>
+  </data>
+  <data name="bookDetails" xml:space="preserve">
+    <value>kitap Ayrıntısı</value>
+  </data>
+  <data name="bookSearch" xml:space="preserve">
+    <value>Kitap ara</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>şifre değişter</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Iletişim</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>detayli</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>indir</value>
+  </data>
+  <data name="english" xml:space="preserve">
+    <value>ingilizce</value>
+  </data>
+  <data name="H4Books" xml:space="preserve">
+    <value>Hayrullah kitaplari</value>
+  </data>
+  <data name="Hayrullah" xml:space="preserve">
+    <value>Hayrullah</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>AnaSayfa</value>
+  </data>
+  <data name="language" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Devam</value>
+  </data>
+  <data name="MostDownlods" xml:space="preserve">
+    <value>Çok İndiren</value>
+  </data>
+  <data name="MostRead" xml:space="preserve">
+    <value>Çok Okunan</value>
+  </data>
+  <data name="NewBooks" xml:space="preserve">
+    <value>Yeni Kitaplar</value>
+  </data>
+  <data name="pages" xml:space="preserve">
+    <value>Sayfalar</value>
+  </data>
+  <data name="read" xml:space="preserve">
+    <value>Okuma</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>Ara</value>
+  </data>
+  <data name="Signin" xml:space="preserve">
+    <value>oturma aç</value>
+  </data>
+  <data name="Signout" xml:space="preserve">
+    <value>oturma kapat</value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>Kaydol</value>
+  </data>
+  <data name="Turkish" xml:space="preserve">
+    <value>Turkçe</value>
+  </data>
+  <data name="universities" xml:space="preserve">
+    <value>üniversiteler</value>
+  </data>
+  <data name="user" xml:space="preserve">
+    <value>kullanci</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+</root>

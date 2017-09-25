@@ -1,0 +1,139 @@
+﻿@model ZHYR_Library.Models.Data.books
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = Model.book_name + " details ";
+}
+
+
+
+<div class="card">
+    <div class="card-header" data-background-color="blue" style="background-color:#afd7ff; color:white;">
+        <h4 class="title">@ViewBag.Title</h4>
+        <p class="category">@Model.book_about</p>
+    </div>
+    <div class="card-content table-responsive">
+        <div>
+            <p>
+                <i class="glyphicon glyphicon-time"></i> <b>@String.Format("{0:dddd, dd-MMMM-yyyy}", Model.Created_at)</b> tarihinde yayınlandı. &nbsp;
+              @if (Model.Updated_at != null)
+              {
+                <abbr>
+                    <i class="glyphicon glyphicon-time"></i> <b>Son Güncelleme</b>:
+                    @String.Format("{0:dd-MMMM-yyyy}", Model.Updated_at)
+                </abbr>
+              }
+              &nbsp;
+                <i class="glyphicon glyphicon-eye-open"></i> <b> Gösterim</b> : @Html.DisplayFor(model => model.Readed)
+                <abbr>
+                    <i class="glyphicon glyphicon-user"></i> <b>@Html.DisplayNameFor(model => model.UserId)</b>:  @Html.DisplayFor(model => model.AspNetUsers.UserName)
+                </abbr>
+              <abbr>
+    <i class="glyphicon glyphicon-download-alt"></i> <b>@Html.DisplayNameFor(model => model.downloaded)</b>:  @Html.DisplayFor(model => model.downloaded)
+</abbr>
+             </p>
+            @*<img src="~/Uploads/images/Books/@Model.image" alt="Alternate Text" style="float:left;margin:5px;" width="250"  />*@
+            <iframe src="~/Uploads/Books/@Model.book_path" width="1100" height="700"></iframe>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3>All Details</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.category_id)</th>
+                            <td>@Html.DisplayFor(model => model.categories.category_name)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.author_id)</th>
+                            <td>@Html.DisplayFor(model => model.writers.author_name)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.book_name)</th>
+                            <td>@Html.DisplayFor(model => model.book_name)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.book_about)</th>
+                            <td>@Html.DisplayFor(model => model.book_about)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Created_at)</th>
+                            <td>@Html.DisplayFor(model => model.Created_at)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel-footer">
+                <a href="~/Uploads/Books/@Model.book_path" class="btn btn-success" download="@Model.book_name" target="_blank">
+                  Download <i class="glyphicon glyphicon-download"></i>
+                </a>
+ 
+               <div class="pull-right" >
+                   @{ 
+                       if (!User.Identity.IsAuthenticated)
+                       {
+                        <p class="label label-primary" style="font-size:16px;">
+                            <i class="glyphicon glyphicon-hand-up"></i> Like : @Model.Like
+                        </p>
+                      <p class="label label-danger" style="font-size:16px;"><i class="glyphicon glyphicon-hand-down"></i> disLike : @Model.disLike</p>
+                        <p class="label label-warning" style="font-size:16px;"><i class="glyphicon glyphicon-star-empty"></i> Favorited : @Model.favorited</p>
+                       }
+                       else if (!Model.Likes.Any(x => x.UserId == User.Identity.GetUserId<int>() && x.Book_id == Model.id) || Ajax.ViewBag.Liked == true)
+                       { 
+                        <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input type="submit" value="Like  @Model.Likes.Count()" class="btn btn-default " />
+                        </form>
+                        <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input type="submit" value="disLike  @Model.Likes.Count()" class="btn btn-default " />
+                        </form>
+                       }
+
+                        @*<form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input type="submit" value="Like  @Model.Like" class="btn btn-primary " />
+                        </form>
+                        <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input type="submit" value="dislike @Model.disLike" class="btn btn-default" />
+                        </form>*@
+
+                    
+                }
+                  
+                   @*@{
+                       if (!User.Identity.IsAuthenticated)
+                       {
+                           <i class="glyphicon glyphicon-heart"></i><span>@Model.Favorite</span>
+                       }
+                       else if (Model.Favorites.Any(x => x.UserId == User.Identity.GetUserId<int>() && x.Book_id == Model.id) || Ajax.ViewBag.Liked == true)
+                       {
+                           <a href="javascript:void(0)" class="unlike" data-id="@Model.id"><i class="glyphicon glyphicon-heart text-danger"></i><span>(@Model.Favorite)u</span></a>
+                       }
+                       else
+                       {
+                           <a href="javascript:void(0)" class="like" data-id="@Model.id"><i class="glyphicon glyphicon-heart"></i><span>(@Model.Favorite)l</span></a>
+                       }
+                   }*@
+            </div>
+                 @*@using (Html.BeginForm("LikeBooks", "Home", FormMethod.Post))
+                 {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <input type="submit" value="Like" class="btn btn-primary glyphicon glyphicon-hand-up" /> 
+                }*@
+                @*<a href="/Home/Books/LikeBooks/@Model.id" class="btn btn-primary"><i class="glyphicon glyphicon-hand-up"></i> <strong>250 @Model.Likes.Count()</strong></a>
+
+              @*  <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-hand-down"></i><strong> 14</strong></a>*@
+</div>
+        
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model ZHYR_Library.Models.Data.images
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>images</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.image_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image_about)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image_about)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Updated_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Updated_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deleted_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deleted_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

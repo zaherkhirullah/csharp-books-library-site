@@ -1,0 +1,101 @@
+﻿@model ZHYR_Library.Models.Data.books
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="card">
+    <div class="card-header" data-background-color="blue">
+        <h4 class="title">@ViewBag.Title</h4>
+        <p class="category">New employees on 15th September, 2016</p>
+    </div>
+    <div class="card-content ">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUsers.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUsers.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.categories.category_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.categories.category_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.writers.author_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.writers.author_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.book_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.book_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.book_about)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.book_about)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.image)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.book_path)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.book_path)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Created_at)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Created_at)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Updated_at)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Updated_at)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Deleted_at)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Deleted_at)
+            </dd>
+
+        </dl>
+    </div>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

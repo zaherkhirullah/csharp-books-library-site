@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+@model ZHYR_Library.Models.Data.Contacts
+
+
+
+<!-- Section Contact -->
+<section id="contact" class="section contact">
+    <div class="container">
+        <div class="col-md-8">
+            <div class="form-wrap">
+             @if (TempData["Message"] != null)
+             {
+                 var message = (ZHYR_Library.ViewModels.MessageVm)TempData["Message"];
+                <div class="alert @message.CssClassName alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>@message.Title</strong>
+                    @message.Message
+                </div>
+             }
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group label-floating">
+                        @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group label-floating">
+                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group label-floating">
+                        @Html.LabelFor(model => model.massege, htmlAttributes: new { @class = "control-label " })
+                        @Html.TextAreaFor(model => model.massege, new { @class = "form-control"  })
+                        @Html.ValidationMessageFor(model => model.massege, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <input type="submit" value="Send Message" class="btn btn-primary" data-loading-text="Loading...">
+
+                }
+                @*<form action="php/contact-form.php" id="contact-form" role="form">
+                        <div class="form-group label-floating">
+                            <label class="control-label" for="name">Name</label>
+                            <input class="form-control" name="name" id="name" type="text" placeholder="" value="" />
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group label-floating">
+                            <label class="control-label" for="email">Email address</label>
+                            <input class="form-control" name="email" id="email" type="email" placeholder="" value="" />
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group label-floating">
+                            <label class="control-label" for="message">Message...</label>
+                            <textarea class="form-control" name="message" id="message" placeholder="" rows="3"></textarea>
+                        </div>
+                        <input type="submit" value="Send Message" class="btn btn-primary" data-loading-text="Loading...">
+                    </form>*@
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="address-wrap">
+                <address>
+                    <dl>
+                        <dt>Address</dt>
+                        <dd>
+                            Arte Creative, Inc.,<br />
+                            795 Folsom Ave,<br />
+                            San Francisco, CA 94103
+                        </dd>
+                        <dt>Phone</dt>
+                        <dd><span>(123) 456-7890</span></dd>
+                        <dt>Email</dt>
+                        <dd><a href="mailto:#">first.last@example.com</a></dd>
+                    </dl>
+                </address>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- GMap -->
+<section class="map-wrap">
+    @*<div id="mymap" class="mymap"></div>*@
+</section>
+

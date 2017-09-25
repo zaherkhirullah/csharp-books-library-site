@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ZHYR_Library.Models.Data.writers>
+
+@{
+    ViewBag.Title = "Writers";
+}
+
+<h2>Writers</h2>
+<ul>
+    @foreach (var Writer in Model)
+            {
+        <li class="card card-description" style="width:250px;margin:3px;height:300px;float:left">
+            @if (Writer.image == null)
+            {
+                <a href="/Home/Writer_Books/@Writer.id">
+                    <img style="width:250px;margin:3px;height:220px" src="~/Content/images/Nophoto.png" alt="@Writer.author_name" />
+                </a>   }
+            else
+            {
+                <a href="/Home/Writer_Books/@Writer.id">
+                    <img style="width:250px;margin:3px;height:220px" src="~/Uploads/images/writers/@Writer.image" alt="no-image" />
+                </a>}
+            <div class="card card-content">
+                <a href="/Home/Writer_Books/@Writer.id">@Writer.author_name</a>
+            </div>
+        </li>
+    }
+</ul>
+<div style="clear:both;"></div><br />

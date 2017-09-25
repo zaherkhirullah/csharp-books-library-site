@@ -1,0 +1,41 @@
+﻿
+@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+    <ul class="nav navbar-nav navbar-right ">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                @User.Identity.GetUserName() 
+            @*@user.avatar*@
+            <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="@Url.Action("Index","Manage" ,routeValues: null )" title='Manage'>Manage &nbsp;  <i class="glyphicon glyphicon-edit"></i></a></li> 
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off    &nbsp; <span class="label label-danger"><i class="glyphicon glyphicon-log-out"></i></span></a></li>
+            </ul>
+        </li>
+        @*<li><a href="#">content</a></li>
+        <li><a href="#" class="glayphone glayphone-user">content</a></li>*@
+        <li><img src="~/Uploads/images/users/images@*/@user.avatar*@" style="width:56px;height:50px; border-radius:50%;" /></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Setting <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) <span class="label label-primary"><i class="glyphicon glyphicon-pencil"></i></span></li>
+                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) <span class="label label-primary"><i class='glyphicon glyphicon-log-in'></i></span></li>*@
+                <li><a href="/Account/Register" id = "registerLink" >Register &nbsp;<span class="label label-primary"><i class='glyphicon glyphicon-pencil'></i></span></a></li>
+
+                <li><a href="/Account/Login" id = "loginLink" >Log in &nbsp; <span class="label label-success"><i class='glyphicon glyphicon-log-in'></i></span></a></li>
+    </ul>
+        </li>
+       
+    </ul>
+}

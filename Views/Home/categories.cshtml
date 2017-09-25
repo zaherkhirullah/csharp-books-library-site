@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ZHYR_Library.Models.Data.categories>
+
+@{
+    ViewBag.Title = "categories";
+}
+<ul>
+    @foreach (var category in Model)
+            {
+        <li class="card card-description" style="width:250px;margin:3px;height:300px;float:left">
+            @if (category.image == null)
+            {
+                <a href="/Home/Category_Books/@category.id">
+                    <img style="width:250px;margin:3px;height:220px" src="~/Content/images/Nophoto.png" alt="@category.category_name" />
+                </a>   }
+            else
+            {
+                <a href="/Home/Category_Books/@category.id">
+                    <img style="width:250px;margin:3px;height:220px" src="~/Uploads/images/categories/@category.image" alt="no-image" />
+                </a>}
+            <div class="card card-content">
+                <a href="/Home/Category_Books/@category.id">@category.category_name</a>
+            </div>
+        </li>
+    }
+</ul>
+<div style="clear:both;"></div><br />

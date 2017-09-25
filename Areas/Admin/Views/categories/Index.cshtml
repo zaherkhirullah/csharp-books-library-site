@@ -1,0 +1,89 @@
+﻿@model IEnumerable<ZHYR_Library.Models.Data.categories>
+
+@{
+    ViewBag.Title = "Categories";
+}
+ <div class="pull-right">
+    <p class="btn btn-md btn-warning"><i class="glyphicon glyphicon-plus"></i> @Html.ActionLink(" New Category", "Create")</p>
+     <p class="btn btn-md btn-danger"><i class="glyphicon glyphicon-trash"></i> @Html.ActionLink(" Delete All categories", "DeleteAll")</p>
+
+ </div>
+<div class="card">
+   <div class="card-header" data-background-color="orange">
+        <h4 class="title">@ViewBag.Title</h4>
+        <p class="category">New employees on 15th September, 2016</p>
+    </div>
+    <div class="card-content table-responsive">
+        <table class="table table-hover">
+            <thead class="text-warning">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.image)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.AspNetUsers.UserName)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.category_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.category_about)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Created_at)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Updated_at)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Deleted_at)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+               @foreach (var item in Model)
+               {
+                <tr>
+                    @if (item.image == null)
+                    {
+                        <td><img class="img-table" src="~/Content/images/Nophoto.png" alt="" /></td>
+                    }
+                    else
+                    {
+                        <td>
+                            <img class="img-table" src="~/Uploads/images/categories/@item.image" alt="@item.image" />
+                        </td>
+                    }
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.AspNetUsers.UserName)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category_about)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Updated_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deleted_at)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+               }
+            </tbody>
+        </table>
+    </div>
+</div>

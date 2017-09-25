@@ -1,0 +1,616 @@
+﻿@model ZHYR_Library.ViewModels.Homepage
+    @{
+    ViewBag.Title = "Home Page";
+}
+
+
+<header id="home" class="header flex flex-middle" role="banner">
+    <div class="heading">
+        <div class="row">
+            <div class="col-md-6">`
+                <h1 class="headline inverse">Material forever</h1>
+                <p class="inverse">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus placeat esse illo ipsa dolorum qui, eaque, dolor repellat libero nemo beatae, fugit repellendus numquam eveniet. Quos voluptatum, sint at! Ratione recusandae, libero similique.</p>
+                <a href="#about" class="btn btn-primary" role="button" smooth>Learn More</a>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Brands -->
+<section class="section brands">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="slick-slider logos">
+                    @foreach (var book in Model.Books)
+                    {
+                    <li class="card">
+                        @if (book.image == null)
+                        {
+                            <a href="/Home/Book_details/@book.id">
+                                <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
+                            </a>   }
+                        else
+                        {
+                            <a href="/Home/Book_details/@book.id">
+                                <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
+
+                            </a>}
+                        <div class="card-content">
+                            <a href="#">@book.book_name</a>
+                        </div>  
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <ul class="slick-slider logos">
+
+                     
+                            @foreach (var category in Model.Categories)
+                            {
+                            <li class="card">
+                                @if (category.image == null)
+                                {<a href="/Home/Category_books/@category.id">
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@category.category_name" />
+                                </a>    
+                                }
+                                else
+                                {
+                                    <a href="/Home/Category_books/@category.id">
+                                        <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/categories/@category.image" alt="no-image" />
+                                    </a>}
+                                    <div class="card-content">
+                                        <a href="/Home/Category_books/@category.id">@category.category_name</a>
+                                    </div>
+                      </li>
+                            }
+                        
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <ul class="slick-slider logos">
+                    @foreach (var duyuru1 in Model.Duyuru)
+                    {
+                        foreach (var duyuru in Model.Duyuru)
+                        {
+                            <li class="card">
+                                @if (duyuru.image == null)
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/dp1a.jpg" alt="@duyuru.Title" />
+                                }
+                                else
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/categories/@duyuru.image" alt="no-image" />
+                                }
+                                <div class="card-content">
+                                    <a href="#">@duyuru.Title</a>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <ul class="slick-slider logos">
+                    @foreach (var writer in Model.Writers)
+                    {
+                        <li class="card">
+                            @if (writer.image == null)
+                            {
+                                <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@writer.author_name" />
+                            }
+                            else
+                            {
+                                <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/writers/@writer.image" alt="no-image" />
+                            }
+                            <div class="card-content">
+                                <a href="/Home/Writer_books/@writer.id">@writer.author_name</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section Portfolio -->
+<section id="portfolio" class="section portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <header class="section-header text-center">
+                    <h3 class="section-title">Books</h3>
+                    <p>Can You Choose Category To See what contain Books</p>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Filter -->
+            <nav class="filter-nav">
+                <ul id="filter" class="filter" data-toggle="buttons">
+                    <li><a data-filter="*" class="btn btn-info btn-sm filter-link is-active">All</a></li>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <li><a data-filter=".@category.category_name" class="btn btn-info btn-simple btn-sm filter-link">@category.category_name</a></li>
+                    }
+                </ul>
+            </nav>
+
+            <!-- Masonry -->
+            <section class="masonry">
+                <div class="grid-sizer col-xs-6 col-sm-6 col-md-4 col-lg-3"></div><!-- grid-sizer -->
+               @foreach (var book in Model.Books)
+               {
+                    <!-- Item -->
+                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 @book.categories.category_name">
+                    <div class="card">
+                        <div class="card-media">
+                            <img  style="width:100%;height:200px;" src="~/Uploads/images/Books/@book.image" alt="@book.image" />
+                        </div>
+                        <div class="overlay flex flex-middle flex-center">
+                            <a href="#">@book.book_name</a>
+                            <div class="card-content">
+                                <a href="/Home/Book_details/@book.id" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">@book.book_name</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               }
+              </section>
+        </div>
+    </div>
+</section>
+<!-- Section Statistics -->
+<section class="section statistics text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <div class="statistic">
+                    <div class="stat-item" data-percent="35"></div>
+                    <span class="stat-number"></span>
+                </div>
+                <h4 class="title">Creative Ideas</h4>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="statistic">
+                    <div class="stat-item" data-percent="95"></div>
+                    <span class="stat-number"></span>
+                </div>
+                <h4 class="title">Projects Live</h4>
+            </div>
+            <div class="clearfix hidden-md hidden-lg"></div><!-- Clearfix -->
+            <div class="col-xs-6 col-md-3">
+                <div class="statistic">
+                    <div class="stat-item" data-percent="75"></div>
+                    <span class="stat-number"></span>
+                </div>
+                <h4 class="title">Awards winners</h4>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="statistic">
+                    <div class="stat-item" data-percent="55"></div>
+                    <span class="stat-number"></span>
+                </div>
+                <h4 class="title">Happy Customers</h4>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section Portfolio -->
+<section id="portfolio" class="section portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <header class="section-header text-center">
+                    <h3 class="section-title">Portfolio</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Filter -->
+            <nav class="filter-nav">
+                <ul id="filter" class="filter" data-toggle="buttons">
+                    <li><a data-filter="*" class="btn btn-info btn-sm filter-link is-active">All</a></li>
+                    <li><a data-filter=".design" class="btn btn-info btn-simple btn-sm filter-link">Design</a></li>
+                    <li><a data-filter=".inspiration" class="btn btn-info btn-simple btn-sm filter-link">Inspiration</a></li>
+                    <li><a data-filter=".adventure" class="btn btn-info btn-simple btn-sm filter-link">Adventure</a></li>
+                    <li><a data-filter=".photography" class="btn btn-info btn-simple btn-sm filter-link">Photography</a></li>
+                </ul>
+            </nav>
+            <!-- Masonry -->
+            <section class="masonry">
+                <div class="grid-sizer col-xs-6 col-sm-6 col-md-4 col-lg-3"></div><!-- grid-sizer -->
+                <!-- Item -->
+                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 design">
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="~/Content/images/dp1a.jpg" alt="image" />
+                        </div>
+                        <div class="overlay flex flex-middle flex-center">
+                            <div class="card-content">
+                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">Great Project title</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 inspiration adventure">
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="~/Content/images/dp1a.jpg" alt="image" />
+                        </div>
+                        <div class="overlay flex flex-middle">
+                            <div class="card-content">
+                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">Great Project title</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 adventure">
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="~/Content/images/dp1a.jpg" alt="image" />
+                        </div>
+                        <div class="overlay flex flex-middle">
+                            <div class="card-content">
+                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">Great Project title</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 photography">
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="~/Content/images/dp1a.jpg" alt="image" />
+                        </div>
+                        <div class="overlay flex flex-middle">
+                            <div class="card-content">
+                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">Great Project title</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 design">
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="~/Content/images/dp1a.jpg" alt="image" />
+                        </div>
+                        <div class="overlay flex flex-middle">
+                            <div class="card-content">
+                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">Great Project title</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 photography adventure">
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="~/Content/images/dp1a.jpg" alt="image" />
+                        </div>
+                        <div class="overlay flex flex-middle">
+                            <div class="card-content">
+                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">Great Project title</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 design">
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="~/Content/images/dp1a.jpg" alt="image" />
+                        </div>
+                        <div class="overlay flex flex-middle">
+                            <div class="card-content">
+                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">Great Project title</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 inspiration">
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="~/Content/images/dp1a.jpg" alt="image" />
+                        </div>
+                        <div class="overlay flex flex-middle">
+                            <div class="card-content">
+                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">Great Project title</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<!-- Section Testimonials -->
+<section class="section testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <ul class="slick-slider quotes-slider">
+                    <li>
+                        <figure class="figure avatar">
+                            <img src="~/Content/images/dp1a.jpg" alt="avatar" />
+                        </figure>
+                        <blockquote class="blockquote">
+                            Lorem ipsum dolor sit amet, eu alienum explicari quo, est melius necessitatibus ea. His quem nonumes vulputate in, nam quas nostrud iuvaret eu, deserunt adipisci eu vix
+                            <cite>Alan Davis, <span>Next Design</span></cite>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <figure class="figure avatar">
+                            <img src="~/Content/images/dp1a.jpg" alt="avatar" />
+                        </figure>
+                        <blockquote class="blockquote">
+                            Lorem ipsum dolor sit amet, eu alienum explicari quo, est melius necessitatibus ea. His quem nonumes vulputate in, nam quas nostrud iuvaret eu, deserunt adipisci eu vix
+                            <cite>Taylor Swift, <span>Agency 3M</span></cite>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <figure class="figure avatar">
+                            <img src="~/Content/images/dp1a.jpg" alt="avatar" />
+                        </figure>
+                        <blockquote class="blockquote">
+                            Lorem ipsum dolor sit amet, eu alienum explicari quo, est melius necessitatibus ea. His quem nonumes vulputate in, nam quas nostrud iuvaret eu, deserunt adipisci eu vix
+                            <cite>John Nicholson, <span>Creative Player</span></cite>
+                        </blockquote>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section Services -->
+<section id="services" class="section services text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <header class="section-header text-center">
+                    <h3 class="section-title">Services</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="icon-box">
+                    <i class="material-icons">devices_other</i>
+                    <!--<i class="fa fa-paper-plane"></i>--><!-- Font Awesome -->
+                    <h4 class="title">Webdesign</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="icon-box">
+                    <i class="material-icons">developer_board</i>
+                    <h4 class="title">Development</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="icon-box">
+                    <i class="material-icons">linked_camera</i>
+                    <h4 class="title">Photography</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="icon-box">
+                    <i class="material-icons">beenhere</i>
+                    <h4 class="title">Corporate Identity</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="icon-box">
+                    <i class="material-icons">multiline_chart</i>
+                    <h4 class="title">Marketing Strategies</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="icon-box">
+                    <i class="material-icons">security</i>
+                    <h4 class="title">Security Tests</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Brands -->
+<section class="section brands">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="slick-slider logos">
+                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
+                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
+                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
+                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
+                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
+                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
+                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
+                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
+                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Call To Action -->
+<section class="section call-to text-center">
+    <div class="container">
+        <div class="flex flex-middle flex-around">
+            <h4 class="inverse">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+            <button class="btn btn-primary">Do something</button>
+        </div>
+    </div>
+</section>
+
+<!-- Section Blog -->
+<section id="blog" class="section blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <header class="section-header text-center">
+                    <h3 class="section-title">Blog</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-media">
+                        <figure>
+                            <img src="~/Content/images/dp1a.jpg" alt="image" class="full-width">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="title">Every morning...</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ex excepturi nam.</p>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="meta-list">
+                            <li><time class="meta" datetime="2016-01-29 20:00">Jan 29, 2016</time></li>
+                            <li><span class="meta">Design</span></li>
+                        </ul>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-media">
+                        <figure>
+                            <img src="~/Content/images/dp1a.jpg" alt="image" class="full-width">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="title">Walk in Style</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ex excepturi nam.</p>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="meta-list">
+                            <li><time class="meta" datetime="2016-01-29 20:00">Jan 29, 2016</time></li>
+                            <li><span class="meta">Design</span></li>
+                        </ul>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-media">
+                        <figure>
+                            <img src="~/Content/images/dp1a.jpg" alt="image" class="full-width">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="title">Arizona Sunset</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ex excepturi nam.</p>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="meta-list">
+                            <li><time class="meta" datetime="2016-01-29 20:00">Jan 29, 2016</time></li>
+                            <li><span class="meta">Design</span></li>
+                        </ul>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col-md-12">
+                <footer class="section-footer text-center">
+                    <h4 class="title">Read our stories</h4>
+                    <a href="#" class="btn btn-primary" role="button">Visit Blog</a>
+                </footer>
+            </div>
+        </div>-->
+    </div>
+</section>
+
+<!-- Section Promo -->
+<section class="section promo text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h2 class="headline inverse">So you're convinced that Merope is the best?</h2>
+                <a href="#" class="btn btn-primary" role="button">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Pricing -->
+<section class="section pricing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <header class="section-header text-center">
+                    <h3 class="section-title">Pricing</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <!-- if you use 4 cards - set this line at col-md-12 / or delete with previous row -->
+                <div class="row">
+                    <div class="col-sm-4">
+                        <ul class="pricing-table">
+                            <li class="title">Beginner</li>
+                            <li class="price">19.99<sup>$</sup></li>
+                            <li class="divider"></li>
+                            <li class="description">Free Consultation</li>
+                            <li class="description">1 Project Realisation</li>
+                            <li class="description">1 Year Support</li>
+                            <li class="cta-button"><a class="btn btn-primary" href="#">Buy Now</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <ul class="pricing-table recommended">
+                            <li class="title">Standard</li>
+                            <li class="price">39.99<sup>$</sup></li>
+                            <li class="description">Free Consultation</li>
+                            <li class="description">1 Project Realisation</li>
+                            <li class="description">1 Year Support</li>
+                            <li class="cta-button"><a class="btn btn-primary" href="#">Buy Now</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <ul class="pricing-table">
+                            <li class="title">Professional</li>
+                            <li class="price">69.99<sup>$</sup></li>
+                            <li class="description">Free Consultation</li>
+                            <li class="description">1 Project Realisation</li>
+                            <li class="description">Lifetime Support</li>
+                            <li class="cta-button"><a class="btn btn-primary" href="#">Buy Now</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

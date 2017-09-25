@@ -1,0 +1,247 @@
+﻿@using Microsoft.AspNet.Identity
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ZHYR Admin</title>
+    @Styles.Render("~/Content/admin/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar" data-color="blue" data-image="~/Content/images/dp1a.jpg">
+            <!--
+                Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+                Tip 2: you can also add an image using data-image tag
+            -->
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <div class="card card-user">
+                        <div class="author">
+                            <img class="avatar border-white" src="~/Content/images/dp1a.jpg" alt="...">
+                        </div>
+                        <a href="#" class="simple-text"><b>@User.Identity.Name  @User.Identity.GetUserId()</b></a>
+                    </div>
+                </div>
+                @*<div class="logo">
+                    <div class="card card-user">
+                        <div class="author">
+                            @if (Model.avatar == null)
+            {
+                                <img class="avatar border-white" src="~/Content/images/dp1a.jpg" alt="...">
+                            }
+                            else
+                            {     <img class="avatar border-white" src="~/Uploads/images/users/images/@Model.avatar" alt="...">
+                            }
+                        </div>
+                        <a href="#" class="simple-text"><b>@User.Identity.Name</b></a>
+                    </div>
+                </div>*@
+                <ul class="nav">
+                    <li class="active">
+                        <a href="/Admin/Admin/Index">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/User/Index/@User.Identity.GetUserId()">
+                            <i class="material-icons">person</i>
+                            <p>User Profile</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Books/Index">
+                            <i class="material-icons">book</i>
+                            <p>Books</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Admin/categories/Index">
+                            <i class="material-icons">content_paste</i>
+                            <p>categories</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/images/Index">
+                            <i class="material-icons">content_paste</i>
+                            <p>images</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/writers/Index">
+                            <i class="material-icons">content_paste</i>
+                            <p>writers</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Team/Index">
+                            <i class="material-icons">content_paste</i>
+                            <p>Team</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Slider/Index">
+                            <i class="material-icons">content_paste</i>
+                            <p>Slider</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Duyuru/Index">
+                            <i class="material-icons">content_paste</i>
+                            <p>Duyuru</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/feedback/Index">
+                            <i class="material-icons">content_paste</i>
+                            <p>feedback</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Contacts/Index">
+                            <i class="material-icons">content_paste</i>
+                            <p>Contacts</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Referans/Index">
+                            <i class="material-icons">content_paste</i>
+                            <p>Referans</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="typography.html">
+                            <i class="material-icons">library_books</i>
+                            <p>Typography</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="icons.html">
+                            <i class="material-icons">bubble_chart</i>
+                            <p>Icons</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="maps.html">
+                            <i class="material-icons">location_on</i>
+                            <p>Maps</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="notifications.html">
+                            <i class="material-icons text-gray">notifications</i>
+                            <p>Notifications</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+                <nav class="navbar navbar-transparent navbar-absolute">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">@ViewBag.Title</a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">dashboard</i>
+                                        <p class="hidden-lg hidden-md">Dashboard</p>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">notifications</i>
+                                        <span class="notification">5</span>
+                                        <p class="hidden-lg hidden-md">Notifications</p>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Mike John responded to your email</a></li>
+                                        <li><a href="#">You have 5 new tasks</a></li>
+                                        <li><a href="#">You're now friend with Andrew</a></li>
+                                        <li><a href="#">Another Notification</a></li>
+                                        <li><a href="#">Another One</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">person</i>
+                                        <p class="hidden-lg hidden-md">Profile</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <form class="navbar-form navbar-right" role="search">
+                                <div class="form-group  is-empty">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="material-input"></span>
+                                </div>
+                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                    <i class="material-icons">search</i><div class="ripple-container"></div>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                <div class="content">
+                    <div class="container-fluid">
+                        @if (TempData["Message"] != null)
+                        {
+                            var message = (ZHYR_Library.ViewModels.MessageVm)TempData["Message"];
+                            <div class="alert @message.CssClassName alert-dismissable" style="padding-right:25px">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>@message.Title</strong>
+                                @message.Message
+                            </div>
+                        }
+                        @RenderBody()
+                        <hr />
+                        <footer class="footer">
+                            <div class="container-fluid">
+                                <nav class="pull-left">
+                                    <ul>
+                                        <li><a href="#"> Home</a></li>
+                                        <li> <a href="#"> Company</a></li>
+                                        <li><a href="#">Portfolio</a>    </li>
+                                        <li>   <a href="#">   Blog  </a>  </li>
+                                    </ul>
+                                </nav>
+                                <p class="copyright pull-right">
+                                    &copy;
+                                    <a href="/Admin/Index">ZHYR4Books </a> Admin panel
+                                </p>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/admin/Scripts")
+    <!--  Google Maps Plugin    -->
+    <script  src="~/Scripts/admin/material.min.js"></script>
+     <script  src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Javascript method's body can be found in assets/js/demos.js
+            demo.initDashboardPageCharts();
+        });</script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Books";
+}
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<div>
+ @Ajax.ActionLink("All", "All", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "divBooks",
+    InsertionMode = InsertionMode.Replace
+})
+    <span style="color:blue">|</span>
+    @Ajax.ActionLink("Top 3", "Top3", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "divBooks",
+    InsertionMode = InsertionMode.Replace
+})
+    <span style="color:blue">|</span>
+    @Ajax.ActionLink("Top10", "Top10", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "divBooks",
+    InsertionMode = InsertionMode.Replace
+})
+    <span style="color:blue">|</span>
+    @Ajax.ActionLink("Dislike", "disLike", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "divBooks",
+    InsertionMode = InsertionMode.Replace
+})
+    <span style="color:blue">|</span>
+    @Ajax.ActionLink("Top Downloaded", "TopDownloaded", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "divBooks",
+    InsertionMode = InsertionMode.Replace
+})
+    <span style="color:blue">|</span>
+    @Ajax.ActionLink("Top Readed", "TopReaded", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "divBooks",
+    InsertionMode = InsertionMode.Replace
+})
+    <span style="color:blue">|</span>
+    @Ajax.ActionLink("Top Favorite", "TopFavorited", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "divBooks",
+    InsertionMode = InsertionMode.Replace
+})
+</div>
+<div id="divBooks" style="">
+</div>
+

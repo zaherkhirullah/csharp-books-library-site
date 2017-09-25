@@ -1,0 +1,54 @@
+﻿@model ZHYR_Library.Models.Data.categories
+
+@{
+    ViewBag.Title = "Add New Category";
+}
+<div class="card">
+    <div class="card-header" data-background-color="orange">
+        <h4 class="title">@ViewBag.Title</h4>
+        <p class="category">New employees on 15th September, 2016</p>
+    </div>
+    <div class="card-content ">
+                @using (Html.BeginForm("Create", "categories", FormMethod.Post, new { @class = "", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <h4>@ViewBag.Title</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.category_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.category_name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.category_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.category_about, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.category_about, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.category_about, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="file" value="upload image" class="form-control" multiple="multiple" />
+                            @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-warning pull-right"  />
+                        </div>
+                    </div>
+
+                }
+
+            </div></div>
+    <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>

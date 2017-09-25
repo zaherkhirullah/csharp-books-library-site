@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ZHYR_Library.Models.Data.books>
+@{
+    ViewBag.Title = "DeleteAll";
+}
+
+
+<h4 class="title">@ViewBag.Title</h4>
+<p class="category">New employees on 15th September, 2016</p>
+<div class="card-content ">
+    <h3>Are you sure you want to delete All Books From Database ?</h3>
+    <div>
+         @foreach (var book in Model)
+         {
+                <div class="card-image pull-left" style="margin:5px; padding:5px; background-color:white;">
+                    @if (book.image != null)
+                    {
+                        <img src="~/Uploads/images/Books/@book.image" class="img-rounded" width="150" height="150" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/images/Nophoto.png" class="img-rounded" width="150" height="150" />
+                    }
+                    <div class="card-content">@book.book_name</div>
+                 
+                </div>
+             
+         }
+     <div class="clearfix"></div>
+        @using (Html.BeginForm())
+            {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="DeleteAll" class="btn btn-info" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+        
+    </div>
+</div>
+
+

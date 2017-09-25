@@ -1,0 +1,32 @@
+﻿@model ZHYR_Library.Models.Data.writers
+  @{ ViewBag.Title = "Books" ;
+   }  
+
+<h2>@Model.author_name</h2>
+@if (Model.books.Count() == 0)
+{    <div class="alert alert-default  "> <p class="text-center text-danger"> <b>No Books for This Author</b></p>  </div>
+}
+else
+{
+    <ul>
+        @foreach (var book in Model.books)
+        {
+                <li class="card card-description" style="width:250px;margin:3px;height:300px;float:left">
+                    @if (book.image == null)
+                    {
+                        <a href="/Home/Book_details/@book.id">
+                            <img style="width:250px;margin:3px;height:220px" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
+                        </a>   }
+                    else
+                    {
+                        <a href="/Home/Book_details/@book.id">
+                            <img style="width:250px;margin:3px;height:220px" src="~/Uploads/images/Books/@book.image" alt="no-image" />
+                        </a>}
+                    <div class="card card-content">
+                        <a href="/Home/Book_details/@book.id">@book.book_name</a>
+                    </div>
+                </li>
+        }
+    </ul>
+<div style="clear:both;"></div><br/>
+}

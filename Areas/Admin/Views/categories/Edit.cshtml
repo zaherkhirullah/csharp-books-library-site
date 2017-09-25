@@ -1,0 +1,72 @@
+﻿@model ZHYR_Library.Models.Data.categories
+
+@{
+    ViewBag.Title = "Edit " + Model.category_name;
+}
+<div class="card">
+    <div class="card-header" data-background-color="orange">
+        <h4 class="title">@ViewBag.Title</h4>
+        <p class="category">New employees on 15th September, 2016</p>
+    </div>
+
+    <div class="card-content ">
+        @using (Html.BeginForm("Edit", "categories", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+         
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+                @Html.HiddenFor(model => model.image)
+                @Html.HiddenFor(model => model.Created_at)
+                <div class="form-group ">
+                    <div class="center-block">
+                        <img class="img-rounded img-thumbnail" style="width:250px;" src="~/Uploads/images/categories/@Model.image" alt="@Model.image" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.category_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.category_name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.category_name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.category_about, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.category_about, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.category_about, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+              
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="file" value="upload image" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.UserId, "UserId", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("UserId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-warning pull-right" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+ </div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

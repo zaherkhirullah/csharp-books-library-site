@@ -1,0 +1,121 @@
+﻿@model IEnumerable<ZHYR_Library.Models.Data.books>
+
+@{
+    ViewBag.Title = "Books";
+}
+<div class="pull-right">
+    <p class="btn btn-md btn-info"><i class="glyphicon glyphicon-plus"></i> @Html.ActionLink(" New Book", "Create")</p>
+    <p class="btn btn-md btn-danger"><i class="glyphicon glyphicon-trash"></i> @Html.ActionLink(" Delete All Books", "DeleteAll")</p>
+</div>
+<div class="card">
+    <div class="card-header" data-background-color="blue">
+        <h4 class="title">@ViewBag.Title</h4>
+        <p class="category">New employees on 15th September, 2016</p>
+    </div>
+    <div class="card-content table-responsive">
+        <div>
+            <form action="/Admin/Books/Index" method="post">
+                    Search By :
+                <select name="filter">
+                    <option value="">Please select :</option>
+                    <option value="Name">Book Name</option>
+                    <option value="Category">Category Name</option>
+                    <option value="Author">Writer Name</option>
+                </select>
+                <input type="search" name="search" value="" />
+                <input type="submit" value="Search" />
+            </form>
+        </div>
+        <table class="table table-hover">
+
+            <thead class="text-blue">
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.image)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.AspNetUsers.UserName)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.categories.category_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.writers.author_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.book_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.book_about)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.book_path)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Created_at)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Updated_at)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Deleted_at)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @if (item.image == null)
+                        {
+                            <td><img class="img-table" src="~/Content/images/Nophoto.png" alt="" /></td>
+                        }
+                        else
+                        {
+                            <td>
+                                <img class="img-table" src="~/Uploads/images/Books/@item.image" alt="@item.image" />
+                            </td>
+                        }
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.AspNetUsers.UserName)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.categories.category_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.writers.author_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.book_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.book_about)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.book_path)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created_at)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Updated_at)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Deleted_at)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>

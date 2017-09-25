@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ZHYR_Library.Models.Data.Duyuru>
+
+@{
+    ViewBag.Title = "Duyurular";
+}
+@if (TempData["Message"] != null)
+{
+    var message = (ZHYR_Library.ViewModels.MessageVm)TempData["Message"];
+    <div class="alert @message.CssClassName alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>@message.Title</strong>
+        @message.Message
+    </div>
+} <div class="pull-right">
+    <p class="btn btn-md btn-warning"><i class="glyphicon glyphicon-plus"></i> @Html.ActionLink(" New Duyuru", "Create")</p>
+</div>
+<div class="card">
+    <div class="card-header" data-background-color="orange">
+        <h4 class="title">@ViewBag.Title</h4>
+        <p class="category">New employees on 15th September, 2016</p>
+    </div>
+    <div class="card-content table-responsive">
+        <table class="table table-hover">
+            <thead class="text-warning">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.content)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Created_at)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Updated_at)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Deleted_at)
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderByDescending(x => x.Created_at))
+                {
+                    <tr>
+                        @if (item.image == null)
+                        {
+                            <td><img style='width:150px; height:80px; border:solid 1px #cccccc;' src="~/Content/images/dp1a.jpg" alt="" /></td>
+                        }
+                        else
+                        {
+                            <td>
+                                <img style='width:150px; height:auto; border:solid 1px #cecece;' src="data:image/png;base64,@System.Convert.ToBase64String(item.image)" alt="@item.Title" />
+                            </td>
+                        }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.content)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created_at)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Updated_at)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Deleted_at)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>

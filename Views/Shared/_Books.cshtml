@@ -1,0 +1,113 @@
+﻿
+@model IEnumerable<ZHYR_Library.Models.Data.books>
+
+@{
+    ViewBag.Title = "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.book_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.book_about)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.book_path)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_at)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Like)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.disLike)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.downloaded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Readed)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.favorited)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.book_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.book_about)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.book_path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Like)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.disLike)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.downloaded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Readed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.favorited)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.author_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

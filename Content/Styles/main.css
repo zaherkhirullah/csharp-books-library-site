@@ -1646,6 +1646,45 @@ li > a:hover .label {
     font-size: 10px;
     float: right;
 }
+    li > a:hover .label.label-danger {
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        background-color: #fff;
+        color: red;
+        float: right;
+    }
+
+    li > a:hover .label.label-success {
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        background-color: #fff;
+        color: #1a5;
+        float: right;
+    }
+
+    li > a:hover .label.label-warnning {
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        background-color: #fff;
+        color: orange;
+        float: right;
+    }
+
+    li > a:hover .label.label-primary {
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        background-color: #fff;
+        color: #129;
+        float: right;
+    }
+    li > a:hover .label {
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    background-color: #fff;
+    color: black;
+    font-size: 10px;
+    float: right;
+}
 
     li > a:hover .label.label-danger {
         transition: all .3s;
@@ -1654,3 +1693,32 @@ li > a:hover .label {
         color: red;
         float: right;
     }
+  li > a:hover .label.label-danger {
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        background-color: #fff;
+        color: red;
+        float: right;
+    }
+    li > a:hover .label.label-success {
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        background-color: #fff;
+        color: #1a5;
+        float: right;
+    }
+    li > a:hover .label.label-warnning {
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        background-color: #fff;
+        color: orange;
+        float: right;
+    }
+    li > a:hover .label.label-primary {
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        background-color: #fff;
+        color: #129;
+        float: right;
+    }
+ 

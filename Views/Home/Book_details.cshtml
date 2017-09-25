@@ -80,32 +80,31 @@
                       <p class="label label-danger" style="font-size:16px;"><i class="glyphicon glyphicon-hand-down"></i> disLike : @Model.disLike</p>
                         <p class="label label-warning" style="font-size:16px;"><i class="glyphicon glyphicon-star-empty"></i> Favorited : @Model.favorited</p>
                        }
-                       else if (!Model.Likes.Any(x => x.UserId == User.Identity.GetUserId<int>() && x.Book_id == Model.id) || Ajax.ViewBag.Liked == true)
-                       { 
+                       else if (Model.Likes.Any(x => x.UserId == User.Identity.GetUserId<int>() && x.Book_id == Model.id) || Ajax.ViewBag.Liked == true)
+                       {
                         <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <input type="submit" value="Like  @Model.Like" class="btn btn-primary " />
+                        </form>
+                        <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="dislike @Model.disLike" class="btn btn-default" />
+                        </form>
+                       }
+                       else
+                       {
+                        <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
+                            @Html.AntiForgeryToken()
+
                             <input type="submit" value="Like  @Model.Likes.Count()" class="btn btn-default " />
                         </form>
                         <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                             <input type="submit" value="disLike  @Model.Likes.Count()" class="btn btn-default " />
                         </form>
                        }
-
-                        @*<form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="">
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <input type="submit" value="Like  @Model.Like" class="btn btn-primary " />
-                        </form>
-                        <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="">
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <input type="submit" value="dislike @Model.disLike" class="btn btn-default" />
-                        </form>*@
-
-                    
                 }
                   
                    @*@{

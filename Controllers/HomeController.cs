@@ -223,20 +223,44 @@ namespace ZHYR_Library.Controllers
         //    return book.Likes.ToString();
         //}
         [HttpPost, ActionName("Book_details")]
-        [ValidateAntiForgeryToken]
-        public ActionResult LikeBook1(Likes likes, int id)
+        public ActionResult Like(Likes likes, int id)
         {
             if (ModelState.IsValid)
-            {
-                books books = db.books.Find(id);
+            {   books books = db.books.Find(id);
+                if (likes.Book_id==books.id && likes.UserId == User.Identity.GetUserId<int>())
+                {
+                    books.Like--;
+                    db.Likes.Remove(likes);
+                    db.SaveChanges();
+                    return RedirectToAction("Book_details");
+                }
+                else
+                {
                 likes.UserId = User.Identity.GetUserId<int>();
                 likes.Book_id = books.id;
                 likes.Created_at = DateTime.Now;
                 books.Like++;
                 db.Likes.Add(likes);
                 db.SaveChanges();
+                }
             }
-            return RedirectToAction("Book_details", "Home", new { id = id });
+            return View("book_details");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public PartialViewResult CreateComment(comments comment, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                books books = db.books.Find(id);
+                comment.UserId = User.Identity.GetUserId<int>();
+                comment.BookId = books.id;
+                comment.comment = comment.comment;
+                comment.Created_at = DateTime.Now;
+                db.comments.Add(comment);
+                db.SaveChanges();
+            }
+            return PartialView("book_details", comment);
         }
         //[HttpPost, ActionName("Book_details")]
         //[ValidateAntiForgeryToken]

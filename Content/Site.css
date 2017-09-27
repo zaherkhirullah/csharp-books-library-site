@@ -32,3 +32,159 @@ textarea {
 li:hover span label-danger{
     background-color:#fff;
 }
+/* =======================
+    / Books Details Page 
+    ======================
+*/
+
+.pdf {
+    width: 100%;
+    background-color: #fefefe;
+    border: 1px solid #efefcf;
+}
+
+    .pdf .card-header {
+        background-color: #efefff;
+        box-shadow: 0px 2px 20px rgba(150,150,250,0.5);
+    }
+
+        .pdf .card-header .header-content {
+            width: 81%;
+            background-color: #fff;
+            float: left;
+            height: 200px;
+            box-shadow: 1px 20px 20px -15px rgba(150,150,150,0.5);
+            overflow: scroll;
+            border-radius: 5px;
+        }
+
+        .pdf .card-header .title {
+            font-size: 25px;
+            text-align: center;
+            color: darkblue;
+            background-color: #eeeefe;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        .pdf .card-header .About {
+            font-size: 20px;
+            box-shadow: 1px 20px 20px -15px #eee;
+            border: 2px dashed #eeeefe;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 2px;
+        }
+
+        .pdf .card-header img {
+            width: 200px;
+            height: 200px;
+            float: right;
+        }
+
+    .pdf iframe {
+        width: 100%;
+        height: 1000px;
+        box-shadow: 1px 20px 20px -15px rgba(150,150,250,0.5);
+    }
+
+    .pdf .card-content div > p {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #efefff;
+        color: #159;
+        border: 1px solid #cecece;
+    }
+
+        .pdf .card-content div > p > * {
+            padding: 10px 7px;
+            border-radius: 25px;
+            border: 1px solid #cecece;
+            font-size: 13px;
+            box-shadow: 0px 15px 18px -16px rgba(100,100,100,0.5);
+        }
+
+        .pdf .card-content div > p > b, .pdf .card-content div > p > abbr > b {
+            color: #e11;
+        }
+
+        .pdf .card-content div > p > i, .pdf .card-content abbr > i {
+            padding: 4px;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 3px 5px -4px #111;
+            background-color: #e11;
+        }
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #fefefe;
+}
+
+.header-content::-webkit-scrollbar {
+    width: 5px;
+    background-color: #fefefe;
+}
+
+.header-content::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 10px #59f;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 10px #159;
+}
+
+
+/** ==============
+    comments 
+    ================
+*/
+
+.comments:hover {
+    box-shadow: none;
+}
+
+.comment {
+    padding: 5px;
+    border: 1px solid #efefef;
+    border-radius: 5px;
+    box-shadow: 0px 5px 20px -10px rgba(100,100,100,.8);
+}
+
+    .comment .comment-user-img {
+        width: 100px;
+        padding: 5px;
+        border: 1px solid #efefef;
+        float: left;
+    }
+
+        .comment .comment-user-img img {
+            width: 100%;
+            padding: 2px;
+            margin: 5px auto;
+            border-radius: 50%;
+            border: 1px solid #cecece;
+        }
+
+    .comment .comment-content {
+        width: 88%;
+        background-color: #fefefe;
+        float: right;
+    }
+
+        .comment .comment-content h5 {
+            color: darkblue;
+        }
+
+        .comment .comment-content p {
+            color: #199;
+            padding: 5px;
+            border: 1px solid #efefef;
+        }
+
+    .comment .comment-footer {
+        float: right;
+    }

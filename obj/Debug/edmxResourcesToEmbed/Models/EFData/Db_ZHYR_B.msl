@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ZHYRModelStoreContainer" CdmEntityContainer="ZHYR_EF_DB">
+    <EntitySetMapping Name="TopDownloaded10">
+      <EntityTypeMapping TypeName="ZHYRModel.TopDownloaded10">
+        <MappingFragment StoreEntitySet="TopDownloaded10">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="book_about" ColumnName="book_about" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="book_path" ColumnName="book_path" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="author_id" ColumnName="author_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="favorited" ColumnName="favorited" />
+          <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+          <ScalarProperty Name="Readed" ColumnName="Readed" />
+          <ScalarProperty Name="disLike" ColumnName="disLike" />
+          <ScalarProperty Name="Liked" ColumnName="Liked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopDownloaded100">
+      <EntityTypeMapping TypeName="ZHYRModel.TopDownloaded100">
+        <MappingFragment StoreEntitySet="TopDownloaded100">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="book_about" ColumnName="book_about" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="book_path" ColumnName="book_path" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="author_id" ColumnName="author_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="favorited" ColumnName="favorited" />
+          <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+          <ScalarProperty Name="Readed" ColumnName="Readed" />
+          <ScalarProperty Name="disLike" ColumnName="disLike" />
+          <ScalarProperty Name="Liked" ColumnName="Liked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopLiked10">
+      <EntityTypeMapping TypeName="ZHYRModel.TopLiked10">
+        <MappingFragment StoreEntitySet="TopLiked10">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="book_about" ColumnName="book_about" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="book_path" ColumnName="book_path" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="author_id" ColumnName="author_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="favorited" ColumnName="favorited" />
+          <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+          <ScalarProperty Name="Readed" ColumnName="Readed" />
+          <ScalarProperty Name="disLike" ColumnName="disLike" />
+          <ScalarProperty Name="Liked" ColumnName="Liked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopLiked100">
+      <EntityTypeMapping TypeName="ZHYRModel.TopLiked100">
+        <MappingFragment StoreEntitySet="TopLiked100">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="book_about" ColumnName="book_about" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="book_path" ColumnName="book_path" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="author_id" ColumnName="author_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="favorited" ColumnName="favorited" />
+          <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+          <ScalarProperty Name="Readed" ColumnName="Readed" />
+          <ScalarProperty Name="disLike" ColumnName="disLike" />
+          <ScalarProperty Name="Liked" ColumnName="Liked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopReaded10">
+      <EntityTypeMapping TypeName="ZHYRModel.TopReaded10">
+        <MappingFragment StoreEntitySet="TopReaded10">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="book_about" ColumnName="book_about" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="book_path" ColumnName="book_path" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="author_id" ColumnName="author_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="favorited" ColumnName="favorited" />
+          <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+          <ScalarProperty Name="Readed" ColumnName="Readed" />
+          <ScalarProperty Name="disLike" ColumnName="disLike" />
+          <ScalarProperty Name="Liked" ColumnName="Liked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopReaded100">
+      <EntityTypeMapping TypeName="ZHYRModel.TopReaded100">
+        <MappingFragment StoreEntitySet="TopReaded100">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="book_about" ColumnName="book_about" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="book_path" ColumnName="book_path" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="author_id" ColumnName="author_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="favorited" ColumnName="favorited" />
+          <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+          <ScalarProperty Name="Readed" ColumnName="Readed" />
+          <ScalarProperty Name="disLike" ColumnName="disLike" />
+          <ScalarProperty Name="Liked" ColumnName="Liked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopPosts10">
+      <EntityTypeMapping TypeName="ZHYRModel.TopPosts10">
+        <MappingFragment StoreEntitySet="TopPosts10">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopPosts100">
+      <EntityTypeMapping TypeName="ZHYRModel.TopPosts100">
+        <MappingFragment StoreEntitySet="TopPosts100">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

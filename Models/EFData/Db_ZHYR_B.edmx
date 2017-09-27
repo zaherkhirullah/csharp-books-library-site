@@ -1,0 +1,829 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ZHYRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ZHYR.dbo.TopDownloaded10' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TopDownloaded10">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="book_about" Type="nvarchar" MaxLength="1000" />
+          <Property Name="image" Type="nvarchar" MaxLength="256" />
+          <Property Name="book_path" Type="nvarchar" MaxLength="256" />
+          <Property Name="Created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="author_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="favorited" Type="int" Nullable="false" />
+          <Property Name="downloaded" Type="int" Nullable="false" />
+          <Property Name="Readed" Type="int" Nullable="false" />
+          <Property Name="disLike" Type="int" Nullable="false" />
+          <Property Name="Liked" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ZHYR.dbo.TopDownloaded100' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TopDownloaded100">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="book_about" Type="nvarchar" MaxLength="1000" />
+          <Property Name="image" Type="nvarchar" MaxLength="256" />
+          <Property Name="book_path" Type="nvarchar" MaxLength="256" />
+          <Property Name="Created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="author_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="favorited" Type="int" Nullable="false" />
+          <Property Name="downloaded" Type="int" Nullable="false" />
+          <Property Name="Readed" Type="int" Nullable="false" />
+          <Property Name="disLike" Type="int" Nullable="false" />
+          <Property Name="Liked" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ZHYR.dbo.TopLiked10' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TopLiked10">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="book_about" Type="nvarchar" MaxLength="1000" />
+          <Property Name="image" Type="nvarchar" MaxLength="256" />
+          <Property Name="book_path" Type="nvarchar" MaxLength="256" />
+          <Property Name="Created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="author_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="favorited" Type="int" Nullable="false" />
+          <Property Name="downloaded" Type="int" Nullable="false" />
+          <Property Name="Readed" Type="int" Nullable="false" />
+          <Property Name="disLike" Type="int" Nullable="false" />
+          <Property Name="Liked" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ZHYR.dbo.TopLiked100' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TopLiked100">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="book_about" Type="nvarchar" MaxLength="1000" />
+          <Property Name="image" Type="nvarchar" MaxLength="256" />
+          <Property Name="book_path" Type="nvarchar" MaxLength="256" />
+          <Property Name="Created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="author_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="favorited" Type="int" Nullable="false" />
+          <Property Name="downloaded" Type="int" Nullable="false" />
+          <Property Name="Readed" Type="int" Nullable="false" />
+          <Property Name="disLike" Type="int" Nullable="false" />
+          <Property Name="Liked" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ZHYR.dbo.TopPosts10' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TopPosts10">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="content" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="256" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="Created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ZHYR.dbo.TopPosts100' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TopPosts100">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="content" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="256" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="Created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ZHYR.dbo.TopReaded10' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TopReaded10">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="book_about" Type="nvarchar" MaxLength="1000" />
+          <Property Name="image" Type="nvarchar" MaxLength="256" />
+          <Property Name="book_path" Type="nvarchar" MaxLength="256" />
+          <Property Name="Created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="author_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="favorited" Type="int" Nullable="false" />
+          <Property Name="downloaded" Type="int" Nullable="false" />
+          <Property Name="Readed" Type="int" Nullable="false" />
+          <Property Name="disLike" Type="int" Nullable="false" />
+          <Property Name="Liked" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ZHYR.dbo.TopReaded100' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TopReaded100">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="book_about" Type="nvarchar" MaxLength="1000" />
+          <Property Name="image" Type="nvarchar" MaxLength="256" />
+          <Property Name="book_path" Type="nvarchar" MaxLength="256" />
+          <Property Name="Created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="author_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="favorited" Type="int" Nullable="false" />
+          <Property Name="downloaded" Type="int" Nullable="false" />
+          <Property Name="Readed" Type="int" Nullable="false" />
+          <Property Name="disLike" Type="int" Nullable="false" />
+          <Property Name="Liked" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ZHYRModelStoreContainer">
+          <EntitySet Name="TopDownloaded10" EntityType="Self.TopDownloaded10" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TopDownloaded10].[id] AS [id], 
+    [TopDownloaded10].[book_name] AS [book_name], 
+    [TopDownloaded10].[book_about] AS [book_about], 
+    [TopDownloaded10].[image] AS [image], 
+    [TopDownloaded10].[book_path] AS [book_path], 
+    [TopDownloaded10].[Created_at] AS [Created_at], 
+    [TopDownloaded10].[Updated_at] AS [Updated_at], 
+    [TopDownloaded10].[Deleted_at] AS [Deleted_at], 
+    [TopDownloaded10].[UserId] AS [UserId], 
+    [TopDownloaded10].[author_id] AS [author_id], 
+    [TopDownloaded10].[category_id] AS [category_id], 
+    [TopDownloaded10].[favorited] AS [favorited], 
+    [TopDownloaded10].[downloaded] AS [downloaded], 
+    [TopDownloaded10].[Readed] AS [Readed], 
+    [TopDownloaded10].[disLike] AS [disLike], 
+    [TopDownloaded10].[Liked] AS [Liked]
+    FROM [dbo].[TopDownloaded10] AS [TopDownloaded10]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TopDownloaded100" EntityType="Self.TopDownloaded100" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TopDownloaded100].[id] AS [id], 
+    [TopDownloaded100].[book_name] AS [book_name], 
+    [TopDownloaded100].[book_about] AS [book_about], 
+    [TopDownloaded100].[image] AS [image], 
+    [TopDownloaded100].[book_path] AS [book_path], 
+    [TopDownloaded100].[Created_at] AS [Created_at], 
+    [TopDownloaded100].[Updated_at] AS [Updated_at], 
+    [TopDownloaded100].[Deleted_at] AS [Deleted_at], 
+    [TopDownloaded100].[UserId] AS [UserId], 
+    [TopDownloaded100].[author_id] AS [author_id], 
+    [TopDownloaded100].[category_id] AS [category_id], 
+    [TopDownloaded100].[favorited] AS [favorited], 
+    [TopDownloaded100].[downloaded] AS [downloaded], 
+    [TopDownloaded100].[Readed] AS [Readed], 
+    [TopDownloaded100].[disLike] AS [disLike], 
+    [TopDownloaded100].[Liked] AS [Liked]
+    FROM [dbo].[TopDownloaded100] AS [TopDownloaded100]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TopLiked10" EntityType="Self.TopLiked10" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TopLiked10].[id] AS [id], 
+    [TopLiked10].[book_name] AS [book_name], 
+    [TopLiked10].[book_about] AS [book_about], 
+    [TopLiked10].[image] AS [image], 
+    [TopLiked10].[book_path] AS [book_path], 
+    [TopLiked10].[Created_at] AS [Created_at], 
+    [TopLiked10].[Updated_at] AS [Updated_at], 
+    [TopLiked10].[Deleted_at] AS [Deleted_at], 
+    [TopLiked10].[UserId] AS [UserId], 
+    [TopLiked10].[author_id] AS [author_id], 
+    [TopLiked10].[category_id] AS [category_id], 
+    [TopLiked10].[favorited] AS [favorited], 
+    [TopLiked10].[downloaded] AS [downloaded], 
+    [TopLiked10].[Readed] AS [Readed], 
+    [TopLiked10].[disLike] AS [disLike], 
+    [TopLiked10].[Liked] AS [Liked]
+    FROM [dbo].[TopLiked10] AS [TopLiked10]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TopLiked100" EntityType="Self.TopLiked100" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TopLiked100].[id] AS [id], 
+    [TopLiked100].[book_name] AS [book_name], 
+    [TopLiked100].[book_about] AS [book_about], 
+    [TopLiked100].[image] AS [image], 
+    [TopLiked100].[book_path] AS [book_path], 
+    [TopLiked100].[Created_at] AS [Created_at], 
+    [TopLiked100].[Updated_at] AS [Updated_at], 
+    [TopLiked100].[Deleted_at] AS [Deleted_at], 
+    [TopLiked100].[UserId] AS [UserId], 
+    [TopLiked100].[author_id] AS [author_id], 
+    [TopLiked100].[category_id] AS [category_id], 
+    [TopLiked100].[favorited] AS [favorited], 
+    [TopLiked100].[downloaded] AS [downloaded], 
+    [TopLiked100].[Readed] AS [Readed], 
+    [TopLiked100].[disLike] AS [disLike], 
+    [TopLiked100].[Liked] AS [Liked]
+    FROM [dbo].[TopLiked100] AS [TopLiked100]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TopPosts10" EntityType="Self.TopPosts10" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TopPosts10].[Id] AS [Id], 
+    [TopPosts10].[image] AS [image], 
+    [TopPosts10].[Title] AS [Title], 
+    [TopPosts10].[content] AS [content], 
+    [TopPosts10].[date] AS [date], 
+    [TopPosts10].[Created_at] AS [Created_at], 
+    [TopPosts10].[Updated_at] AS [Updated_at], 
+    [TopPosts10].[Deleted_at] AS [Deleted_at], 
+    [TopPosts10].[UserId] AS [UserId], 
+    [TopPosts10].[category_id] AS [category_id]
+    FROM [dbo].[TopPosts10] AS [TopPosts10]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TopPosts100" EntityType="Self.TopPosts100" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TopPosts100].[Id] AS [Id], 
+    [TopPosts100].[image] AS [image], 
+    [TopPosts100].[Title] AS [Title], 
+    [TopPosts100].[content] AS [content], 
+    [TopPosts100].[date] AS [date], 
+    [TopPosts100].[Created_at] AS [Created_at], 
+    [TopPosts100].[Updated_at] AS [Updated_at], 
+    [TopPosts100].[Deleted_at] AS [Deleted_at], 
+    [TopPosts100].[UserId] AS [UserId], 
+    [TopPosts100].[category_id] AS [category_id]
+    FROM [dbo].[TopPosts100] AS [TopPosts100]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TopReaded10" EntityType="Self.TopReaded10" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TopReaded10].[id] AS [id], 
+    [TopReaded10].[book_name] AS [book_name], 
+    [TopReaded10].[book_about] AS [book_about], 
+    [TopReaded10].[image] AS [image], 
+    [TopReaded10].[book_path] AS [book_path], 
+    [TopReaded10].[Created_at] AS [Created_at], 
+    [TopReaded10].[Updated_at] AS [Updated_at], 
+    [TopReaded10].[Deleted_at] AS [Deleted_at], 
+    [TopReaded10].[UserId] AS [UserId], 
+    [TopReaded10].[author_id] AS [author_id], 
+    [TopReaded10].[category_id] AS [category_id], 
+    [TopReaded10].[favorited] AS [favorited], 
+    [TopReaded10].[downloaded] AS [downloaded], 
+    [TopReaded10].[Readed] AS [Readed], 
+    [TopReaded10].[disLike] AS [disLike], 
+    [TopReaded10].[Liked] AS [Liked]
+    FROM [dbo].[TopReaded10] AS [TopReaded10]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TopReaded100" EntityType="Self.TopReaded100" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TopReaded100].[id] AS [id], 
+    [TopReaded100].[book_name] AS [book_name], 
+    [TopReaded100].[book_about] AS [book_about], 
+    [TopReaded100].[image] AS [image], 
+    [TopReaded100].[book_path] AS [book_path], 
+    [TopReaded100].[Created_at] AS [Created_at], 
+    [TopReaded100].[Updated_at] AS [Updated_at], 
+    [TopReaded100].[Deleted_at] AS [Deleted_at], 
+    [TopReaded100].[UserId] AS [UserId], 
+    [TopReaded100].[author_id] AS [author_id], 
+    [TopReaded100].[category_id] AS [category_id], 
+    [TopReaded100].[favorited] AS [favorited], 
+    [TopReaded100].[downloaded] AS [downloaded], 
+    [TopReaded100].[Readed] AS [Readed], 
+    [TopReaded100].[disLike] AS [disLike], 
+    [TopReaded100].[Liked] AS [Liked]
+    FROM [dbo].[TopReaded100] AS [TopReaded100]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZHYRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TopDownloaded10">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="author_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="favorited" Type="Int32" Nullable="false" />
+          <Property Name="downloaded" Type="Int32" Nullable="false" />
+          <Property Name="Readed" Type="Int32" Nullable="false" />
+          <Property Name="disLike" Type="Int32" Nullable="false" />
+          <Property Name="Liked" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TopDownloaded100">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="author_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="favorited" Type="Int32" Nullable="false" />
+          <Property Name="downloaded" Type="Int32" Nullable="false" />
+          <Property Name="Readed" Type="Int32" Nullable="false" />
+          <Property Name="disLike" Type="Int32" Nullable="false" />
+          <Property Name="Liked" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TopLiked10">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="author_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="favorited" Type="Int32" Nullable="false" />
+          <Property Name="downloaded" Type="Int32" Nullable="false" />
+          <Property Name="Readed" Type="Int32" Nullable="false" />
+          <Property Name="disLike" Type="Int32" Nullable="false" />
+          <Property Name="Liked" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TopLiked100">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="author_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="favorited" Type="Int32" Nullable="false" />
+          <Property Name="downloaded" Type="Int32" Nullable="false" />
+          <Property Name="Readed" Type="Int32" Nullable="false" />
+          <Property Name="disLike" Type="Int32" Nullable="false" />
+          <Property Name="Liked" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TopReaded10">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="author_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="favorited" Type="Int32" Nullable="false" />
+          <Property Name="downloaded" Type="Int32" Nullable="false" />
+          <Property Name="Readed" Type="Int32" Nullable="false" />
+          <Property Name="disLike" Type="Int32" Nullable="false" />
+          <Property Name="Liked" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TopReaded100">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="book_name" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="author_id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="favorited" />
+            <PropertyRef Name="downloaded" />
+            <PropertyRef Name="Readed" />
+            <PropertyRef Name="disLike" />
+            <PropertyRef Name="Liked" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="author_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="favorited" Type="Int32" Nullable="false" />
+          <Property Name="downloaded" Type="Int32" Nullable="false" />
+          <Property Name="Readed" Type="Int32" Nullable="false" />
+          <Property Name="disLike" Type="Int32" Nullable="false" />
+          <Property Name="Liked" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ZHYR_EF_DB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TopDownloaded10" EntityType="Self.TopDownloaded10" />
+          <EntitySet Name="TopDownloaded100" EntityType="Self.TopDownloaded100" />
+          <EntitySet Name="TopLiked10" EntityType="Self.TopLiked10" />
+          <EntitySet Name="TopLiked100" EntityType="Self.TopLiked100" />
+          <EntitySet Name="TopReaded10" EntityType="Self.TopReaded10" />
+          <EntitySet Name="TopReaded100" EntityType="Self.TopReaded100" />
+          <EntitySet Name="TopPosts10" EntityType="ZHYRModel.TopPosts10" />
+          <EntitySet Name="TopPosts100" EntityType="ZHYRModel.TopPosts100" />
+        </EntityContainer>
+        <EntityType Name="TopPosts10">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="content" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TopPosts100">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="content" />
+            <PropertyRef Name="Created_at" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ZHYRModelStoreContainer" CdmEntityContainer="ZHYR_EF_DB">
+          <EntitySetMapping Name="TopDownloaded10">
+            <EntityTypeMapping TypeName="ZHYRModel.TopDownloaded10">
+              <MappingFragment StoreEntitySet="TopDownloaded10">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="book_name" ColumnName="book_name" />
+                <ScalarProperty Name="book_about" ColumnName="book_about" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="book_path" ColumnName="book_path" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="author_id" ColumnName="author_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="favorited" ColumnName="favorited" />
+                <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+                <ScalarProperty Name="Readed" ColumnName="Readed" />
+                <ScalarProperty Name="disLike" ColumnName="disLike" />
+                <ScalarProperty Name="Liked" ColumnName="Liked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TopDownloaded100">
+            <EntityTypeMapping TypeName="ZHYRModel.TopDownloaded100">
+              <MappingFragment StoreEntitySet="TopDownloaded100">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="book_name" ColumnName="book_name" />
+                <ScalarProperty Name="book_about" ColumnName="book_about" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="book_path" ColumnName="book_path" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="author_id" ColumnName="author_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="favorited" ColumnName="favorited" />
+                <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+                <ScalarProperty Name="Readed" ColumnName="Readed" />
+                <ScalarProperty Name="disLike" ColumnName="disLike" />
+                <ScalarProperty Name="Liked" ColumnName="Liked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TopLiked10">
+            <EntityTypeMapping TypeName="ZHYRModel.TopLiked10">
+              <MappingFragment StoreEntitySet="TopLiked10">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="book_name" ColumnName="book_name" />
+                <ScalarProperty Name="book_about" ColumnName="book_about" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="book_path" ColumnName="book_path" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="author_id" ColumnName="author_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="favorited" ColumnName="favorited" />
+                <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+                <ScalarProperty Name="Readed" ColumnName="Readed" />
+                <ScalarProperty Name="disLike" ColumnName="disLike" />
+                <ScalarProperty Name="Liked" ColumnName="Liked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TopLiked100">
+            <EntityTypeMapping TypeName="ZHYRModel.TopLiked100">
+              <MappingFragment StoreEntitySet="TopLiked100">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="book_name" ColumnName="book_name" />
+                <ScalarProperty Name="book_about" ColumnName="book_about" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="book_path" ColumnName="book_path" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="author_id" ColumnName="author_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="favorited" ColumnName="favorited" />
+                <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+                <ScalarProperty Name="Readed" ColumnName="Readed" />
+                <ScalarProperty Name="disLike" ColumnName="disLike" />
+                <ScalarProperty Name="Liked" ColumnName="Liked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TopReaded10">
+            <EntityTypeMapping TypeName="ZHYRModel.TopReaded10">
+              <MappingFragment StoreEntitySet="TopReaded10">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="book_name" ColumnName="book_name" />
+                <ScalarProperty Name="book_about" ColumnName="book_about" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="book_path" ColumnName="book_path" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="author_id" ColumnName="author_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="favorited" ColumnName="favorited" />
+                <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+                <ScalarProperty Name="Readed" ColumnName="Readed" />
+                <ScalarProperty Name="disLike" ColumnName="disLike" />
+                <ScalarProperty Name="Liked" ColumnName="Liked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TopReaded100">
+            <EntityTypeMapping TypeName="ZHYRModel.TopReaded100">
+              <MappingFragment StoreEntitySet="TopReaded100">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="book_name" ColumnName="book_name" />
+                <ScalarProperty Name="book_about" ColumnName="book_about" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="book_path" ColumnName="book_path" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="author_id" ColumnName="author_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="favorited" ColumnName="favorited" />
+                <ScalarProperty Name="downloaded" ColumnName="downloaded" />
+                <ScalarProperty Name="Readed" ColumnName="Readed" />
+                <ScalarProperty Name="disLike" ColumnName="disLike" />
+                <ScalarProperty Name="Liked" ColumnName="Liked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TopPosts10">
+            <EntityTypeMapping TypeName="ZHYRModel.TopPosts10">
+              <MappingFragment StoreEntitySet="TopPosts10">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TopPosts100">
+            <EntityTypeMapping TypeName="ZHYRModel.TopPosts100">
+              <MappingFragment StoreEntitySet="TopPosts100">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

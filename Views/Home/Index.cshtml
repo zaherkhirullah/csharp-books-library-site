@@ -1,16 +1,14 @@
 ﻿@model ZHYR_Library.ViewModels.Homepage
-    @{
+@{
     ViewBag.Title = "Home Page";
 }
-
-
 <header id="home" class="header flex flex-middle" role="banner">
     <div class="heading">
         <div class="row">
-            <div class="col-md-6">`
-                <h1 class="headline inverse">Material forever</h1>
-                <p class="inverse">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus placeat esse illo ipsa dolorum qui, eaque, dolor repellat libero nemo beatae, fugit repellendus numquam eveniet. Quos voluptatum, sint at! Ratione recusandae, libero similique.</p>
-                <a href="#about" class="btn btn-primary" role="button" smooth>Learn More</a>
+            <div class="col-md-6">
+                <h1 class="headline inverse">ZHYR Library </h1>
+                <p class="inverse">Zhyr Library books it's have more than @Model.Books.Count() a book ,Can you find any book in This Library  , Library have diffrents Arabic ,Turkish an English books , give us a few from your time  To enjoy reading the Love BOOKS .</p>
+                <a href="@Url.Action("Books","Home")" class="btn btn-primary" role="button" smooth>Let's Go </a>
             </div>
         </div>
     </div>
@@ -20,96 +18,155 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <ul class="slick-slider logos">
-                    @foreach (var book in Model.Books)
-                    {
-                    <li class="card">
-                        @if (book.image == null)
-                        {
-                            <a href="/Home/Book_details/@book.id">
-                                <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
-                            </a>   }
-                        else
-                        {
-                            <a href="/Home/Book_details/@book.id">
-                                <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
-
-                            </a>}
-                        <div class="card-content">
-                            <a href="#">@book.book_name</a>
-                        </div>  
-                    </li>
-                    }
-                </ul>
+                <header class="section-header text-center">
+                    <h3 class="section-title">Library Books</h3>
+                    <h6 class="text-primary">There are more +@Model.Books.Count() Book  in Our Site</h6>
+                </header>
             </div>
+            <!--Most Readed-->
             <div class="col-md-12">
+                <h2>Most Readed </h2>
                 <ul class="slick-slider logos">
-
-                     
-                            @foreach (var category in Model.Categories)
-                            {
-                            <li class="card">
-                                @if (category.image == null)
-                                {<a href="/Home/Category_books/@category.id">
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@category.category_name" />
-                                </a>    
-                                }
-                                else
-                                {
-                                    <a href="/Home/Category_books/@category.id">
-                                        <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/categories/@category.image" alt="no-image" />
-                                    </a>}
-                                    <div class="card-content">
-                                        <a href="/Home/Category_books/@category.id">@category.category_name</a>
-                                    </div>
-                      </li>
-                            }
-                        
-                </ul>
-            </div>
-            <div class="col-md-12">
-                <ul class="slick-slider logos">
-                    @foreach (var duyuru1 in Model.Duyuru)
-                    {
-                        foreach (var duyuru in Model.Duyuru)
-                        {
-                            <li class="card">
-                                @if (duyuru.image == null)
-                                {
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/dp1a.jpg" alt="@duyuru.Title" />
-                                }
-                                else
-                                {
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/categories/@duyuru.image" alt="no-image" />
-                                }
-                                <div class="card-content">
-                                    <a href="#">@duyuru.Title</a>
-                                </div>
-                            </li>
-                        }
-                    }
-                </ul>
-            </div>
-            <div class="col-md-12">
-                <ul class="slick-slider logos">
-                    @foreach (var writer in Model.Writers)
+                    @foreach (var book in Model.TopReaded100)
                     {
                         <li class="card">
-                            @if (writer.image == null)
+                            @if (book.image == null)
                             {
-                                <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@writer.author_name" />
-                            }
+                                <a href="/Home/Book_details/@book.id">
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
+                                </a>   }
                             else
                             {
-                                <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/writers/@writer.image" alt="no-image" />
-                            }
+                                <a href="/Home/Book_details/@book.id">
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
+
+                                </a>}
                             <div class="card-content">
-                                <a href="/Home/Writer_books/@writer.id">@writer.author_name</a>
+                                <a href="#">@book.book_name</a>
                             </div>
                         </li>
                     }
                 </ul>
             </div>
+            <!--Most Downloaded-->
+            <div class="col-md-12">
+                <h2>Most Downloaded </h2>
+                <ul class="slick-slider logos">
+                    @*@foreach (var book in Model.Books.OrderByDescending(x => x.downloaded))*@
+                    @foreach (var book in Model.TopDownloaded100)
+                    {
+                        <li class="card">
+                            @if (book.image == null)
+                            {
+                                <a href="/Home/Book_details/@book.id">
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
+                                </a>   }
+                            else
+                            {
+                                <a href="/Home/Book_details/@book.id">
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
+
+                                </a>}
+                            <div class="card-content">
+                                <a href="#">@book.book_name</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!--Most popler-->
+            <div class="col-md-12">
+                <h2>Most papular</h2>
+                <ul class="slick-slider logos">
+                    @*@foreach (var book in Model.Books.OrderByDescending(x => x.Liked))*@
+                    @foreach (var book in Model.TopLiked100)
+                    {
+                        <li class="card">
+                            @if (book.image == null)
+                            {
+                                <a href="/Home/Book_details/@book.id">
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
+                                </a>   }
+                            else
+                            {
+                                <a href="/Home/Book_details/@book.id">
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
+
+                                </a>}
+                            <div class="card-content">
+                                <a href="#">@book.book_name</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            @*<div class="col-md-12">
+                    <ul class="slick-slider logos">
+                                @foreach (var category in Model.Categories)
+                                {
+                                <li class="card">
+                                    @if (category.image == null)
+                                    {<a href="/Home/Category_books/@category.id">
+                                        <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@category.category_name" />
+                                    </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/Home/Category_books/@category.id">
+                                            <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/categories/@category.image" alt="no-image" />
+                                        </a>}
+                                        <div class="card-content">
+                                            <a href="/Home/Category_books/@category.id">@category.category_name</a>
+                                        </div>
+                          </li>
+                                }
+
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <ul class="slick-slider logos">
+                        @foreach (var duyuru1 in Model.Duyuru)
+                        {
+                            foreach (var duyuru in Model.Duyuru)
+                            {
+                                <li class="card">
+                                    @if (duyuru.image == null)
+                                    {
+                                        <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/dp1a.jpg" alt="@duyuru.Title" />
+                                    }
+                                    else
+                                    {
+                                        <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/categories/@duyuru.image" alt="no-image" />
+                                    }
+                                    <div class="card-content">
+                                        <a href="#">@duyuru.Title</a>
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>*@
+            @*<div class="col-md-12">
+                    <ul class="slick-slider logos">
+                        @foreach (var writer in Model.Writers)
+                        {
+                            <li class="card">
+                                @if (writer.image == null)
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@writer.author_name" />
+                                }
+                                else
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/writers/@writer.image" alt="no-image" />
+                                }
+                                <div class="card-content">
+                                    <a href="/Home/Writer_books/@writer.id">@writer.author_name</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>*@
         </div>
     </div>
 </section>
@@ -119,7 +176,7 @@
         <div class="row">
             <div class="col-md-12">
                 <header class="section-header text-center">
-                    <h3 class="section-title">Books</h3>
+                    <h3 class="section-title">Categories</h3>
                     <p>Can You Choose Category To See what contain Books</p>
                 </header>
             </div>
@@ -131,70 +188,42 @@
                     <li><a data-filter="*" class="btn btn-info btn-sm filter-link is-active">All</a></li>
                     @foreach (var category in Model.Categories)
                     {
-                        <li><a data-filter=".@category.category_name" class="btn btn-info btn-simple btn-sm filter-link">@category.category_name</a></li>
+
+                        <li>
+                            <a data-filter=".@category.category_name" class="btn btn-info btn-simple btn-sm filter-link">
+                                @category.category_name
+                                @*<img src="~/Uploads/images/categories//@category.image" class="img-circle" width="50" height="50" />*@
+
+                            </a>
+                        </li>
                     }
                 </ul>
             </nav>
-
             <!-- Masonry -->
             <section class="masonry">
                 <div class="grid-sizer col-xs-6 col-sm-6 col-md-4 col-lg-3"></div><!-- grid-sizer -->
-               @foreach (var book in Model.Books)
-               {
+                @*@foreach (var book in Model.Books.OrderByDescending(x=>x.categories.books.Count()))  <!-- صاحب أكبر عدد من الكتب category--> *@
+                @foreach (var book in Model.Books)
+                {
                     <!-- Item -->
-                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 @book.categories.category_name">
-                    <div class="card">
-                        <div class="card-media">
-                            <img  style="width:100%;height:200px;" src="~/Uploads/images/Books/@book.image" alt="@book.image" />
-                        </div>
-                        <div class="overlay flex flex-middle flex-center">
-                            <a href="#">@book.book_name</a>
-                            <div class="card-content">
-                                <a href="/Home/Book_details/@book.id" class="overlay-link"><i class="material-icons">add</i></a>
-                                <h6 class="title hidden-xs">@book.book_name</h6>
+                    <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 @book.categories.category_name">
+                        <div class="card">
+                            <div class="card-media">
+                                <img style="width:100%;height:200px;" src="~/Uploads/images/Books/@book.image" alt="@book.image" />
+                            </div>
+                            <div class="overlay flex flex-middle flex-center">
+                                <a href="#">@book.book_name</a>
+                                <div class="card-content">
+                                    <a href="/Home/Book_details/@book.id" class="overlay-link"><i class="material-icons">add</i></a>
+                                    <h6 class="title hidden-xs">@book.book_name</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-               }
-              </section>
+                }
+            </section>
         </div>
-    </div>
-</section>
-<!-- Section Statistics -->
-<section class="section statistics text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-6 col-md-3">
-                <div class="statistic">
-                    <div class="stat-item" data-percent="35"></div>
-                    <span class="stat-number"></span>
-                </div>
-                <h4 class="title">Creative Ideas</h4>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="statistic">
-                    <div class="stat-item" data-percent="95"></div>
-                    <span class="stat-number"></span>
-                </div>
-                <h4 class="title">Projects Live</h4>
-            </div>
-            <div class="clearfix hidden-md hidden-lg"></div><!-- Clearfix -->
-            <div class="col-xs-6 col-md-3">
-                <div class="statistic">
-                    <div class="stat-item" data-percent="75"></div>
-                    <span class="stat-number"></span>
-                </div>
-                <h4 class="title">Awards winners</h4>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="statistic">
-                    <div class="stat-item" data-percent="55"></div>
-                    <span class="stat-number"></span>
-                </div>
-                <h4 class="title">Happy Customers</h4>
-            </div>
-        </div>
+
     </div>
 </section>
 <!-- Section Portfolio -->
@@ -203,138 +232,64 @@
         <div class="row">
             <div class="col-md-12">
                 <header class="section-header text-center">
-                    <h3 class="section-title">Portfolio</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+                    <h3 class="section-title">Writers</h3>
+                    <p>These are Writer's Books</p>
                 </header>
             </div>
         </div>
         <div class="row">
-            <!-- Filter -->
-            <nav class="filter-nav">
-                <ul id="filter" class="filter" data-toggle="buttons">
-                    <li><a data-filter="*" class="btn btn-info btn-sm filter-link is-active">All</a></li>
-                    <li><a data-filter=".design" class="btn btn-info btn-simple btn-sm filter-link">Design</a></li>
-                    <li><a data-filter=".inspiration" class="btn btn-info btn-simple btn-sm filter-link">Inspiration</a></li>
-                    <li><a data-filter=".adventure" class="btn btn-info btn-simple btn-sm filter-link">Adventure</a></li>
-                    <li><a data-filter=".photography" class="btn btn-info btn-simple btn-sm filter-link">Photography</a></li>
-                </ul>
-            </nav>
-            <!-- Masonry -->
-            <section class="masonry">
-                <div class="grid-sizer col-xs-6 col-sm-6 col-md-4 col-lg-3"></div><!-- grid-sizer -->
-                <!-- Item -->
-                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 design">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="~/Content/images/dp1a.jpg" alt="image" />
-                        </div>
-                        <div class="overlay flex flex-middle flex-center">
-                            <div class="card-content">
-                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
-                                <h6 class="title hidden-xs">Great Project title</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 inspiration adventure">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="~/Content/images/dp1a.jpg" alt="image" />
-                        </div>
-                        <div class="overlay flex flex-middle">
-                            <div class="card-content">
-                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
-                                <h6 class="title hidden-xs">Great Project title</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 adventure">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="~/Content/images/dp1a.jpg" alt="image" />
-                        </div>
-                        <div class="overlay flex flex-middle">
-                            <div class="card-content">
-                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
-                                <h6 class="title hidden-xs">Great Project title</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 photography">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="~/Content/images/dp1a.jpg" alt="image" />
-                        </div>
-                        <div class="overlay flex flex-middle">
-                            <div class="card-content">
-                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
-                                <h6 class="title hidden-xs">Great Project title</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 design">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="~/Content/images/dp1a.jpg" alt="image" />
-                        </div>
-                        <div class="overlay flex flex-middle">
-                            <div class="card-content">
-                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
-                                <h6 class="title hidden-xs">Great Project title</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 photography adventure">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="~/Content/images/dp1a.jpg" alt="image" />
-                        </div>
-                        <div class="overlay flex flex-middle">
-                            <div class="card-content">
-                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
-                                <h6 class="title hidden-xs">Great Project title</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 design">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="~/Content/images/dp1a.jpg" alt="image" />
-                        </div>
-                        <div class="overlay flex flex-middle">
-                            <div class="card-content">
-                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
-                                <h6 class="title hidden-xs">Great Project title</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 inspiration">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="~/Content/images/dp1a.jpg" alt="image" />
-                        </div>
-                        <div class="overlay flex flex-middle">
-                            <div class="card-content">
-                                <a href="project.html" class="overlay-link"><i class="material-icons">add</i></a>
-                                <h6 class="title hidden-xs">Great Project title</h6>
-                            </div>
+            <!-- Brands -->
+            <section class="section brands">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="slick-slider logos">
+                                @foreach (var writer in Model.Writers)
+                                {
+                                    <li>
+                                        <div class="card" style="border-radius:50%;">
+                                            <div class="card-media">
+                                                <img style="width:100%;height:200px;" src="~/Uploads/images/writers/@writer.image" alt="@writer.image" />
+                                            </div>
+                                            <div class="overlay flex flex-middle flex-center">
+                                                <a href="#">@writer.author_name</a>
+                                                <div class="card-content">
+                                                    <a href="/Home/Book_details/@writer.id" class="overlay-link"><i class="material-icons">add</i></a>
+                                                    <h6 class="title hidden-xs">@writer.author_name</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+
+
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
+            @*<section class="masonry">*@
+            @*  <div class="grid-sizer col-xs-6 col-sm-6 col-md-4 col-lg-3"></div><!-- grid-sizer -->*@
+            @*@foreach (var book in Model.Books.OrderByDescending(x=>x.writers.books.Count()))  <!-- صاحب أكبر عدد من الكتب --> *@
+            @*@foreach (var writer in Model.Writers)
+                {*@
+            <!-- Item -->
+            @*<div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 @writer.author_name">
+                    <div class="card" style="border-radius:50%;">
+                        <div class="card-media" >
+                            <img style="width:100%;height:250px;"  src="~/Uploads/images/writers/@writer.image" alt="@writer.image" />
+                        </div>
+                        <div class="overlay flex flex-middle flex-center">
+                            <a href="#">@writer.author_name</a>
+                            <div class="card-content">
+                                <a href="/Home/Book_details/@writer.id" class="overlay-link"><i class="material-icons">add</i></a>
+                                <h6 class="title hidden-xs">@writer.author_name</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            @*}
+                </section>*@
         </div>
     </div>
 </section>
@@ -376,81 +331,44 @@
         </div>
     </div>
 </section>
-<!-- Section Services -->
-<section id="services" class="section services text-center">
+<!-- Section Statistics -->
+<section class="section statistics text-center">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <header class="section-header text-center">
-                    <h3 class="section-title">Services</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                </header>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="icon-box">
-                    <i class="material-icons">devices_other</i>
-                    <!--<i class="fa fa-paper-plane"></i>--><!-- Font Awesome -->
-                    <h4 class="title">Webdesign</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+            <div class="col-xs-6 col-md-2">
+                <div class="statistic">
+                    <div class="stat-item" data-percent="50"></div>
+                    <span class="stat-number"></span>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="icon-box">
-                    <i class="material-icons">developer_board</i>
-                    <h4 class="title">Development</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+                <h4 class="title">Downloades </h4>
+            </div><div class="col-xs-6 col-md-2">
+                <div class="statistic">
+                    <div class="stat-item" data-percent="@Model.Books.Count()"></div>
+                    <span class="stat-number"></span>
                 </div>
+                <h4 class="title">Books </h4>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="icon-box">
-                    <i class="material-icons">linked_camera</i>
-                    <h4 class="title">Photography</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+            <div class="col-xs-6 col-md-2">
+                <div class="statistic">
+                    <div class="stat-item" data-percent="95"></div>
+                    <span class="stat-number"></span>
                 </div>
+                <h4 class="title">Reads</h4>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="icon-box">
-                    <i class="material-icons">beenhere</i>
-                    <h4 class="title">Corporate Identity</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+            <div class="clearfix hidden-md hidden-lg"></div><!-- Clearfix -->
+            <div class="col-xs-6 col-md-2">
+                <div class="statistic">
+                    <div class="stat-item" data-percent="20"></div>
+                    <span class="stat-number"></span>
                 </div>
+                <h4 class="title">Readers</h4>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="icon-box">
-                    <i class="material-icons">multiline_chart</i>
-                    <h4 class="title">Marketing Strategies</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
+            <div class="col-xs-6 col-md-2">
+                <div class="statistic">
+                    <div class="stat-item" data-percent="40"></div>
+                    <span class="stat-number"></span>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="icon-box">
-                    <i class="material-icons">security</i>
-                    <h4 class="title">Security Tests</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illum vitae in aperiam voluptatum anecessitatibus Iusto dolor repudiandae.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Brands -->
-<section class="section brands">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="slick-slider logos">
-                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
-                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
-                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
-                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
-                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
-                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
-                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
-                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
-                    <li><img src="~/Content/images/dp1a.jpg" alt="no-image" /></li>
-                </ul>
+                <h4 class="title">Users</h4>
             </div>
         </div>
     </div>
@@ -478,75 +396,48 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-media">
-                        <figure>
-                            <img src="~/Content/images/dp1a.jpg" alt="image" class="full-width">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <h5 class="title">Every morning...</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ex excepturi nam.</p>
-                    </div>
-                    <div class="card-footer">
-                        <ul class="meta-list">
-                            <li><time class="meta" datetime="2016-01-29 20:00">Jan 29, 2016</time></li>
-                            <li><span class="meta">Design</span></li>
-                        </ul>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-media">
-                        <figure>
-                            <img src="~/Content/images/dp1a.jpg" alt="image" class="full-width">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <h5 class="title">Walk in Style</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ex excepturi nam.</p>
-                    </div>
-                    <div class="card-footer">
-                        <ul class="meta-list">
-                            <li><time class="meta" datetime="2016-01-29 20:00">Jan 29, 2016</time></li>
-                            <li><span class="meta">Design</span></li>
-                        </ul>
-                        <a href="#" class="read-more">Read More</a>
+            @*@foreach (var post in Model.TopPosts10)*@
+            @foreach (var post in Model.Post.OrderByDescending(x => x.Created_at).Take(4))
+
+            {
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-media">
+                            <figure>
+                                @if (post.image != null)
+                                {
+                                    <img src="~/Uploads/images/posts/@post.image" alt="@post.Title" class="full-width">
+                                }
+                                else
+                                {
+                                    <img src="~/Content/images/Nophoto.png" alt="image" class="full-width">
+                                }
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h5 class="title">@post.Title</h5>
+                            <p>@post.content</p>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="meta-list">
+                                <li><time class="meta" datetime="@post.Created_at">@String.Format("{0:MMM dd,yyyy }", post.Created_at)</time></li>
+                                <li><span class="meta">@post.categories.category_name</span></li>
+                            </ul>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-media">
-                        <figure>
-                            <img src="~/Content/images/dp1a.jpg" alt="image" class="full-width">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <h5 class="title">Arizona Sunset</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ex excepturi nam.</p>
-                    </div>
-                    <div class="card-footer">
-                        <ul class="meta-list">
-                            <li><time class="meta" datetime="2016-01-29 20:00">Jan 29, 2016</time></li>
-                            <li><span class="meta">Design</span></li>
-                        </ul>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
+            }
+
         </div>
-        <!--<div class="row">
+        <div class="row">
             <div class="col-md-12">
                 <footer class="section-footer text-center">
                     <h4 class="title">Read our stories</h4>
                     <a href="#" class="btn btn-primary" role="button">Visit Blog</a>
                 </footer>
             </div>
-        </div>-->
+        </div>
     </div>
 </section>
 
@@ -577,40 +468,31 @@
             <div class="col-md-10 col-md-offset-1">
                 <!-- if you use 4 cards - set this line at col-md-12 / or delete with previous row -->
                 <div class="row">
-                    <div class="col-sm-4">
-                        <ul class="pricing-table">
-                            <li class="title">Beginner</li>
-                            <li class="price">19.99<sup>$</sup></li>
-                            <li class="divider"></li>
-                            <li class="description">Free Consultation</li>
-                            <li class="description">1 Project Realisation</li>
-                            <li class="description">1 Year Support</li>
-                            <li class="cta-button"><a class="btn btn-primary" href="#">Buy Now</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-4">
-                        <ul class="pricing-table recommended">
-                            <li class="title">Standard</li>
-                            <li class="price">39.99<sup>$</sup></li>
-                            <li class="description">Free Consultation</li>
-                            <li class="description">1 Project Realisation</li>
-                            <li class="description">1 Year Support</li>
-                            <li class="cta-button"><a class="btn btn-primary" href="#">Buy Now</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-4">
-                        <ul class="pricing-table">
-                            <li class="title">Professional</li>
-                            <li class="price">69.99<sup>$</sup></li>
-                            <li class="description">Free Consultation</li>
-                            <li class="description">1 Project Realisation</li>
-                            <li class="description">Lifetime Support</li>
-                            <li class="cta-button"><a class="btn btn-primary" href="#">Buy Now</a></li>
-                        </ul>
-                    </div>
+                    @foreach (var book in Model.TopDownloaded10.Take(3))
+                    {
+                        <div class="col-sm-4">
+                            <ul class="pricing-table">
+                                <li class="title">@book.book_name</li>
+                                <li>
+                                    <div class="center-block">
+                                        <img class="img-circle text-center center-block" src="~/Uploads/images/Books/@book.image" width="80" alt="@book.image" />
+                                    </div>
+                                </li>
+                                <li class="price">19.99<sup>$</sup></li>
+                                <li class="divider"></li>
+                                <li class="description">@book.book_about</li>
+                                <li class="description text-primary" >
+                                    <i class="glyphicon glyphicon-eye-open "></i>:@book.Readed  &nbsp;
+                                    <i class="glyphicon glyphicon-download "></i>:@book.downloaded &nbsp;
+                                    <i class="glyphicon glyphicon-hand-up "></i>:@book.Liked
+                                </li>
+                                <li class="cta-button"><a class="btn btn-primary" href="#">Buy Now</a></li>
+                            </ul>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>
     </div>
 </section>
-

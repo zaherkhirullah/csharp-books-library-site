@@ -1646,6 +1646,7 @@ li > a:hover .label {
     font-size: 10px;
     float: right;
 }
+
     li > a:hover .label.label-danger {
         transition: all .3s;
         -webkit-transition: all .3s;
@@ -1677,7 +1678,8 @@ li > a:hover .label {
         color: #129;
         float: right;
     }
-    li > a:hover .label {
+
+li > a:hover .label {
     transition: all 1s;
     -webkit-transition: all 1s;
     background-color: #fff;
@@ -1693,13 +1695,15 @@ li > a:hover .label {
         color: red;
         float: right;
     }
-  li > a:hover .label.label-danger {
+
+    li > a:hover .label.label-danger {
         transition: all .3s;
         -webkit-transition: all .3s;
         background-color: #fff;
         color: red;
         float: right;
     }
+
     li > a:hover .label.label-success {
         transition: all .3s;
         -webkit-transition: all .3s;
@@ -1707,6 +1711,7 @@ li > a:hover .label {
         color: #1a5;
         float: right;
     }
+
     li > a:hover .label.label-warnning {
         transition: all .3s;
         -webkit-transition: all .3s;
@@ -1714,6 +1719,7 @@ li > a:hover .label {
         color: orange;
         float: right;
     }
+
     li > a:hover .label.label-primary {
         transition: all .3s;
         -webkit-transition: all .3s;
@@ -1721,4 +1727,109 @@ li > a:hover .label {
         color: #129;
         float: right;
     }
- 
+
+.writers li {
+    background-color: #fefefe;
+    width: 200px;
+    margin: 5px;
+    float: left;
+}
+
+.writer {
+    border: 1px solid #eee;
+}
+
+    .writer a > img {
+        border-radius: 50%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        width: 90%;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .category .card-footer, .writer .card-footer {
+        padding: 5px;
+        border: 1px solid #eee;
+    }
+
+    .writer .card-content {
+        padding-top: 20px;
+        text-align: center;
+    }
+
+        .writer .card-content .title a {
+            color: #159;
+            font-size: 20px;
+            font-family: serif;
+            font-weight: 500;
+        }
+
+.categories li {
+    background-color: #fefefe;
+    width: 250px;
+    margin: 5px;
+    float: left;
+}
+
+.category {
+    border: 1px solid #eee;
+}
+
+    .category a > img {
+        height: 200px;
+        width: 100%;
+        border: 1px solid #eee;
+    }
+
+    .category .card-content {
+        padding-top: 20px;
+        text-align: center;
+    }
+
+        .category .card-content .title a {
+            color: #159;
+            font-size: 20px;
+            font-family: serif;
+            font-weight: 500;
+        }
+
+.label {
+    font-size: 13px;
+    padding: 8px;
+}
+/* // Writer == cat1 
+    .cat1 li {
+    background-color: #fefefe;
+    width: 200px;
+    margin: 5px;
+    float: left;
+}
+
+.cat1 a > img {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.cat1 {
+    border: 1px solid #eee;
+}
+
+    .cat1 .card-footer {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #eee;
+        text-align: center;
+    }
+
+    .cat1 .card-content {
+        padding-top: 20px;
+        text-align: center;
+    }
+
+        .cat1 .card-content a {
+            color: #159;
+            font-size: 20px;
+            font-family: serif;
+            font-weight: 500;
+        }*/

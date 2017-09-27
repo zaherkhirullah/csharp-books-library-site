@@ -3,23 +3,41 @@
 @{
     ViewBag.Title = "categories";
 }
-<ul>
+<ul class="categories">
     @foreach (var category in Model)
-            {
-        <li class="card card-description" style="width:250px;margin:3px;height:300px;float:left">
+       {
+        <li class="card category" >
             @if (category.image == null)
             {
                 <a href="/Home/Category_Books/@category.id">
-                    <img style="width:250px;margin:3px;height:220px" src="~/Content/images/Nophoto.png" alt="@category.category_name" />
-                </a>   }
+                    <img  src="~/Content/images/Nophoto.png" alt="@category.category_name" />
+                </a>  
+           }
             else
             {
                 <a href="/Home/Category_Books/@category.id">
-                    <img style="width:250px;margin:3px;height:220px" src="~/Uploads/images/categories/@category.image" alt="no-image" />
-                </a>}
-            <div class="card card-content">
-                <a href="/Home/Category_Books/@category.id">@category.category_name</a>
+                    <img  src="~/Uploads/images/categories/@category.image" alt="@category.category_name" />
+                </a>
+            }
+            <div class="card-content">
+                <div class="title" >
+                    <a href="/Home/Category_Books/@category.id">@category.category_name</a>
+                </div> 
+                <p> @category.category_about</p>             
             </div>
+            <div class="card-footer">
+            <ul class="list-unstyled">
+          <li >
+            <p class="label label-primary" >
+                <i class="glyphicon glyphicon-book "></i>  @category.books.Count()
+            </p>   &nbsp;
+            <p class="label label-danger" >
+                <i class="glyphicon glyphicon-download "></i>
+            </p>  &nbsp;
+
+        </li>
+    </ul>
+</div>
         </li>
     }
 </ul>

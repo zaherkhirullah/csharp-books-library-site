@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZHYRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TopDownloaded10">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="book_name" />
+      <PropertyRef Name="Created_at" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="author_id" />
+      <PropertyRef Name="category_id" />
+      <PropertyRef Name="favorited" />
+      <PropertyRef Name="downloaded" />
+      <PropertyRef Name="Readed" />
+      <PropertyRef Name="disLike" />
+      <PropertyRef Name="Liked" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Updated_at" Type="DateTime" Precision="3" />
+    <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="author_id" Type="Int32" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="favorited" Type="Int32" Nullable="false" />
+    <Property Name="downloaded" Type="Int32" Nullable="false" />
+    <Property Name="Readed" Type="Int32" Nullable="false" />
+    <Property Name="disLike" Type="Int32" Nullable="false" />
+    <Property Name="Liked" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TopDownloaded100">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="book_name" />
+      <PropertyRef Name="Created_at" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="author_id" />
+      <PropertyRef Name="category_id" />
+      <PropertyRef Name="favorited" />
+      <PropertyRef Name="downloaded" />
+      <PropertyRef Name="Readed" />
+      <PropertyRef Name="disLike" />
+      <PropertyRef Name="Liked" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Updated_at" Type="DateTime" Precision="3" />
+    <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="author_id" Type="Int32" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="favorited" Type="Int32" Nullable="false" />
+    <Property Name="downloaded" Type="Int32" Nullable="false" />
+    <Property Name="Readed" Type="Int32" Nullable="false" />
+    <Property Name="disLike" Type="Int32" Nullable="false" />
+    <Property Name="Liked" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TopLiked10">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="book_name" />
+      <PropertyRef Name="Created_at" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="author_id" />
+      <PropertyRef Name="category_id" />
+      <PropertyRef Name="favorited" />
+      <PropertyRef Name="downloaded" />
+      <PropertyRef Name="Readed" />
+      <PropertyRef Name="disLike" />
+      <PropertyRef Name="Liked" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Updated_at" Type="DateTime" Precision="3" />
+    <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="author_id" Type="Int32" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="favorited" Type="Int32" Nullable="false" />
+    <Property Name="downloaded" Type="Int32" Nullable="false" />
+    <Property Name="Readed" Type="Int32" Nullable="false" />
+    <Property Name="disLike" Type="Int32" Nullable="false" />
+    <Property Name="Liked" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TopLiked100">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="book_name" />
+      <PropertyRef Name="Created_at" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="author_id" />
+      <PropertyRef Name="category_id" />
+      <PropertyRef Name="favorited" />
+      <PropertyRef Name="downloaded" />
+      <PropertyRef Name="Readed" />
+      <PropertyRef Name="disLike" />
+      <PropertyRef Name="Liked" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Updated_at" Type="DateTime" Precision="3" />
+    <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="author_id" Type="Int32" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="favorited" Type="Int32" Nullable="false" />
+    <Property Name="downloaded" Type="Int32" Nullable="false" />
+    <Property Name="Readed" Type="Int32" Nullable="false" />
+    <Property Name="disLike" Type="Int32" Nullable="false" />
+    <Property Name="Liked" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TopReaded10">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="book_name" />
+      <PropertyRef Name="Created_at" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="author_id" />
+      <PropertyRef Name="category_id" />
+      <PropertyRef Name="favorited" />
+      <PropertyRef Name="downloaded" />
+      <PropertyRef Name="Readed" />
+      <PropertyRef Name="disLike" />
+      <PropertyRef Name="Liked" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Updated_at" Type="DateTime" Precision="3" />
+    <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="author_id" Type="Int32" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="favorited" Type="Int32" Nullable="false" />
+    <Property Name="downloaded" Type="Int32" Nullable="false" />
+    <Property Name="Readed" Type="Int32" Nullable="false" />
+    <Property Name="disLike" Type="Int32" Nullable="false" />
+    <Property Name="Liked" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TopReaded100">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="book_name" />
+      <PropertyRef Name="Created_at" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="author_id" />
+      <PropertyRef Name="category_id" />
+      <PropertyRef Name="favorited" />
+      <PropertyRef Name="downloaded" />
+      <PropertyRef Name="Readed" />
+      <PropertyRef Name="disLike" />
+      <PropertyRef Name="Liked" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="book_about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="book_path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Updated_at" Type="DateTime" Precision="3" />
+    <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="author_id" Type="Int32" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="favorited" Type="Int32" Nullable="false" />
+    <Property Name="downloaded" Type="Int32" Nullable="false" />
+    <Property Name="Readed" Type="Int32" Nullable="false" />
+    <Property Name="disLike" Type="Int32" Nullable="false" />
+    <Property Name="Liked" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ZHYR_EF_DB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TopDownloaded10" EntityType="Self.TopDownloaded10" />
+    <EntitySet Name="TopDownloaded100" EntityType="Self.TopDownloaded100" />
+    <EntitySet Name="TopLiked10" EntityType="Self.TopLiked10" />
+    <EntitySet Name="TopLiked100" EntityType="Self.TopLiked100" />
+    <EntitySet Name="TopReaded10" EntityType="Self.TopReaded10" />
+    <EntitySet Name="TopReaded100" EntityType="Self.TopReaded100" />
+    <EntitySet Name="TopPosts10" EntityType="ZHYRModel.TopPosts10" />
+    <EntitySet Name="TopPosts100" EntityType="ZHYRModel.TopPosts100" />
+  </EntityContainer>
+  <EntityType Name="TopPosts10">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="content" />
+      <PropertyRef Name="Created_at" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Updated_at" Type="DateTime" Precision="3" />
+    <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TopPosts100">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="content" />
+      <PropertyRef Name="Created_at" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Updated_at" Type="DateTime" Precision="3" />
+    <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

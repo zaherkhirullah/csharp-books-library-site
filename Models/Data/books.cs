@@ -34,7 +34,7 @@ namespace ZHYR_Library.Models.Data
         public DateTime? Updated_at { get; set; }
         [Display(Name = "Deleted date")]
         public DateTime? Deleted_at { get; set; }
-        public int Like { get; set; }
+        public int Liked { get; set; }
         public int disLike { get; set; }
         public int favorited { get; set; }
         public int downloaded { get; set; }

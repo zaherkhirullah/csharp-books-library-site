@@ -8,24 +8,35 @@ using ZHYR_Library.Models.Data;
 using ZHYR_Library.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
+using ZHYR_Library.Models;
+using ZHYR_Library.Models.EFData;
 
 namespace ZHYR_Library.Controllers
 {
     public class HomeController : Controller
     {
         private ZHYRBooks db = new ZHYRBooks();
+        private ZHYR_EF_DB E_db = new ZHYR_EF_DB();
         private Homepage homePage = new Homepage();
         private List<books> books;
         public ActionResult Index()
         {
-            homePage.Books = db.books.OrderByDescending(x =>x.Created_at).ToList();
+            homePage.Books = db.books.OrderByDescending(x => x.Created_at).ToList();
+            homePage.TopDownloaded10 = E_db.TopDownloaded10.ToList();
+            homePage.TopDownloaded100 = E_db.TopDownloaded100.ToList();
+            homePage.TopReaded10 = E_db.TopReaded10.ToList();
+            homePage.TopReaded100 = E_db.TopReaded100.ToList();
+            homePage.TopLiked10 = E_db.TopLiked10.ToList();
+            homePage.TopLiked100 = E_db.TopLiked100.ToList();
+            homePage.TopPosts10 = E_db.TopPosts10.ToList();
+            homePage.TopPosts100 = E_db.TopPosts100.ToList();
             homePage.Categories = db.categories.OrderByDescending(x => x.Created_at).ToList();
             homePage.Writers = db.writers.OrderByDescending(x => x.Created_at).ToList();
             homePage.images = db.images.OrderByDescending(x => x.Created_at).ToList();
             homePage.Slider = db.Slider.Where(x => (x.f_date <= DateTime.Now && x.l_date > DateTime.Now)).ToList();
             homePage.Duyuru = db.Duyuru.OrderByDescending(x => x.date).Take(3).ToList();
             homePage.Referans = db.Referans.OrderByDescending(x => x.date).Take(3).ToList();
-            homePage.Post = db.Post.OrderByDescending(x => x.date).Take(3).ToList();
+            homePage.Post = db.Post.OrderByDescending(x => x.date).Take(4).ToList();
             return View(homePage);
         }
 
@@ -60,7 +71,8 @@ namespace ZHYR_Library.Controllers
 
         public ActionResult Books()
         {
-            return View();
+            books = db.books.ToList();
+            return View(books);
         }
         public PartialViewResult All()
         {
@@ -69,23 +81,25 @@ namespace ZHYR_Library.Controllers
         }
         public PartialViewResult Top3()
         {
-           books = db.books.OrderByDescending(x => x.Like).Take(3).ToList();
+           books = db.books.OrderByDescending(x => x.Liked).Take(3).ToList();
             return PartialView("_Books", books);
         }
         public PartialViewResult Top10()
         {
-           books = db.books.OrderByDescending(x => x.Like).Take(10).ToList();
-            return PartialView("_Books", books);
+          var topLiked = E_db.TopLiked10.ToList();
+            return PartialView("_Books", topLiked);
         }
         public PartialViewResult TopDownloaded()
         {
-           books = db.books.OrderByDescending(x => x.downloaded).Take(10).ToList();
-            return PartialView("_Books", books);
+            var topDownloaded = E_db.TopDownloaded10.ToList();
+         //  books = db.books.OrderByDescending(x => x.downloaded).Take(10).ToList();
+            return PartialView("_Books", topDownloaded);
         }
         public PartialViewResult TopReaded()
         {
-            books = db.books.OrderByDescending(x => x.Readed).Take(10).ToList();
-            return PartialView("_Books", books);
+            var topReaded = E_db.TopReaded10.ToList();
+            //books = db.books.OrderByDescending(x => x.Readed).Take(10).ToList();
+            return PartialView("_Books", topReaded);
         }
         public PartialViewResult TopFavorited()
         {
@@ -166,30 +180,30 @@ namespace ZHYR_Library.Controllers
             return View(writer);
         }
 
-        public string LikeBook(int id)
+        public string LikedBook(int id)
         {
             books book = db.books.FirstOrDefault(x => x.id == id);
             if (ModelState.IsValid)
             {
-                book.Like++;
-                Likes like = new Likes();
-                like.UserId = User.Identity.GetUserId<int>();
-                like.Book_id = id;
-                like.Created_at = DateTime.Now;
-                like.Liked = true;
-                db.Likes.Add(like);
+                book.Liked++;
+                Likes Like = new Likes();
+                Like.UserId = User.Identity.GetUserId<int>();
+                Like.Book_id = id;
+                Like.Created_at = DateTime.Now;
+                Like.Liked = true;
+                db.Likes.Add(Like);
                 db.SaveChanges();
             }
             return book.Likes.ToString();
         }
-        public string UnLikeBook(int id)
+        public string UnLikedBook(int id)
         {
             books book = db.books.FirstOrDefault(x => x.id == id);
             if (ModelState.IsValid)
             {
-                Likes like = db.Likes.FirstOrDefault(x => x.Book_id == id && x.UserId == User.Identity.GetUserId<int>());
-                book.Like--;
-                db.Likes.Remove(like);
+                Likes Liked = db.Likes.FirstOrDefault(x => x.Book_id == id && x.UserId == User.Identity.GetUserId<int>());
+                book.Liked--;
+                db.Likes.Remove(Liked);
                 db.SaveChanges();
             }
             return book.Likes.ToString();
@@ -223,28 +237,29 @@ namespace ZHYR_Library.Controllers
         //    return book.Likes.ToString();
         //}
         [HttpPost, ActionName("Book_details")]
-        public ActionResult Like(Likes likes, int id)
+        [ValidateAntiForgeryToken]
+        public ActionResult Liked(Likes Likes, int id)
         {
             if (ModelState.IsValid)
             {   books books = db.books.Find(id);
-                if (likes.Book_id==books.id && likes.UserId == User.Identity.GetUserId<int>())
+                if (Likes.Book_id==books.id && Likes.UserId == User.Identity.GetUserId<int>())
                 {
-                    books.Like--;
-                    db.Likes.Remove(likes);
+                    books.Liked--;
+                    db.Likes.Remove(Likes);
                     db.SaveChanges();
                     return RedirectToAction("Book_details");
                 }
                 else
                 {
-                likes.UserId = User.Identity.GetUserId<int>();
-                likes.Book_id = books.id;
-                likes.Created_at = DateTime.Now;
-                books.Like++;
-                db.Likes.Add(likes);
+                Likes.UserId = User.Identity.GetUserId<int>();
+                Likes.Book_id = books.id;
+                Likes.Created_at = DateTime.Now;
+                books.Liked++;
+                db.Likes.Add(Likes);
                 db.SaveChanges();
                 }
             }
-            return View("book_details");
+            return View("Book_details", "Home",new { id = id });
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -260,22 +275,37 @@ namespace ZHYR_Library.Controllers
                 db.comments.Add(comment);
                 db.SaveChanges();
             }
-            return PartialView("book_details", comment);
+            return PartialView("Book_details", comment);
         }
+
         //[HttpPost, ActionName("Book_details")]
         //[ValidateAntiForgeryToken]
-        //public ActionResult UnLikeBook1( int id)
+        //public ActionResult UnLikedBook1( int id)
         //{
         //    if (ModelState.IsValid)
         //    {
         //        books books = db.books.Find(id);
-        //        Likes likes = db.Likes.FirstOrDefault(s => s.Book_id == books.id || s.UserId == User.Identity.GetUserId<int>());               
-        //        books.Like--;
-        //        db.Likes.Remove(likes);
+        //        Likes Likes = db.Likes.FirstOrDefault(s => s.Book_id == books.id || s.UserId == User.Identity.GetUserId<int>());               
+        //        books.Liked--;
+        //        db.Likes.Remove(Likes);
         //        db.SaveChanges();
         //    }
         //    return RedirectToAction("Book_details", "Home", new { id = id });
         //}
 
+        public ActionResult AddUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult AddUser(string UserName , string Email ,string Password,string ConfirmPassword)
+        {
+            var user = new RegisterViewModel();
+            user.UserName = UserName;
+            user.Email = Email;
+            user.Password = Password;
+            user.ConfirmPassword = ConfirmPassword;
+            return Json(user, JsonRequestBehavior.AllowGet);
+        }
     }
 }

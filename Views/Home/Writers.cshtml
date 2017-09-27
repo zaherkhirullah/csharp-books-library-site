@@ -5,22 +5,41 @@
 }
 
 <h2>Writers</h2>
-<ul>
+<ul class="writers">
     @foreach (var Writer in Model)
             {
-        <li class="card card-description" style="width:250px;margin:3px;height:300px;float:left">
+        <li class="card writer" >
             @if (Writer.image == null)
             {
-                <a href="/Home/Writer_Books/@Writer.id">
-                    <img style="width:250px;margin:3px;height:220px" src="~/Content/images/Nophoto.png" alt="@Writer.author_name" />
-                </a>   }
+                <a href="/Home/Writer_Books/@Writer.id" >
+                    <img  class="img-circle"  src="~/Content/images/Nophoto.png" alt="@Writer.author_name" />
+                </a>  
+            }
             else
             {
                 <a href="/Home/Writer_Books/@Writer.id">
-                    <img style="width:250px;margin:3px;height:220px" src="~/Uploads/images/writers/@Writer.image" alt="no-image" />
-                </a>}
-            <div class="card card-content">
-                <a href="/Home/Writer_Books/@Writer.id">@Writer.author_name</a>
+                    <img  src="~/Uploads/images/writers/@Writer.image" alt="@Writer.author_name" />
+                </a>
+            }
+
+            <div class="card-content">
+                <div class="title">
+                    <a href="/Home/Writer_Books/@Writer.id">@Writer.author_name</a>
+                    <p> @Writer.author_about</p>
+                </div>  
+            </div>
+            <div class="card-footer">
+                <ul class="list-unstyled">
+                    <li >
+                        <p class="label label-success">
+                            <i class="glyphicon glyphicon-book "></i>  @Writer.books.Count()
+                        </p>   &nbsp;
+                        <p class="label label-danger" style="font-size:13px;">
+                            <i class="glyphicon glyphicon-download "></i>
+                        </p>  &nbsp;
+
+                    </li>
+                </ul>
             </div>
         </li>
     }

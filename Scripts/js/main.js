@@ -123,6 +123,16 @@ $(document).ready(function () {
             $(this).addClass('is-active').removeClass('btn-simple');
         });
     });
+    // filter1 buttons
+    var buttonGroup = [];
+    // change is-checked class on buttons
+    $('.filter1').each(function (i, buttonGroup) {
+        var $buttonGroup = $(buttonGroup);
+        $buttonGroup.on('click', 'a', function () {
+            $buttonGroup.find('.is-active').removeClass('is-active').addClass('btn-simple');
+            $(this).addClass('is-active').removeClass('btn-simple');
+        });
+    });
 
     // -----------------------------
     // Slick

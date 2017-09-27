@@ -28,13 +28,14 @@ namespace ZHYR_Library.Models.Data
         [Display(Name = "Deleted date")]
         public DateTime? Deleted_at { get; set; }
 
-        public Nullable<int> category_id { get; set; }
+        [ForeignKey("categories")]
+        public int category_id { get; set; }
         public virtual categories categories { get; set; }
-
-    
         [Required]
+         [ForeignKey("AspNetUsers")]
         public int UserId { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<comments> comments { get; set; }
 

@@ -130,6 +130,7 @@
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -283,6 +284,14 @@
     <Compile Include="Migrations\201709251532016_edit_int_downloaded.Designer.cs">
       <DependentUpon>201709251532016_edit_int_downloaded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709261618540_Edit_like_ To liked in books.cs" />
+    <Compile Include="Migrations\201709261618540_Edit_like_ To liked in books.Designer.cs">
+      <DependentUpon>201709261618540_Edit_like_ To liked in books.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709261849439_Edit_categories in post.cs" />
+    <Compile Include="Migrations\201709261849439_Edit_categories in post.Designer.cs">
+      <DependentUpon>201709261849439_Edit_categories in post.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Data\AspNetRoles.cs" />
@@ -307,6 +316,45 @@
     <Compile Include="Models\Data\Team.cs" />
     <Compile Include="Models\Data\writers.cs" />
     <Compile Include="Models\Data\ZHYRBooks.cs" />
+    <Compile Include="Models\EFData\Db_ZHYR_B.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db_ZHYR_B.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\Db_ZHYR_B.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db_ZHYR_B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\Db_ZHYR_B.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db_ZHYR_B.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\TopDownloaded10.cs">
+      <DependentUpon>Db_ZHYR_B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\TopDownloaded100.cs">
+      <DependentUpon>Db_ZHYR_B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\TopLiked10.cs">
+      <DependentUpon>Db_ZHYR_B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\TopLiked100.cs">
+      <DependentUpon>Db_ZHYR_B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\TopPosts10.cs">
+      <DependentUpon>Db_ZHYR_B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\TopPosts100.cs">
+      <DependentUpon>Db_ZHYR_B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\TopReaded10.cs">
+      <DependentUpon>Db_ZHYR_B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFData\TopReaded100.cs">
+      <DependentUpon>Db_ZHYR_B.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -429,7 +477,24 @@
     <Content Include="Connected Services\ASPSMSX2\ZHYR_Library.ASPSMSX2.vouchers.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\EFData\Db_ZHYR_B.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Db_ZHYR_B.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EFData\Db_ZHYR_B.edmx.diagram">
+      <DependentUpon>Db_ZHYR_B.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Models\EFData\Db_ZHYR_B.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Db_ZHYR_B.edmx</DependentUpon>
+      <LastGenOutput>Db_ZHYR_B.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EFData\Db_ZHYR_B.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Db_ZHYR_B.edmx</DependentUpon>
+      <LastGenOutput>Db_ZHYR_B.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\admin\bootstrap-notify.js" />
     <Content Include="Scripts\admin\chartist.min.js" />
     <Content Include="Scripts\admin\demo.js" />
@@ -505,6 +570,10 @@
     <Content Include="Views\Home\Category_Books.cshtml" />
     <Content Include="Views\Home\Writer_Books.cshtml" />
     <Content Include="Views\Shared\_Books.cshtml" />
+    <Content Include="Views\Home\AddUser.cshtml" />
+    <Content Include="Views\Home\Lazim\Index - Copy.cshtml" />
+    <Content Include="Views\Home\Lazim\Book_details - Copy.cshtml" />
+    <Content Include="Views\Home\Lazim\Books - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -554,6 +623,12 @@
     <EmbeddedResource Include="Migrations\201709251532016_edit_int_downloaded.resx">
       <DependentUpon>201709251532016_edit_int_downloaded.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709261618540_Edit_like_ To liked in books.resx">
+      <DependentUpon>201709261618540_Edit_like_ To liked in books.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709261849439_Edit_categories in post.resx">
+      <DependentUpon>201709261849439_Edit_categories in post.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\lang.ar.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>lang.ar.Designer.cs</LastGenOutput>
@@ -572,6 +647,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ASPSMSX2\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -574,6 +574,7 @@
     <Content Include="Views\Home\Lazim\Index - Copy.cshtml" />
     <Content Include="Views\Home\Lazim\Book_details - Copy.cshtml" />
     <Content Include="Views\Home\Lazim\Books - Copy.cshtml" />
+    <Content Include="Views\Shared\_Book_Comments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,7 +20,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    /*max-width: 280px;*/
 }
 .navbar {
     box-shadow:1px 6px 23px -5px rgba(200, 200, 200, 1);
@@ -89,7 +89,7 @@ li:hover span label-danger{
         box-shadow: 1px 20px 20px -15px rgba(150,150,250,0.5);
     }
 
-    .pdf .card-content div > p {
+    .pdf .pdf-detail p {
         padding-top: 20px;
         padding-bottom: 20px;
         background-color: #efefff;
@@ -97,7 +97,7 @@ li:hover span label-danger{
         border: 1px solid #cecece;
     }
 
-        .pdf .card-content div > p > * {
+        .pdf .pdf-detail p > * {
             padding: 10px 7px;
             border-radius: 25px;
             border: 1px solid #cecece;
@@ -105,17 +105,17 @@ li:hover span label-danger{
             box-shadow: 0px 15px 18px -16px rgba(100,100,100,0.5);
         }
 
-        .pdf .card-content div > p > b, .pdf .card-content div > p > abbr > b {
+        .pdf .pdf-detail p > b, .pdf .pdf-detail p > abbr > b {
             color: #e11;
         }
 
-        .pdf .card-content div > p > i, .pdf .card-content abbr > i {
-            padding: 4px;
-            color: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 3px 5px -4px #111;
-            background-color: #e11;
-        }
+    .pdf .pdf-detail div > p > i, .pdf .pdf-detail abbr > i {
+        padding: 4px;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 3px 5px -4px #111;
+        background-color: #e11;
+    }
 
 ::-webkit-scrollbar {
     width: 12px;
@@ -142,6 +142,38 @@ li:hover span label-danger{
     comments 
     ================
 */
+.add-comment {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+    .add-comment .input-comment input {
+        width: 100%;
+        padding: 9px;
+    }
+
+    .add-comment .input-comment button,
+    .input-comment input[type="button"],
+    .input-comment input[type="submit"] {
+        width: 100%;
+        margin: 0;
+    }
+
+.input-comment input[type="button"],
+.input-comment input[type="submit"] {
+    margin-top: -6px;
+    padding-top: 12px;
+    padding-bottom: 13px;
+}
+
+    .add-comment .input-comment:hover, .add-comment .input-comment:focus {
+        box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.5);
+    }
+
+    .add-comment .input-comment span {
+        padding-left: 0px;
+    }
 
 .comments:hover {
     box-shadow: none;
@@ -153,22 +185,19 @@ li:hover span label-danger{
     border-radius: 5px;
     box-shadow: 0px 5px 20px -10px rgba(100,100,100,.8);
 }
-
     .comment .comment-user-img {
         width: 100px;
         padding: 5px;
         border: 1px solid #efefef;
         float: left;
     }
-
-        .comment .comment-user-img img {
+    .comment .comment-user-img img {
             width: 100%;
             padding: 2px;
             margin: 5px auto;
             border-radius: 50%;
             border: 1px solid #cecece;
         }
-
     .comment .comment-content {
         width: 88%;
         background-color: #fefefe;

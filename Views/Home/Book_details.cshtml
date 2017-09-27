@@ -3,6 +3,42 @@
 @{
     ViewBag.Title = Model.book_name + " details ";
 }
+@section scripts{
+    <script type="text/javascript">
+        function Addcomment() {
+            var comment = $("#Addcomment").val();
+            var book_Id = @Model.id;
+            $.ajax({
+                type: "Post",
+                url: "/Home/Addcomments",
+                data: JSON.stringify({ Comment : comment, id: book_Id }) ,
+                contentType: "application/json",
+                success: function (result) {
+                alert("successfuly added " + result);
+                    $("#Addcomment").val("");
+                }, error: function () {
+                    alert("Error");
+                }
+            })
+        }
+        function Deletecomment() {
+            var comment = $("#Deletecomment").val();
+            var comment_id = this.id;
+            $.ajax({
+                type: "Post",
+                url: "/Home/Deletecomments",
+                data: JSON.stringify({ id: comment_id }) ,
+                contentType: "application/json",
+                success: function () {
+                alert("successfuly Deleted " );
+                    $("#Addcomment").val("");
+                }, error: function () {
+                    alert("Error");
+                }
+            })
+        }
+    </script>
+}
 <div class="card pdf">
     <div class="card-header">
         <div class="header-content">
@@ -14,29 +50,30 @@
     </div>
     <div class="card-content table-responsive">
         <div>
-            <p>
-                <abbr>
-                    <i class="glyphicon glyphicon-time"></i> <b>@String.Format("{0:ddd, dd-MMM-yyyy}", Model.Created_at)</b> tarihinde yayınlandı. &nbsp;
-
-                </abbr>
-                @if (Model.Updated_at != null)
-                {
-                <abbr>
-                    <i class="glyphicon glyphicon-time"></i> <b>Son Güncelleme</b>:
-                    @String.Format("{0:dd-MMM-yyyy}", Model.Updated_at)
-                </abbr>
-                }
-                &nbsp;
-                <abbr>
-                    <i class="glyphicon glyphicon-eye-open"></i> <b> Gösterim</b> : @Html.DisplayFor(model => model.Readed)
-                </abbr>
-                <abbr>
-                    <i class="glyphicon glyphicon-user"></i> <b>@Html.DisplayNameFor(model => model.UserId)</b>:  @Html.DisplayFor(model => model.AspNetUsers.UserName)
-                </abbr>
-                <abbr>
-                    <i class="glyphicon glyphicon-download-alt"></i> <b>@Html.DisplayNameFor(model => model.downloaded)</b>:  @Html.DisplayFor(model => model.downloaded)
-                </abbr>
-            </p>
+            <div class="pdf-detail">
+                <p>
+                    <abbr>
+                        <i class="glyphicon glyphicon-time"></i> <b>@String.Format("{0:ddd, dd-MMM-yyyy}", Model.Created_at)</b> tarihinde yayınlandı. &nbsp;
+                    </abbr>
+                    @if (Model.Updated_at != null)
+                    {
+                    <abbr>
+                        <i class="glyphicon glyphicon-time"></i> <b>Son Güncelleme</b>:
+                        @String.Format("{0:dd-MMM-yyyy}", Model.Updated_at)
+                    </abbr>
+                    }
+                    &nbsp;
+                    <abbr>
+                        <i class="glyphicon glyphicon-eye-open"></i> <b> Gösterim</b> : @Html.DisplayFor(model => model.Readed)
+                    </abbr>
+                    <abbr>
+                        <i class="glyphicon glyphicon-user"></i> <b>@Html.DisplayNameFor(model => model.UserId)</b>:  @Html.DisplayFor(model => model.AspNetUsers.UserName)
+                    </abbr>
+                    <abbr>
+                        <i class="glyphicon glyphicon-download-alt"></i> <b>@Html.DisplayNameFor(model => model.downloaded)</b>:  @Html.DisplayFor(model => model.downloaded)
+                    </abbr>
+                </p>
+            </div>
             <iframe src="~/Uploads/Books/@Model.book_path"></iframe>
         </div>
         <div class="panel panel-success">
@@ -73,79 +110,145 @@
                 </a>
 
                 <div class="pull-right">
-                    @{
-                        if (!User.Identity.IsAuthenticated)
-                        {
-                    <p class="label label-primary" style="font-size:16px;">
-                        <i class="glyphicon glyphicon-hand-up"></i> Like : @Model.Liked
-                    </p>
-                    <p class="label label-danger" style="font-size:16px;"><i class="glyphicon glyphicon-hand-down"></i> disLike : @Model.disLike</p>
-                    <p class="label label-warning" style="font-size:16px;"><i class="glyphicon glyphicon-star-empty"></i> Favorited : @Model.favorited</p>
+                    <div class="footer-label">
+                        @{
+                            if (!User.Identity.IsAuthenticated)
+                            {
+                        <p class="label label-primary" style="font-size:16px;">
+                            <i class="glyphicon glyphicon-hand-up"></i> Like : @Model.Liked
+                        </p>
+                        <p class="label label-danger" style="font-size:16px;"><i class="glyphicon glyphicon-hand-down"></i> disLike : @Model.disLike</p>
+                        <p class="label label-warning" style="font-size:16px;"><i class="glyphicon glyphicon-star-empty"></i> Favorited : @Model.favorited</p>
+                            }
+                            else if (Model.Likes.Any(x => x.UserId == User.Identity.GetUserId<int>() && x.Book_id == Model.id) || Ajax.ViewBag.Liked == true)
+                            {<form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input type="submit" value="Like  @Model.Liked" class="btn btn-primary " />
+                        </form>
+                        <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input type="submit" value="dislike @Model.disLike" class="btn btn-default" />
+                        </form>
+                            }
+                            else
+                            {
+                        <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input type="submit" value="Like  @Model.Likes.Count()" class="btn btn-default " />
+                        </form>
+                        <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input type="submit" value="disLike  @Model.Likes.Count()" class="btn btn-default " />
+                        </form>
+                            }
                         }
-                        else if (Model.Likes.Any(x => x.UserId == User.Identity.GetUserId<int>() && x.Book_id == Model.id) || Ajax.ViewBag.Liked == true)
-                        {<form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <input type="submit" value="Like  @Model.Liked" class="btn btn-primary " />
-                    </form>
-                    <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <input type="submit" value="dislike @Model.disLike" class="btn btn-default" />
-                    </form>
-                        }
-                        else
-                        {
-                    <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <input type="submit" value="Like  @Model.Likes.Count()" class="btn btn-default " />
-                    </form>
-                    <form action="@Url.Action("Book_details","Home",new { id = Model.id })" method="post" class="pull-left">
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <input type="submit" value="disLike  @Model.Likes.Count()" class="btn btn-default " />
-                    </form>
-                        }
-                    }
-
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
+
 <div class="card comments">
     <div>
         <h3>Comments</h3>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="add-comment">
+                <div class="input-comment input-group">
+                    <input type="text" id="Addcomment" name="comment" placeholder="Comment here..." required>
+                    <span class="input-group-btn">
+                        <button type="submit" onclick="Addcomment()" class="btn btn-success ">
+                            <span> <i class="glyphicon glyphicon-send "></i></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+        }
         @if (Model.comments.Count() > 0)
         {
-            foreach (var comment in Model.comments)
-            {
-                <div class="comment">
-                    <div class="comment-user-img">
-                        <img class="img-circle" src="~/Uploads/images/users/images/@comment.AspNetUsers.avatar" alt="@comment.AspNetUsers.UserName" />
-                        @String.Format("{0:dd-MMM yyyy }", comment.Created_at)
-                    </div>
-                    <div class="comment-content">
-                        <abbr class="pull-right"><i class="label label-default">53 m</i></abbr>
-                        <h5>@comment.AspNetUsers.UserName </h5>
-                        <p>@comment.comment</p>
-                    </div>
-                    <div class="comment-footer">
-                        <p class="label label-primary">
-                            <i class="glyphicon glyphicon-hand-up "></i>:@comment.Likes.Count()
-                        </p>&nbsp;
-                        <p class="label label-danger">
-                            <i class="glyphicon glyphicon-hand-down "></i>:<!--Dislike-->
-                        </p>  &nbsp;
-                        <p class="label label-success">
-                            <i class="glyphicon glyphicon-repeat "></i>:<!--Replay-->
-                        </p>   
+            <div class="" id="Comments">
+                @foreach (var comment in Model.comments)
+                {
+                    <div class="comment">
+                        <div class="comment-user-img">
+                            @if (comment.AspNetUsers.avatar != null)
+                    {
+                                <img class="img-circle" src="~/Uploads/images/users/images/@comment.AspNetUsers.avatar" alt="@comment.AspNetUsers.UserName" />
+                            }
+                            else
+                            {
+                                <img class="img-circle" src="~/Content/images/Nophoto.png" alt="@comment.AspNetUsers.UserName" />
+                            }
+                            @String.Format("{0:dd-MMM yyyy }", comment.Created_at)
+                        </div>
+                        <div class="comment-content">
+                            <abbr class="pull-right">
+                                <a class="btn btn-xs btn-default ">
+                                    <i class="glyphicon glyphicon-time"> </i> 53 m
+                                </a>
+                            </abbr>
 
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (comment.UserId == User.Identity.GetUserId<int>())
+                                {
+                                    <abbr class="pull-right">
+                                        <a onclick="Deletecomment()" id="@comment.id" class="btn btn-xs btn-danger ">
+                                            <i class="glyphicon glyphicon-trash "></i>
+                                        </a>
+                                        <a onclick="Editcomment()" id="@comment.id" class="btn btn-xs btn-primary ">
+                                            <i class="glyphicon glyphicon-edit "></i>
+                                        </a>
+                                    </abbr>
+                                }
+
+                            }
+                            <h5>@comment.AspNetUsers.UserName </h5>
+                            <p>@comment.comment</p>
+                        </div>
+                        @if (comment.UserId != User.Identity.GetUserId<int>())
+                        {
+                            <div class="comment-footer">
+
+                                <abbr class="label label-primary">
+                                    <i class="glyphicon glyphicon-hand-up "></i> : @comment.Likes.Count()
+                                </abbr>&nbsp;
+                                <abbr class="label label-danger">
+                                    <i class="glyphicon glyphicon-hand-down "></i> : <!--Dislike-->
+                                </abbr>  &nbsp;
+                                <abbr class="label label-success">
+                                    <i class="glyphicon glyphicon-repeat "></i> : <!--Replay-->
+                                </abbr>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="comment-footer">
+
+                                <abbr class=" ">
+                                    <i class="glyphicon glyphicon-hand-up "></i> : @comment.Likes.Count()
+                                </abbr>&nbsp;
+                                <abbr class="">
+                                    <i class="glyphicon glyphicon-hand-down "></i> : 12 <!--Dislike-->
+                                </abbr>  &nbsp;
+                                <abbr class=" ">
+                                    <i class="glyphicon glyphicon-repeat "></i> : 50<!--Replay-->
+                                </abbr>
+
+                            </div>
+                        }
                     </div>
-                </div>
-            }
+                }
+            </div>
         }
         else
         {
@@ -153,3 +256,25 @@
         }
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function()
+    {
+        $('#btnsend').click(function() {
+            var comment = $("#Addcomment").val();
+            $.ajax({
+                type: "Post",
+                url: "/Home/Addcomments",
+                data: "{Comment:" + JSON.stringify({ Comment: comment }) + "}",
+                contentType: "application/json",
+                success: function (result) {
+                    alert("comment" + result);
+
+                    $("#Addcomment").val("");
+                }, error: function () {
+                    alert("Error" );
+                }
+            })
+        })
+    })
+</script>

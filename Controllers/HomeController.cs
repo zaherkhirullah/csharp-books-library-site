@@ -69,6 +69,23 @@ namespace ZHYR_Library.Controllers
             return View(contacts);
         }
 
+
+        [HttpPost ,ActionName("AddComment")]
+        [ValidateAntiForgeryToken]
+       public PartialViewResult AddComment(int id)
+        {
+            books book = db.books.FirstOrDefault(x => x.id == id);
+                if (ModelState.IsValid)
+                {
+                comments comment = new comments();
+                comment.UserId = User.Identity.GetUserId<int>();
+                comment.BookId = id;
+                comment.Created_at = DateTime.Now;
+                db.comments.Add(comment);
+                db.SaveChanges();
+                }
+                return PartialView("_Book_Comments", books);
+        }
         public ActionResult Books()
         {
             books = db.books.ToList();
@@ -298,7 +315,7 @@ namespace ZHYR_Library.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult AddUser(string UserName , string Email ,string Password,string ConfirmPassword)
+        public JsonResult AddUser(string UserName, string Email, string Password, string ConfirmPassword)
         {
             var user = new RegisterViewModel();
             user.UserName = UserName;
@@ -307,5 +324,39 @@ namespace ZHYR_Library.Controllers
             user.ConfirmPassword = ConfirmPassword;
             return Json(user, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Addcomments(string Comment, int id)
+        {
+            var comment = new comments();
+            if (ModelState.IsValid)
+            {
+                comment.comment = Comment;
+                comment.Created_at = DateTime.Now;
+                comment.BookId = id;
+                comment.UserId = User.Identity.GetUserId<int>();
+                db.comments.Add(comment);
+                db.SaveChanges();
+            }
+            else
+            {
+                return Json(comment.id, JsonRequestBehavior.AllowGet);
+            }
+            return Json(comment.comment, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Deletecomments(int id)
+        {
+            var coments = db.comments.ToList();
+             var comment = db.comments.Find(id);
+            if (ModelState.IsValid)
+            {
+                db.comments.Remove(comment);
+                db.SaveChanges();
+            }
+
+            return Json(coments, JsonRequestBehavior.AllowGet);
+        }
+
+        
+
+
     }
 }

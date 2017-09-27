@@ -24,10 +24,6 @@ $(window).load(function () {
         $('.ilan').fadeIn(3000);
     }, 1200);
 });
-
-
-
-
 $(document).ready(function () {
     "use strict";
     // Init Material scripts for buttons ripples, inputs animations etc, more info on the next link https://github.com/FezVrasta/bootstrap-material-design#materialjs
@@ -140,11 +136,11 @@ $(document).ready(function () {
     // Clients Logos
     $('.slick-slider.logos').slick({
         slide: 'ul>li',
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 3000,
         slidesToShow: 6,
         slidesToScroll: 3,
-        arrows: false,
+        arrows: true,
         responsive: [
             {
                 breakpoint: 640,

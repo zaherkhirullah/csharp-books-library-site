@@ -4,8 +4,6 @@
  * www.filipgreksa.com
  * 2016/06/23
  */
-
-
 /*global $, jQuery*/
 
 $(window).load(function () {
@@ -65,7 +63,7 @@ $(document).ready(function () {
         var Scrolltop = $('.scroll-top');
         if (Scrolltop.style.display="none") {
             $(window).scroll(function () {
-                if (Scrolltop.offset().top > 150) {
+                if (window.offset().top > 150) {
                     Scrolltop.style.display = "block";
                 } else {
                     Scrolltop.style.display = "none";
@@ -137,7 +135,6 @@ $(document).ready(function () {
         });
     });
 
-
     // -----------------------------
     // Slick
     // -----------------------------
@@ -148,13 +145,12 @@ $(document).ready(function () {
         autoplaySpeed: 3000,
         slidesToShow: 6,
         slidesToScroll: 3,
-        arrows: true ,
+        arrows: false,
         responsive: [
             {
                 breakpoint: 640,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
+                    slidesToShow: 3, slidesToScroll: 1
                 }
             },
             {

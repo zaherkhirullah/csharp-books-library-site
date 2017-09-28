@@ -58,6 +58,23 @@ $(document).ready(function () {
             return;
         }
     });
+      // ----------------------------
+    // scroll top
+    // ----------------------------
+    $(function () {
+        var Scrolltop = $('.scroll-top');
+        if (Scrolltop.style.display="none") {
+            $(window).scroll(function () {
+                if (Scrolltop.offset().top > 150) {
+                    Scrolltop.style.display = "block";
+                } else {
+                    Scrolltop.style.display = "none";
+                }
+            });
+        } else {
+            return;
+        }
+    });
 
 
     // ----------------------------
@@ -119,16 +136,7 @@ $(document).ready(function () {
             $(this).addClass('is-active').removeClass('btn-simple');
         });
     });
-    // filter1 buttons
-    var buttonGroup = [];
-    // change is-checked class on buttons
-    $('.filter1').each(function (i, buttonGroup) {
-        var $buttonGroup = $(buttonGroup);
-        $buttonGroup.on('click', 'a', function () {
-            $buttonGroup.find('.is-active').removeClass('is-active').addClass('btn-simple');
-            $(this).addClass('is-active').removeClass('btn-simple');
-        });
-    });
+
 
     // -----------------------------
     // Slick
@@ -140,12 +148,13 @@ $(document).ready(function () {
         autoplaySpeed: 3000,
         slidesToShow: 6,
         slidesToScroll: 3,
-        arrows: true,
+        arrows: true ,
         responsive: [
             {
                 breakpoint: 640,
                 settings: {
-                    slidesToShow: 3, slidesToScroll: 1
+                    slidesToShow: 3,
+                    slidesToScroll: 1
                 }
             },
             {
@@ -196,7 +205,7 @@ $(document).ready(function () {
             $('.statistic').each(function () {
                 var value = $(this).find('.stat-item').attr('data-percent');
                 $(this).find('.stat-number').prop("Counter", 0).animate({
-                    Counter: value * 3
+                    Counter: value 
                 }, {
                         duration: 1600,
                         step: function (now) {
@@ -286,7 +295,80 @@ $(document).ready(function () {
             });
         });
 
- });
 
 
+    /* =================================
+    ====    Books Details  Page
+    ===================================
+    */ 
+    var comment_id = $("#comment_id").val();
+    $("#ShowEditComment").click(function () {
+        $("#div_AddComment").toggle(100);
+        $("#div_EditComment_" + comment_id).show(100);
+    });
+    $("#Edit").click(function () {
+        $("#div_AddComment").show(100);
+        $("#div_EditComment_" + comment_id).toggle(100);
+    });
+function ShowEditComment(comment_id) {
+    $("#div_AddComment").toggle(100);
+    $("#div_EditComment_" + comment_id).show(100);
+}
+function Addcomment() {
+    var comment = $("#Addcomment").val();
+    var book_Id = $("#book_id").val();
+    $.ajax({
+        type: "Post",
+        url: "/Home/AddComment",
+        data: JSON.stringify({ Comment: comment, id: book_Id }),
+        contentType: "application/json",
+        success: function (result) {
+            $("#newCom").append("<div class=" + "comment" + ">" +
+                "<div class=" + "comment-user-img" + ">" +
+                "<img class=" + "img-circle" + " src=" + "/Content/images/Nophoto.png" + ">" +
+                " </div>" +
+                "<div class=" + "comment-content" + ">" +
+                "<p id=" + "comment_" + ">" + result.comment + "</p>" +
+                "</div> </div>"
+            );
+            $("#Addcomment").val("");
+        }, error: function () {
+            alert("Failed added");
+        }
+    })
+}
+function EditComment(comment_id) {
+    $("#div_AddComment").show(100);
+    $("#div_EditComment_" + comment_id).toggle(100);
 
+    var comment = $("#edit_Comment_" + comment_id).val();
+    $.ajax({
+        type: "Post",
+        url: "/Home/EditComment",
+        data: JSON.stringify({ Comment: comment, id: comment_id }),
+        contentType: "application/json",
+        success: function (result) {
+            alert("Sucsessfully Edit  ");
+            $("#comment_Cont_" + comment_id).replaceWith("<p id=" + "comment_Cont_" + comment_id + ">" + comment + "</p>");
+            $("#edit_Comment_" + comment_id).val("");
+        }
+        , error: function (result) {
+            $("#comment_Cont_" + comment_id).replaceWith("<p id=" + "comment_Cont_" + comment_id + ">" + comment + "</p>");
+            $("#edit_Comment_" + comment_id).val("");
+        }
+    })
+}
+function DeleteComment(comment_id) {
+    $("#comment_" + comment_id).toggle(100);
+    $.ajax({
+        type: "Post",
+        url: "/Home/DeleteComment",
+        data: JSON.stringify({ id: comment_id }),
+        contentType: "application/json",
+        success: function (result) {
+            alert("successfuly Deleted  " + result);
+        }, error: function () {
+            alert("failed Deleted  " + result);
+        }
+    })
+}

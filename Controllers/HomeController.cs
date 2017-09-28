@@ -70,22 +70,7 @@ namespace ZHYR_Library.Controllers
         }
 
 
-        [HttpPost ,ActionName("AddComment")]
-        [ValidateAntiForgeryToken]
-       public PartialViewResult AddComment(int id)
-        {
-            books book = db.books.FirstOrDefault(x => x.id == id);
-                if (ModelState.IsValid)
-                {
-                comments comment = new comments();
-                comment.UserId = User.Identity.GetUserId<int>();
-                comment.BookId = id;
-                comment.Created_at = DateTime.Now;
-                db.comments.Add(comment);
-                db.SaveChanges();
-                }
-                return PartialView("_Book_Comments", books);
-        }
+   
         public ActionResult Books()
         {
             books = db.books.ToList();
@@ -278,23 +263,7 @@ namespace ZHYR_Library.Controllers
             }
             return View("Book_details", "Home",new { id = id });
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public PartialViewResult CreateComment(comments comment, int id)
-        {
-            if (ModelState.IsValid)
-            {
-                books books = db.books.Find(id);
-                comment.UserId = User.Identity.GetUserId<int>();
-                comment.BookId = books.id;
-                comment.comment = comment.comment;
-                comment.Created_at = DateTime.Now;
-                db.comments.Add(comment);
-                db.SaveChanges();
-            }
-            return PartialView("Book_details", comment);
-        }
-
+       
         //[HttpPost, ActionName("Book_details")]
         //[ValidateAntiForgeryToken]
         //public ActionResult UnLikedBook1( int id)
@@ -324,7 +293,44 @@ namespace ZHYR_Library.Controllers
             user.ConfirmPassword = ConfirmPassword;
             return Json(user, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Addcomments(string Comment, int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public PartialViewResult CreateComment(comments comment, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                books books = db.books.Find(id);
+                comment.UserId = User.Identity.GetUserId<int>();
+                comment.BookId = books.id;
+                comment.comment = comment.comment;
+                comment.Created_at = DateTime.Now;
+                db.comments.Add(comment);
+                db.SaveChanges();
+            }
+            return PartialView("Book_details", comment);
+        }
+
+
+        [HttpPost, ActionName("AddCommentPartial")]
+        [ValidateAntiForgeryToken]
+        public PartialViewResult AddCommentPartial(int id)
+        {
+            books book = db.books.FirstOrDefault(x => x.id == id);
+            if (ModelState.IsValid)
+            {
+                comments comment = new comments();
+                comment.UserId = User.Identity.GetUserId<int>();
+                comment.BookId = id;
+                comment.Created_at = DateTime.Now;
+                db.comments.Add(comment);
+                db.SaveChanges();
+            }
+            return PartialView("_Book_Comments", books);
+        }
+
+        #region //  Comments with javascript ajax
+
+        public JsonResult AddComment(string Comment, int id)
         {
             var comment = new comments();
             if (ModelState.IsValid)
@@ -336,26 +342,32 @@ namespace ZHYR_Library.Controllers
                 db.comments.Add(comment);
                 db.SaveChanges();
             }
-            else
-            {
-                return Json(comment.id, JsonRequestBehavior.AllowGet);
-            }
-            return Json(comment.comment, JsonRequestBehavior.AllowGet);
+            return Json(comment, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Deletecomments(int id)
+        public JsonResult EditComment(string Comment, int id )
+        {  var comment = db.comments.Find(id);
+            comment.BookId = comment.BookId;
+            comment.UserId = comment.UserId;
+            if (ModelState.IsValid)
+            {   comment.comment = Comment;
+                comment.Updated_at = DateTime.Now;
+                db.Entry(comment).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return Json(comment, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteComment(int id)
         {
-            var coments = db.comments.ToList();
              var comment = db.comments.Find(id);
             if (ModelState.IsValid)
             {
                 db.comments.Remove(comment);
                 db.SaveChanges();
             }
-
-            return Json(coments, JsonRequestBehavior.AllowGet);
+     return Json(comment.comment, JsonRequestBehavior.AllowGet);
         }
+#endregion
 
-        
 
 
     }

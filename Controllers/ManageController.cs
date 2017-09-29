@@ -54,7 +54,7 @@ namespace ZHYR_Library.Controllers
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
-            ViewBag.StatusMessage =
+         var MESJ  =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
@@ -62,6 +62,8 @@ namespace ZHYR_Library.Controllers
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
+            TempData["Message"] = new ViewModels.MessageVm() { CssClassName = "alert-success", Title = "Success :) ", Message = MESJ };
+
             var userId = User.Identity.GetUserId<int>();
             var model = new IndexViewModel
             {

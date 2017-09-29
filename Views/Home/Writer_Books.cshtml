@@ -1,32 +1,70 @@
 ﻿@model ZHYR_Library.Models.Data.writers
-  @{ ViewBag.Title = "Books" ;
-   }  
+@{ ViewBag.Title = Model.author_name+ " Books";
+}
 
-<h2>@Model.author_name</h2>
-@if (Model.books.Count() == 0)
-{    <div class="alert alert-default  "> <p class="text-center text-danger"> <b>No Books for This Author</b></p>  </div>
-}
-else
-{
-    <ul>
-        @foreach (var book in Model.books)
-        {
-                <li class="card card-description" style="width:250px;margin:3px;height:300px;float:left">
-                    @if (book.image == null)
-                    {
-                        <a href="/Home/Book_details/@book.id">
-                            <img style="width:250px;margin:3px;height:220px" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
-                        </a>   }
-                    else
-                    {
-                        <a href="/Home/Book_details/@book.id">
-                            <img style="width:250px;margin:3px;height:220px" src="~/Uploads/images/Books/@book.image" alt="no-image" />
-                        </a>}
-                    <div class="card card-content">
-                        <a href="/Home/Book_details/@book.id">@book.book_name</a>
-                    </div>
-                </li>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <header class="section-header text-center">
+                <h3 class="section-title">@ViewBag.Title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.books.Count() == 0)
+        {    <div class="alert alert-default  "> <p class="text-center text-danger"> <b>No Books for This Author</b></p>  </div>
         }
-    </ul>
-<div style="clear:both;"></div><br/>
-}
+        else
+        {
+            foreach (var book in Model.books)
+            {
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-media">
+
+                            <a href="@Url.Action("Book_details","Home",new { id = book.id })">
+                                <figure>
+                                    @if (book.image != null)
+                                {
+                                <img src="~/Uploads/images/Books/@book.image" alt="@book.book_name" style="height:200px;" class="full-width">
+                                }
+                                else
+                                {
+                                <img src="~/Content/images/Nophoto.png" alt="@book.book_name" style="height:200px;" class="full-width">
+                                }
+                                </figure>
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <a href="@Url.Action("Book_details","Home",new { id = book.id })">
+                                <h5 class="title text-center">@book.book_name</h5>
+                            </a>
+                            <p class="text-muted">@book.book_about</p>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="list-unstyled">
+                                <li style="font-size:13px;">
+                                    <p class="label label-default">
+                                        <i class="glyphicon glyphicon-eye-open "></i>:@book.Readed
+                                    </p>   &nbsp;
+                                    <p class="label label-success">
+                                        <i class="glyphicon glyphicon-download "></i>:@book.downloaded
+                                    </p>  &nbsp;
+                                    <p class="label label-primary">
+                                        <i class="glyphicon glyphicon-hand-up "></i>:@book.Liked
+                                    </p>
+                                </li>
+                            </ul>
+                            <ul class="meta-list clearfix">
+                                <li class="text-muted"><time class="meta" datetime="@book.Created_at">@String.Format("{0:MMM dd,yyyy }", book.Created_at)</time></li>
+                                <li><span class="meta">@book.categories.category_name</span></li>
+                            </ul>
+                            <a href="@Url.Action("Book_details","Home",new { id = book.id })" class="read-more"> More <i class="glyphicon glyphicon-chevron-right"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        </div></div>

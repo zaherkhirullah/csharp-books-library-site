@@ -13,7 +13,12 @@
             @*@user.avatar*@
             <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Index","Manage" ,routeValues: null )" title='Manage'>Manage &nbsp;  <i class="glyphicon glyphicon-edit"></i></a></li> 
+                <li><a href="@Url.Action("profile","User" ,routeValues: null )" title='Profile'>   <i class="glyphicon glyphicon-user">&nbsp; </i> Profile</a></li>   
+                <li><a href="@Url.Action("MyBooks","User" , routeValues: null )" title='MyBooks'>  <i class="glyphicon glyphicon-book">&nbsp; </i>MyBooks </a></li>
+                <li><a href="@Url.Action("MyPosts","User" ,routeValues: null )" title='MyPosts'>   <i class="glyphicon glyphicon-paperclip">&nbsp; </i>MyPosts</a></li> 
+                <li><a href="@Url.Action("Categories","User" , routeValues: null )" title='MyCategories'>  <i class="glyphicon glyphicon-apple">&nbsp; </i>MyCategories </a></li>
+                <li><a href="@Url.Action("Writers","User" ,routeValues: null )" title='MyWriters'>   <i class="glyphicon glyphicon-pencil">&nbsp; </i>MyWriters</a></li> 
+                <li><a href="@Url.Action("Index","Manage" ,routeValues: null )" title='Settings'>  <i class="glyphicon glyphicon-edit"> &nbsp;</i> Settings </a></li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off    &nbsp; <span class="label label-danger"><i class="glyphicon glyphicon-log-out"></i></span></a></li>
             </ul>
         </li>
@@ -32,7 +37,6 @@ else
                 @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) <span class="label label-primary"><i class="glyphicon glyphicon-pencil"></i></span></li>
                 <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) <span class="label label-primary"><i class='glyphicon glyphicon-log-in'></i></span></li>*@
                 <li><a href="/Account/Register" id = "registerLink" >Register &nbsp;<span class="label label-primary"><i class='glyphicon glyphicon-pencil'></i></span></a></li>
-
                 <li><a href="/Account/Login" id = "loginLink" >Log in &nbsp; <span class="label label-success"><i class='glyphicon glyphicon-log-in'></i></span></a></li>
     </ul>
         </li>

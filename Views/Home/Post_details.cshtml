@@ -1,0 +1,313 @@
+﻿@model ZHYR_Library.Models.Data.Post
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = Model.Title + " details ";
+}
+@section scripts{
+    <script src="~/Scripts/js/main.js"></script>
+    <script type="text/javascript">
+        function Like() {
+            var book_Id = $("#book_id").val();
+            $.ajax({
+                type: "Post",
+                url: "/Home/Liked_it",
+                data: JSON.stringify({ id: book_Id }),
+                contentType: "application/json",
+                success: function (result) {
+                    alert("Success Like");
+                    $("#sayac").removeClass("btn-default").addClass("btn-primary").val("Like " + result);
+                    $("#sayac").val("Unlike " + result);
+                }, error: function () {
+                    alert("Failed Like");
+                }
+            })
+        }
+        function UnLike() {
+            var book_Id = $("#book_id").val();
+            $.ajax({
+                type: "Post",
+                url: "/Home/UnLiked_it",
+                data: JSON.stringify({ id: book_Id }),
+                contentType: "application/json",
+                success: function (result) {
+                    alert("Success UnLike");
+                    $("#Un_sayac").val("Like " + result);
+                }, error: function () {
+                    alert("Failed UnLike");
+                }
+            })
+        }
+        var comment_id = $("#comment_id").val();
+        function ShowEditComment(comment_id) {
+            if ($("#div_EditComment_" + comment_id).css("disabled", "false")) {
+                $("#div_AddComment").toggle(100);
+                $("#div_EditComment_" + comment_id).show(100);
+                $("#div_EditComment_" + comment_id).css("disabled", "true")
+            } else {
+                return;
+            }
+
+        }
+        function Addcomment() {
+            var comment = $("#Addcomment").val();
+            var book_Id = $("#book_id").val();
+            $.ajax({
+                type: "Post",
+                url: "/Home/AddComment",
+                data: JSON.stringify({ Comment: comment, id: book_Id }),
+                contentType: "application/json",
+                success: function (result) {
+                    $("#newCom").append("<div class=" + "comment" + ">" +
+                        "<div class=" + "comment-user-img" + ">" +
+                        "<img class=" + "img-circle" + " src=" + "/Content/images/Nophoto.png" + ">" +
+                        " </div>" +
+                        "<div class=" + "comment-content" + ">" +
+                        "<p id=" + "comment_" + ">" + result.comment + "</p>" +
+                        "</div> </div>"
+                    );
+                    $("#Addcomment").val("");
+                }, error: function () {
+                    alert("Failed added");
+                }
+            })
+        }
+        function EditComment(comment_id) {
+            if ($("#div_EditComment_" + comment_id).css("disabled", "true")) {
+                $("#div_AddComment").show(100);
+                $("#div_EditComment_" + comment_id).toggle(200);
+            } else {
+                return;
+            }
+            var comment = $("#edit_Comment_" + comment_id).val();
+            $.ajax({
+                type: "Post",
+                url: "/Home/EditComment",
+                data: JSON.stringify({ Comment: comment, id: comment_id }),
+                contentType: "application/json",
+                success: function (result) {
+                    alert("Sucsessfully Edit  ");
+                    $("#comment_Cont_" + comment_id).replaceWith("<p id=" + "comment_Cont_" + comment_id + ">" + result.comment + "</p>");
+                    $("#edit_Comment_" + comment_id).val("");
+                }
+                , error: function (result) {
+                    $("#comment_Cont_" + comment_id).replaceWith("<p id=" + "comment_Cont_" + comment_id + ">" + comment + "</p>");
+                    $("#edit_Comment_" + comment_id).val("");
+                }
+            })
+        }
+        function DeleteComment(comment_id) {
+            $("#comment_" + comment_id).toggle(100);
+            $.ajax({
+                type: "Post",
+                url: "/Home/DeleteComment",
+                data: JSON.stringify({ id: comment_id }),
+                contentType: "application/json",
+                success: function (result) {
+                    alert("successfuly Deleted  " + result);
+                }, error: function () {
+                    alert("failed Deleted  " + result);
+                }
+            })
+        }
+    </script>
+}
+<div class="card pdf">
+    <div class="card-header">
+        <div class="header-content">
+            <h4 class="title">@Model.Title details</h4>
+            <ul class="list-unstyled pdf-detail" style="display:inline-block;">
+                <li>    <i class="glyphicon glyphicon-time"></i> <b>@String.Format("{0:ddd, dd-MMM-yyyy}", Model.Created_at)</b> tarihinde yayınlandı. &nbsp;
+                </li>
+          
+             @if (Model.Updated_at != null)
+             {    <li>
+                    <i class="glyphicon glyphicon-time"></i> <b>Son Güncelleme</b>:
+                    @String.Format("{0:dd-MMM-yyyy}", Model.Updated_at)
+                </li> }
+
+                <li>
+                  <i class="glyphicon glyphicon-eye-open"></i> <b> Gösterim</b> : @Html.DisplayFor(model => model.Readed)
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-user"></i> <b>@Html.DisplayNameFor(model => model.UserId)</b>:  @Html.DisplayFor(model => model.AspNetUsers.UserName)
+                </li>
+                <li><i class="glyphicon glyphicon-book"></i>
+                   <b>Category</b>:  @Html.DisplayFor(model => model.categories.category_name)
+                </li>
+            </ul>
+            <input type="hidden" id="book_id" value="@Model.Id">
+        </div>
+
+        @if (Model.image != null)
+        {
+            <img src="~/Uploads/images/posts/@Model.image" alt="@Model.Title" /> }
+        else
+        {
+            <img src="~/Content/images/Nophoto.png" alt="image" class="full-width">
+        }
+    </div>
+    <div class="card-content table-responsive">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3>@Model.Title</h3>
+            </div>
+            <div class="panel-body">
+                <div> <p class="About">@Model.content</p></div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="footer-label">
+                    @{
+                            if (!User.Identity.IsAuthenticated)
+                            {
+                        <p class="label label-primary" style="font-size:16px;">
+                            <i class="glyphicon glyphicon-hand-up"></i> Like : @Model.Liked
+                        </p>
+                        <p class="label label-danger" style="font-size:16px;"><i class="glyphicon glyphicon-hand-down"></i> disLike : @Model.disLike</p>
+                            }
+                            else if (Model.Likes.Any(x => x.UserId == User.Identity.GetUserId<int>() && x.Book_id == Model.Id) || Ajax.ViewBag.Liked == true)
+                            {
+                                if (Model.Likes.Any(x => x.Liked == true))
+                                {
+                        <input type="submit" id="Un_sayac" onclick="UnLike()" value="Like  @Model.Liked" class="btn btn-primary " />
+                        <input type="submit" id="DisLike_Count" onclick="Dislike()" value="dislike @Model.disLike" class="btn btn-default" />
+                                }
+                                else
+                                {
+                        <input type="submit" id="sayac" onclick="Like()" value="Like  @Model.Liked" class="btn btn-default " />
+                        <input type="submit" id="DisLike_Count" onclick="Dislike()" value="dislike @Model.disLike" class="btn btn-default" />
+                                }
+                            }
+                            else
+                            {
+                        <input type="submit" id="Like_Count" onclick="Like()" value="Like  @Model.Liked" class="btn btn-default " />
+                        <input type="submit" id="DisLike_Count" onclick="Dislike()" value="disLike  @Model.disLike" class="btn btn-default " />
+                                }
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="card comments">
+    <div>
+        <h3>Comments</h3>
+        @if (User.Identity.IsAuthenticated)
+        {
+        <div class="add-comment">
+            <div id="div_AddComment">
+                <div class="input-comment input-group">
+                    <input type="text" id="Addcomment" name="comment" placeholder="Comment here..." required>
+                    <span class="input-group-btn">
+                        <button type="submit" onclick="Addcomment()" class="btn btn-success ">
+                            <span> <i class="glyphicon glyphicon-send "></i></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        }  <div id="newCom"></div>
+        @if (Model.comments.Count() > 0)
+        {
+        <div class="comments" id="Comments">
+
+            <div class="add-comment">
+                @foreach (var comment in Model.comments.OrderByDescending(x=>x.Created_at))
+                    {
+                    <div id="div_EditComment_@comment.id" style="display:none;">
+                        <div class="input-comment input-group">
+                            <input type="hidden" id="comment_id" value="@comment.id">
+                            <input type="text" id="edit_Comment_@comment.id" name="comment" value="@comment.comment" placeholder="@comment.comment" required>
+                            <span class="input-group-btn">
+                                <button type="submit" id="Edit" onclick="EditComment(@comment.id)" class="btn btn-primary ">
+                                    <span> <i class="glyphicon glyphicon-edit "></i></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="comment_@comment.id">
+                        <div class="comment">
+                            <div class="comment-user-img">
+                                @if (comment.AspNetUsers.avatar != null)
+                                    {
+                                    <img class="img-circle" src="~/Uploads/images/users/images/@comment.AspNetUsers.avatar" alt="@comment.AspNetUsers.UserName" />
+                                    }
+                                    else
+                                    {
+                                    <img class="img-circle" src="~/Content/images/Nophoto.png" alt="@comment.AspNetUsers.UserName" />
+                                    }
+                                @String.Format("{0:dd-MMM yyyy }", comment.Created_at)
+                            </div>
+                            <div class="comment-content">
+                                <abbr class="pull-right">
+                                    <a class="btn btn-xs btn-default ">
+                                        <i class="glyphicon glyphicon-time"> </i> 53 m
+                                    </a>
+                                </abbr>
+                                @if (User.Identity.IsAuthenticated)
+                                    {
+                                        if (comment.UserId == User.Identity.GetUserId<int>())
+                                        {
+                                    <abbr class="pull-right">
+                                        <a onclick="DeleteComment(@comment.id)" id="@comment.id" class="btn btn-xs btn-danger ">
+                                            <i class="glyphicon glyphicon-trash "></i>
+                                        </a>
+                                        <a onclick="ShowEditComment(@comment.id)" id="@comment.id" class="btn btn-xs btn-primary ">
+                                            <i class="glyphicon glyphicon-edit "></i>
+                                        </a>
+                                    </abbr>
+                                        }
+                                    }
+                                <h5>@comment.AspNetUsers.UserName </h5>
+                                <p id="comment_Cont_@comment.id">@comment.comment</p>
+                            </div>
+                            @if (comment.UserId != User.Identity.GetUserId<int>())
+                                {
+                                <div class="comment-footer">
+
+                                    <a href="#" onclick="Like()" id="">
+                                        <abbr class="label label-primary">
+                                            <i class="glyphicon glyphicon-hand-up "></i> : @comment.Likes.Count()
+                                        </abbr>
+                                    </a> &nbsp;
+                                    <a href="#" onclick="Dislike()" id="">
+                                        <abbr class="label label-danger">
+                                            <i class="glyphicon glyphicon-hand-down "></i> : <!--Dislike-->
+                                        </abbr>
+                                    </a> &nbsp;
+                                    <a href="#" onclick="Replay()" id="">
+                                        <abbr class="label label-success">
+                                            <i class="glyphicon glyphicon-repeat "></i> : <!--Replay-->
+                                        </abbr>
+                                    </a>
+
+                                </div>
+                                }
+                                else
+                                {
+                                <div class="comment-footer">
+                                    <abbr class=" ">
+                                        <i class="glyphicon glyphicon-hand-up "></i> : @comment.Likes.Count()
+                                    </abbr>&nbsp;
+                                    <abbr class="">
+                                        <i class="glyphicon glyphicon-hand-down "></i> : 12 <!--Dislike-->
+                                    </abbr>  &nbsp;
+                                    <abbr class=" ">
+                                        <i class="glyphicon glyphicon-repeat "></i> : 50<!--Replay-->
+                                    </abbr>
+                                </div>
+                                }
+                        </div>
+                    </div>
+                    }
+            </div>
+        </div>
+
+        }
+        else
+        {
+        <div class="alert alert-default" style="background-color:#eee"><p class="text-primary">No Comments</p> </div>
+        }
+    </div>
+</div>

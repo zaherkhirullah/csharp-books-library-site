@@ -22,7 +22,9 @@ namespace ZHYR_Library.Areas.Admin.Controllers
         // GET: Admin/writers
         public ActionResult Index()
         {
-            var writers = db.writers.Include(w => w.AspNetUsers);
+            var writers = db.writers.Include(w => w.AspNetUsers)
+                .OrderByDescending(x => x.Updated_at)
+                .OrderByDescending(x => x.Created_at);
             return View(writers.ToList());
         }
 

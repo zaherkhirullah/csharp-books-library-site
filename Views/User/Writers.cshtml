@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ZHYR_Library.Models.Data.writers>
+
+@{
+    ViewBag.Title = "Writers";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <header class="section-header text-center">
+                <h3 class="section-title">@ViewBag.Title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger Non">
+                <h3> You didn't have Any writer</h3>
+            </div>
+        }
+        else
+        {
+            foreach (var Writer in Model)
+            {
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="card writer">
+                        @if (Writer.image == null)
+                        {
+                            <a href="/Home/Writer_Books/@Writer.id">
+                                <img class="img-circle" src="~/Content/images/Nophoto.png" alt="@Writer.author_name" />
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Home/Writer_Books/@Writer.id">
+                                <img src="~/Uploads/images/writers/@Writer.image" alt="@Writer.author_name" />
+                            </a>
+                        }
+
+                        <div class="card-content">
+                            <div class="title">
+                                <a href="/Home/Writer_Books/@Writer.id">@Writer.author_name</a>
+                                <p> @Writer.author_about</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <p class="label label-success">
+                                        <i class="glyphicon glyphicon-book "></i>  @Writer.books.Count()
+                                    </p>   &nbsp;
+                                    <p class="label label-danger" style="font-size:13px;">
+                                        <i class="glyphicon glyphicon-download "></i>
+                                    </p>  &nbsp;
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

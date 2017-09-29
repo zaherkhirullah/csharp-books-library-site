@@ -19,7 +19,9 @@ namespace ZHYR_Library.Models.Data
         public string content { get; set; }
 
         public DateTime? date { get; set; }
-
+        public int Liked { get; set; }
+        public int disLike { get; set; }
+        public int Readed { get; set; }
         [Display(Name = "Created date")]
         [Column(TypeName = "datetime2")]
         public DateTime Created_at { get; set; }
@@ -36,8 +38,8 @@ namespace ZHYR_Library.Models.Data
         public int UserId { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<comments> comments { get; set; }
+        public virtual ICollection<Likes> Likes { get; set; }
 
 
     }

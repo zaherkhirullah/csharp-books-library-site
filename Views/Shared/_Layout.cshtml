@@ -44,17 +44,18 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Icons", "Icons", "Home")</li>
                     <li>@Html.ActionLink("Books", "Books", "Home")</li>
                     <li>@Html.ActionLink("categories", "categories", "Home")</li>
-                    <li>@Html.ActionLink("Search", "Search", "Home")</li>
+                    <li>@Html.ActionLink("Writers", "Writers", "Home")</li>
+                    <li>@Html.ActionLink("Blog", "Blog", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                <li>@Html.ActionLink("Admin", "Index", "Admin" ,new { area = "Admin" },new { })</li>
-
-                    <li class="dropdown">
+                      <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Search", "Search", "Home")</li>
+                            <li>@Html.ActionLink("Icons", "Icons", "Home")</li>
                             <li><a href="blog-masonry.html">Blog Masonry</a></li>
                             <li><a href="post.html">Sample Post</a></li>
                             <li><a href="post-sidebar.html">Post Sidebar</a></li>

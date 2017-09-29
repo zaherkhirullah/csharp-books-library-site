@@ -26,24 +26,39 @@
             </div>
             <!--Most Readed-->
             <div class="col-md-12">
-                <h2>Most Readed </h2>
+                <h2 class="text-success">Most Readed </h2>
                 <ul class="slick-slider logos">
                     @foreach (var book in Model.TopReaded100)
                     {
                         <li class="card">
-                            @if (book.image == null)
-                            {
-                                <a href="/Home/Book_details/@book.id">
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
-                                </a>   }
-                            else
-                            {
-                                <a href="/Home/Book_details/@book.id">
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
-
-                                </a>}
+                            <a href="/Home/Book_details/@book.id">
+                                @if (book.image == null)
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:175px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />  }
+                                else
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:175px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
+                                }
+                            </a>
                             <div class="card-content">
-                                <a href="#">@book.book_name</a>
+                                <h5 class="title text-center">@book.book_name</h5>
+                                <p class="text-muted">@book.book_about</p>
+                            </div>
+                            <div class="card-footer">
+                                @*<ul class="list-unstyled">
+                                    <li style="background-color:#eee;color:#111;">
+                                        <p>
+                                            <i class="glyphicon glyphicon-eye-open "></i>:@book.Readed
+                                            <abbr class="pull-right">
+                                                <i class="glyphicon glyphicon-download "></i>:@book.downloaded
+                                            </abbr>
+                                        </p>
+                                    </li>
+                                </ul>*@
+                                <ul class="meta-list">
+                                    <li class="text-success"><time class="meta" datetime="@book.Created_at">@String.Format("{0:MMM dd,yyyy }", book.Created_at)</time></li>
+                                </ul>
+
                             </div>
                         </li>
                     }
@@ -51,25 +66,30 @@
             </div>
             <!--Most Downloaded-->
             <div class="col-md-12">
-                <h2>Most Downloaded </h2>
+                <h2 class="text-primary">Most Downloaded </h2>
                 <ul class="slick-slider logos">
                     @*@foreach (var book in Model.Books.OrderByDescending(x => x.downloaded))*@
                     @foreach (var book in Model.TopDownloaded100)
                     {
                         <li class="card">
-                            @if (book.image == null)
-                            {
-                                <a href="/Home/Book_details/@book.id">
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
-                                </a>   }
-                            else
-                            {
-                                <a href="/Home/Book_details/@book.id">
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
-
-                                </a>}
+                            <a href="/Home/Book_details/@book.id">
+                                @if (book.image == null)
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:175px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />  }
+                                else
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:175px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
+                                }
+                            </a>
                             <div class="card-content">
-                                <a href="#">@book.book_name</a>
+                                <h5 class="title text-center">@book.book_name</h5>
+                                <p class="text-muted">@book.book_about</p>
+                            </div>
+                            <div class="card-footer">
+                                <ul class="meta-list">
+                                    <li class="text-success"><time class="meta" datetime="@book.Created_at">@String.Format("{0:MMM dd,yyyy }", book.Created_at)</time></li>
+                                </ul>
+
                             </div>
                         </li>
                     }
@@ -77,97 +97,39 @@
             </div>
             <!--Most popler-->
             <div class="col-md-12">
-                <h2>Most papular</h2>
+                <h2 class="text-danger">Most papular</h2>
                 <ul class="slick-slider logos">
                     @*@foreach (var book in Model.Books.OrderByDescending(x => x.Liked))*@
                     @foreach (var book in Model.TopLiked100)
                     {
                         <li class="card">
-                            @if (book.image == null)
-                            {
-                                <a href="/Home/Book_details/@book.id">
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />
-                                </a>   }
-                            else
-                            {
-                                <a href="/Home/Book_details/@book.id">
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
-
-                                </a>}
+                            <a href="/Home/Book_details/@book.id">
+                                @if (book.image == null)
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:175px;" src="~/Content/images/Nophoto.png" alt="@book.book_name" />  }
+                                else
+                                {
+                                    <img class="card-image" style="margin:3px; width:200px;height:175px;" src="~/Uploads/images/Books/@book.image" alt="no-image" />
+                                }
+                            </a>
                             <div class="card-content">
-                                <a href="#">@book.book_name</a>
+                                <h5 class="title text-center">@book.book_name</h5>
+                                <p class="text-muted">@book.book_about</p>
+                            </div>
+                            <div class="card-footer">
+                                @*<ul class="list-unstyled">
+                                        <li style="background-color:#eee;color:#111;">
+                                        </li>
+                                    </ul>*@
+                                <ul class="meta-list">
+                                    <li class="text-success"><time class="meta" datetime="@book.Created_at">@String.Format("{0:MMM dd,yyyy }", book.Created_at)</time></li>
+                                </ul>
+
                             </div>
                         </li>
                     }
                 </ul>
             </div>
-
-            @*<div class="col-md-12">
-                    <ul class="slick-slider logos">
-                                @foreach (var category in Model.Categories)
-                                {
-                                <li class="card">
-                                    @if (category.image == null)
-                                    {<a href="/Home/Category_books/@category.id">
-                                        <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@category.category_name" />
-                                    </a>
-                                    }
-                                    else
-                                    {
-                                        <a href="/Home/Category_books/@category.id">
-                                            <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/categories/@category.image" alt="no-image" />
-                                        </a>}
-                                        <div class="card-content">
-                                            <a href="/Home/Category_books/@category.id">@category.category_name</a>
-                                        </div>
-                          </li>
-                                }
-
-                    </ul>
-                </div>
-                <div class="col-md-12">
-                    <ul class="slick-slider logos">
-                        @foreach (var duyuru1 in Model.Duyuru)
-                        {
-                            foreach (var duyuru in Model.Duyuru)
-                            {
-                                <li class="card">
-                                    @if (duyuru.image == null)
-                                    {
-                                        <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/dp1a.jpg" alt="@duyuru.Title" />
-                                    }
-                                    else
-                                    {
-                                        <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/categories/@duyuru.image" alt="no-image" />
-                                    }
-                                    <div class="card-content">
-                                        <a href="#">@duyuru.Title</a>
-                                    </div>
-                                </li>
-                            }
-                        }
-                    </ul>
-                </div>*@
-            @*<div class="col-md-12">
-                    <ul class="slick-slider logos">
-                        @foreach (var writer in Model.Writers)
-                        {
-                            <li class="card">
-                                @if (writer.image == null)
-                                {
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Content/images/Nophoto.png" alt="@writer.author_name" />
-                                }
-                                else
-                                {
-                                    <img class="card-image" style="margin:3px; width:200px;height:150px;" src="~/Uploads/images/writers/@writer.image" alt="no-image" />
-                                }
-                                <div class="card-content">
-                                    <a href="/Home/Writer_books/@writer.id">@writer.author_name</a>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                </div>*@
         </div>
     </div>
 </section>
@@ -204,7 +166,7 @@
             <section class="masonry">
                 <div class="grid-sizer col-xs-6 col-sm-6 col-md-4 col-lg-3"></div><!-- grid-sizer -->
                 @*@foreach (var book in Model.Books.OrderByDescending(x=>x.categories.books.Count()))  <!-- صاحب أكبر عدد من الكتب category--> *@
-                @foreach (var book in Model.Books)
+                @foreach (var book in Model.Books.Take(12))
                 {
                     <!-- Item -->
                     <div class="item col-xs-6 col-sm-6 col-md-4 col-lg-3 @book.categories.category_name">
@@ -255,7 +217,7 @@
                                             <div class="overlay flex flex-middle flex-center">
                                                 <a href="#">@writer.author_name</a>
                                                 <div class="card-content">
-                                                    <a href="/Home/Book_details/@writer.id" class="overlay-link"><i class="material-icons">add</i></a>
+                                                    <a href="/Home/Writer_books/@writer.id" class="overlay-link"><i class="material-icons">add</i></a>
                                                     <h6 class="title hidden-xs">@writer.author_name</h6>
                                                 </div>
                                             </div>
@@ -398,12 +360,12 @@
         </div>
         <div class="row">
             @*@foreach (var post in Model.TopPosts10)*@
-            @foreach (var post in Model.Post.OrderByDescending(x => x.Created_at).Take(4))
-
+            @foreach (var post in Model.Post)
             {
-                <div class="col-sm-3">
-                    <div class="card">
-                        <div class="card-media">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-media">
+                        <a href="@Url.Action("post_details","Home",new { id = post.Id })">
                             <figure>
                                 @if (post.image != null)
                                 {
@@ -414,20 +376,23 @@
                                     <img src="~/Content/images/Nophoto.png" alt="image" class="full-width">
                                 }
                             </figure>
-                        </div>
-                        <div class="card-content">
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <a href="@Url.Action("post_details","Home",new { id = post.Id })">
                             <h5 class="title">@post.Title</h5>
-                            <p>@post.content</p>
-                        </div>
-                        <div class="card-footer">
-                            <ul class="meta-list">
-                                <li><time class="meta" datetime="@post.Created_at">@String.Format("{0:MMM dd,yyyy }", post.Created_at)</time></li>
-                                <li><span class="meta">@post.categories.category_name</span></li>
-                            </ul>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
+                        </a>
+                        <p>@post.content</p>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="meta-list">
+                            <li><time class="meta" datetime="@post.Created_at">@String.Format("{0:MMM dd,yyyy }", post.Created_at)</time></li>
+                            <li><span class="meta">@post.categories.category_name</span></li>
+                        </ul>
+                        <a href="@Url.Action("post_details","Home",new { id = post.Id })" class="read-more">Read More</a>
                     </div>
                 </div>
+            </div>
             }
 
         </div>
@@ -482,7 +447,7 @@
                                 <li class="price">19.99<sup>$</sup></li>
                                 <li class="divider"></li>
                                 <li class="description">@book.book_about</li>
-                                <li class="description text-primary" >
+                                <li class="description text-primary">
                                     <i class="glyphicon glyphicon-eye-open "></i>:@book.Readed  &nbsp;
                                     <i class="glyphicon glyphicon-download "></i>:@book.downloaded &nbsp;
                                     <i class="glyphicon glyphicon-hand-up "></i>:@book.Liked

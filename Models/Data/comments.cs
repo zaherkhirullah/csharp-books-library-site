@@ -24,13 +24,19 @@ namespace ZHYR_Library.Models.Data
         public DateTime? Updated_at { get; set; }
         [Display(Name = "Deleted date")]
         public DateTime? Deleted_at { get; set; }
+         [ForeignKey("books")]
+        public int? BookId { get; set; }
 
-        public int BookId { get; set; }
+        [ForeignKey("posts")]
+        public int? post_id { get; set; }
+
         [Required]
         [Display(Name = "Shared By")]
         public int UserId { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual books books { get; set; }
+        public virtual Post posts { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Likes> Likes { get; set; }
     }

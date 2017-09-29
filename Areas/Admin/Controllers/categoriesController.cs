@@ -21,7 +21,9 @@ namespace ZHYR_Library.Areas.Admin.Controllers
         // GET: Admin/categories
         public ActionResult Index()
         {
-            var categories = db.categories.Include(c => c.AspNetUsers);
+            var categories = db.categories.Include(c => c.AspNetUsers)
+                .OrderByDescending(x => x.Updated_at)
+                .OrderByDescending(x => x.Created_at); 
             return View(categories.ToList());
         }
 

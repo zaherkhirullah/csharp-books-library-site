@@ -225,9 +225,10 @@
     <Compile Include="Areas\Admin\Controllers\feedbackController.cs" />
     <Compile Include="Areas\Admin\Controllers\imagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModulsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
     <Compile Include="Areas\Admin\Controllers\TeamController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Controllers\writersController.cs" />
     <Compile Include="Connected Services\ASPSMSX2\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -235,6 +236,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -292,6 +294,22 @@
     <Compile Include="Migrations\201709261849439_Edit_categories in post.Designer.cs">
       <DependentUpon>201709261849439_Edit_categories in post.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709281759335_Add replayes .cs" />
+    <Compile Include="Migrations\201709281759335_Add replayes .Designer.cs">
+      <DependentUpon>201709281759335_Add replayes .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281908481_Add liked readed To posts.cs" />
+    <Compile Include="Migrations\201709281908481_Add liked readed To posts.Designer.cs">
+      <DependentUpon>201709281908481_Add liked readed To posts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709282215400_Edit to nullable in likes table.cs" />
+    <Compile Include="Migrations\201709282215400_Edit to nullable in likes table.Designer.cs">
+      <DependentUpon>201709282215400_Edit to nullable in likes table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709282222080_Edit to nullable in comments table.cs" />
+    <Compile Include="Migrations\201709282222080_Edit to nullable in comments table.Designer.cs">
+      <DependentUpon>201709282222080_Edit to nullable in comments table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Data\AspNetRoles.cs" />
@@ -308,6 +326,7 @@
     <Compile Include="Models\Data\Followers.cs" />
     <Compile Include="Models\Data\Following.cs" />
     <Compile Include="Models\Data\images.cs" />
+    <Compile Include="Models\Data\Replayes.cs" />
     <Compile Include="Models\Data\Likes.cs" />
     <Compile Include="Models\Data\Modul.cs" />
     <Compile Include="Models\Data\Post.cs" />
@@ -376,13 +395,14 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AdminPage.cs" />
     <Compile Include="ViewModels\FileControl.cs" />
+    <Compile Include="ViewModels\UserPages.cs" />
     <Compile Include="ViewModels\Homepage.cs" />
     <Compile Include="ViewModels\MessageVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\writers\Create.cshtml" />
     <Content Include="Areas\Admin\Views\writers\Delete.cshtml" />
@@ -442,6 +462,12 @@
     <Content Include="Areas\Admin\Views\books\DeleteAll.cshtml" />
     <Content Include="Areas\Admin\Views\categories\DeleteAll.cshtml" />
     <Content Include="Areas\Admin\Views\writers\DeleteAll.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\DeleteAll.cshtml" />
     <None Include="Connected Services\ASPSMSX2\configuration91.svcinfo" />
     <None Include="Connected Services\ASPSMSX2\configuration.svcinfo" />
     <None Include="Connected Services\ASPSMSX2\Reference.svcmap">
@@ -575,6 +601,16 @@
     <Content Include="Views\Home\Lazim\Book_details - Copy.cshtml" />
     <Content Include="Views\Home\Lazim\Books - Copy.cshtml" />
     <Content Include="Views\Shared\_Book_Comments.cshtml" />
+    <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Home\cPosts.cshtml" />
+    <Content Include="Views\Home\Post_details.cshtml" />
+    <Content Include="Views\User\MyPosts.cshtml" />
+    <Content Include="Views\User\Writers.cshtml" />
+    <None Include="Views\User\categories.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <None Include="Views\User\MyBooks.cshtml" />
+    <Content Include="Views\User\Profile.cshtml" />
+    <Content Include="Views\User\Notafications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -583,6 +619,7 @@
     <Folder Include="Uploads\images\Books\" />
     <Folder Include="Uploads\images\categories\" />
     <Folder Include="Uploads\images\images\" />
+    <Folder Include="Uploads\images\posts\" />
     <Folder Include="Uploads\images\users\covers\" />
     <Folder Include="Uploads\images\users\images\" />
     <Folder Include="Uploads\images\writers\" />
@@ -629,6 +666,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709261849439_Edit_categories in post.resx">
       <DependentUpon>201709261849439_Edit_categories in post.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281759335_Add replayes .resx">
+      <DependentUpon>201709281759335_Add replayes .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281908481_Add liked readed To posts.resx">
+      <DependentUpon>201709281908481_Add liked readed To posts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282215400_Edit to nullable in likes table.resx">
+      <DependentUpon>201709282215400_Edit to nullable in likes table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282222080_Edit to nullable in comments table.resx">
+      <DependentUpon>201709282222080_Edit to nullable in comments table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\lang.ar.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

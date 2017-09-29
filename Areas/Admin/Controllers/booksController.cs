@@ -23,7 +23,11 @@ namespace ZHYR_Library.Areas.Admin
         // GET: Admin/books
         public ActionResult Index(string search, string filter)
         {//var books = db.books.Include(b => b.AspNetUsers).Include(b => b.categories).Include(b => b.writers);
-            var books = db.books.Include(b => b.categories).Include(b => b.writers);
+            var books = db.books.Include(b => b.categories)
+                .Include(b => b.writers)
+                .OrderByDescending(x => x.Updated_at)
+                .OrderByDescending(x => x.Created_at);
+          
             if (search != null)
             {
                 if (filter == "Name")

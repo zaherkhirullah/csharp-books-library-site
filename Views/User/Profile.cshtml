@@ -1,0 +1,478 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@model ZHYR_Library.Models.Data.AspNetUsers
+@{  ViewBag.Title = "My Profile";
+  
+}
+<div class="row">
+    <div class="col-lg-12 col-md-12 ">
+        <div class="card card-user">
+            <div class="header">
+            <div class="image">
+                @if (Model.cover != null)
+                {      <img src="~/Uploads/images/users/covers/@Model.cover" alt="...">
+                }
+                else
+                {
+                    <img src="~/Content/images/dp1a.jpg" style="border:1px solid #eee; width:100%;height:300px;" alt="...">   }
+
+            </div></div>
+            <div class="content">
+                <div class="author">
+                    @if (Model.avatar != null)
+                    {
+                        <a href="~/Uploads/images/users/images/@Model.avatar">
+                            <img class="avatar avatar12 border-white" src="~/Uploads/images/users/images/@Model.avatar" alt="...">
+                        </a>
+                    }
+                    else
+                    {
+                        <img class="avatar avatar12 border-white" src="~/Content/images/dp1a.png" alt="...">
+                    }
+                    <h4 class="title">
+                        @User.Identity.Name <br>
+                        <a href="#"><small> @User.Identity.GetUserName() </small> </a>
+                    </h4>
+                </div>
+                <p class="description text-center">
+                    @Model.status
+                </p>
+            </div>
+            <hr>
+            <div class="text-center">
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-1">
+                        <h5> @Model.books.Count() <br>  <small> Books </small>  </h5>
+                    </div>
+                    <div class="col-md-3 ">
+                        <h5> @Model.writers.Count() <br>  <small> Writers </small>  </h5>
+                    </div>
+                    <div class="col-md-3 ">
+                        <h5> @Model.categories.Count()<br>  <small> Categories </small>  </h5>
+                    </div>
+                    <div class="col-md-3 ">
+                        <h5> @Model.comments.Count() <br>  <small> Comments </small>  </h5>
+                    </div>
+                    @*<div class="col-md-3 ">
+                            <h5> 24,6$ <br>  <small> Pointers </small>  </h5>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-4 col-md-5">
+        <div class="card card-user">
+            <div class="image">
+                @if (Model.cover != null)
+                {
+                    <img src="~/Uploads/images/users/covers/@Model.cover" alt="...">
+
+                }
+                else
+                {
+                    <img src="~/Content/images/Nophoto.png" style="border:1px solid #eee; width:100%;height:200px;" alt="...">
+
+                }
+            </div>
+            <div class="content">
+                <div class="author">
+                    <img class="avatar border-white" src="~/Uploads/images/users/images/@Model.avatar" alt="...">
+                    <h4 class="title">
+                        @Model.FullName <br>
+                        <a href="#">
+                            <small> @Model.UserName </small>
+                        </a>
+                    </h4>
+                </div>
+                <p class="description text-center">
+                    @Model.status
+                </p>
+            </div>
+            <hr>
+            <div class="text-center">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <h5>@Model.books.Count() <br>  <small> Books </small>  </h5>
+                    </div>
+                    <div class="col-md-4 ">
+                        <h5> @Model.writers.Count()  <br>  <small> Writers </small>  </h5>
+                    </div>
+                    <div class="col-md-3 ">
+                        <h5> @Model.comments.Count()  <br>  <small> Comments </small>  </h5>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="col-md-8">
+            <div class="card">
+                <div class="card-header" data-background-color="blue">
+                    <h4 class="title">
+                        Edit Profile
+                    </h4>
+                    <p class="category"> Complete your profile </p>
+                </div>
+                <div class="card-content">
+                    @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.Created_at)
+                        @Html.HiddenFor(model => model.avatar)
+                        @Html.HiddenFor(model => model.cover)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.avatar, htmlAttributes: new { @class = "control-label " })
+                                    <input type="file" name="file" value="upload image " class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.avatar, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.cover, htmlAttributes: new { @class = "control-label" })
+
+                                    <input type="file" name="cover" value="upload image " class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.cover, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label" })
+
+                                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label" })
+
+                                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-5 ">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                @Html.LabelFor(model => model.Adress, htmlAttributes: new { @class = "control-label" })
+
+                                @Html.EditorFor(model => model.Adress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 ">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">
+                                        City
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">
+                                        Country
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">
+                                        PostalCode
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label" })
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">
+                                            Lam borghini Mercy, Your chick shesothirsty,I'minthattwoseatLambo.
+                                        </label>
+                                        @Html.TextAreaFor(model => model.status, new { @class = "form-control", rows = "5" })
+                                        @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Update Profile" class="btn btn-info pull-right" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>*@
+
+    <div class="col-lg-4 col-md-5">
+        <div class="card">
+            <div class="header">
+                <h4 class="title text-center">My Books</h4>
+            </div>
+            <div class="content">
+                <ul class="list-unstyled team-members">
+                    @foreach (var book in Model.books.Take(5))
+                    {
+                        var since = book.Created_at.ToShortDateString();
+                        <li class="text-center">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <a href="@Url.Action("Book_details","Home" ,new {id =book.id ,Area=""})" class="">
+                                        @if (book.image != null)
+                                        {   <img src="~/Uploads/images/Books/@book.image" alt="@book.book_name" class="img-thumbnail " style="height:70px;">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/images/Nophoto.png" alt="@book.book_name" class="img-thumbnail " style="height:70px;">
+                                        }
+                                    </a>
+                                    <small>@since</small>
+                                </div>
+                                <div class="col-xs-6">
+                                    @book.book_name
+
+                                    <br>
+                                    <span class="text-success"><small> @book.book_about</small>   </span>
+                                </div>
+                                <div class="col-xs-3  pull-right">
+                                    <a href="/Admin/Books/Edit/@book.id" cl class="btn btn-xs btn-primary">  <i class="glyphicon glyphicon-edit">  </i>  </a>
+                                    <a href="/Admin/Books/Delete/@book.id" cl class="btn btn-xs btn-danger ">  <i class="glyphicon glyphicon-trash">  </i>  </a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-5">
+        <div class="card">
+            <div class="header">
+                <h4 class="title text-center">My Writers</h4>
+            </div>
+            <div class="content">
+                <ul class="list-unstyled team-members">
+                    @foreach (var writer in Model.writers.Take(5))
+                    {
+                        var since = writer.Created_at.ToShortDateString();
+                        <li class="text-center">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <a href="@Url.Action("Writer_Books","Home",new {id =writer.id ,Area=""})" class="">
+                                        @if (writer.image != null)
+                                        {
+                                            <img src="~/Uploads/images/writers/@writer.image" alt="@writer.author_name" class="img-circle img-thumbnail " style="height:70px;">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/images/Nophoto.png" alt="@writer.author_name" class="img-circle img-thumbnail " style="height:70px;">
+
+                                        }
+                                    </a>
+                                    <small>@since</small>
+                                </div>
+
+                                <div class="col-xs-5">
+                                    @writer.author_name
+                                    <br>
+                                    <span class="text-success"><small> @writer.author_about</small>   </span>
+                                </div>
+                                <div class="col-xs">
+                                    1 / 2 /2000
+                                </div>
+                                <div class="col-xs-3 pull-right">
+                                    <a class="btn btn-xs btn-primary" href="/Admin/writers/Edit/@writer.id">  <i class="glyphicon glyphicon-edit">  </i>  </a>
+                                    <a class="btn btn-xs btn-danger " href="/Admin/writers/Delete/@writer.id">  <i class="glyphicon glyphicon-trash">  </i>  </a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-5">
+        <div class="card">
+            <div class="header">
+                <h4 class="title text-center">My categories</h4>
+            </div>
+            <div class="content">
+                <ul class="list-unstyled team-members">
+                    @foreach (var cateory in Model.categories.Take(5))
+                    {
+                        var since = cateory.Created_at.ToShortDateString();
+                        <li class="text-center">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <a href="@Url.Action("Category_Books","Home",new {id =cateory.id ,Area=""})" class="">
+                                        @if (cateory.image != null)
+                                        {
+                                            <img src="~/Uploads/images/categories/@cateory.image" alt="@cateory.category_name" class="img-thumbnail " style="height:70px;">
+                                        }
+
+                                        else
+                                        { <img src="~/Content/images/Nophoto.png" alt="@cateory.category_name" class="img-thumbnail " style="height:70px;">
+                                        }
+                                    </a>
+
+                                    <small>@since</small>
+                                </div>
+                                <div class="col-xs-6">
+                                    @cateory.category_name
+
+                                    <br>
+                                    <span class="text-success"><small> @cateory.category_about</small>   </span>
+                                </div>
+
+                                <div class="col-xs-3  pull-right">
+                                    <a href="/Admin/categories/Edit/@cateory.id" class="btn btn-xs btn-primary">  <i class="glyphicon glyphicon-edit">  </i>  </a>
+                                    <a href="/Admin/categories/Delete/@cateory.id" class="btn btn-xs btn-danger ">  <i class="glyphicon glyphicon-trash">  </i>  </a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<form>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Company(disabled)
+                    </label>
+                    <input type="text" class="form-control" disabled>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Username
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Email address
+                    </label>
+                    <input type="email" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        First Name
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Last Name
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Adress
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        City
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Country
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        PostalCode
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="form-group ">
+                    <label> AboutMe </label>
+                    <div class="form-group label-floating">
+                        <label class="control-label">
+                            LamborghiniMercy,Yourchickshesothirsty,I'minthattwoseatLambo.
+                        </label>
+                        <textarea class="form-control" rows="5">  </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary pull-right">
+            Update Profile
+        </button>
+        <div class="clearfix">  </div>
+    </form>*@

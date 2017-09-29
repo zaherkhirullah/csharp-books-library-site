@@ -62,7 +62,18 @@
                 <p>
                     @foreach (AuthenticationDescription p in Model.OtherLogins)
                     {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                        var extensiton = p.AuthenticationType.ToString().ToLower();
+                        if (extensiton == "facebook")
+                        {
+                            <button type="submit" class="btn btn-primary" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                        }
+                        else if (extensiton == "twitter")
+                        {  <button type="submit" class="btn btn-info" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                        }
+                        else if (extensiton == "google")
+                        {
+                            <button type="submit" class="btn btn-danger" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                        }
                     }
                 </p>
                 </div>

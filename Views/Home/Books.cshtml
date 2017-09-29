@@ -32,9 +32,11 @@
                             </a>
                         </div>
                         <div class="card-content">
-                            <h5 class="title text-center">@book.book_name</h5>
-                            <p class="text-muted">@book.book_about</p>
-                        </div>
+                            <a href="@Url.Action("Book_details","Home",new { id = book.id })">
+                                <h5 class="title text-center">@book.book_name</h5>
+                                </a>
+                                <p class="text-muted">@book.book_about</p>
+</div>
                         <div class="card-footer">
                             <ul class="list-unstyled">
                                 <li style="font-size:13px;">

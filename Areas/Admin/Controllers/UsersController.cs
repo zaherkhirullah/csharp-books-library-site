@@ -12,7 +12,7 @@ using ZHYR_Library.ViewModels;
 namespace ZHYR_Library.Areas.Admin.Controllers
 {
     [Authorize]
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         private ZHYRBooks db = new ZHYRBooks();
         private FileControl fileCntrl = new FileControl();

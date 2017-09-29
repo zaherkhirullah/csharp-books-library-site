@@ -1,13 +1,20 @@
 ﻿@model ZHYR_Library.Models.IndexViewModel
 @{
     ViewBag.Title = "Manage";
+    var message = (ZHYR_Library.ViewModels.MessageVm)TempData["Message"];
 }
 
 <h2>@ViewBag.Title.</h2>
-@if (ViewBag.StatusMessage != "")
+@if (message.Message != "")
 {
-    <p class="alert alert-success text-success">@ViewBag.StatusMessage</p>
+   
+    <div class="alert @message.CssClassName alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>@message.Title</strong>
+        @message.Message
+    </div>
 }
+
 <div>
     <h4>Change your account settings</h4>
     <hr />
@@ -24,44 +31,44 @@
             <tr>
                 <td>
                     @if (Model.HasPassword)
-            {
-                        @Html.ActionLink("Change your password", "ChangePassword")
+                       {
+                        @Html.ActionLink("Change your password", "ChangePassword", new { }, new { @class ="btn btn-primary" })
                     }
                     else
                     {
-                        @Html.ActionLink("Create", "SetPassword")
+                        @Html.ActionLink("Create", "SetPassword", new { }, new { @class = "btn btn-primary" })
                     }
                 </td>
                 <td>
-                    @Model.Logins.Count [
-                    @Html.ActionLink("Manage", "ManageLogins") ]
+                   
+                    @Html.ActionLink("Manage  ( " + @Model.Logins.Count + " )", "ManageLogins", new { }, new { @class = "btn btn-info" }) 
                 </td>
                 <td>
                     @(Model.PhoneNumber ?? "None")
                     @if (Model.PhoneNumber != null)
                     {
                         <br />
-                        <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+                        @Html.ActionLink("Change", "AddPhoneNumber", new { }, new { @class = "btn btn-success" })
                         using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
+                                    {
+                                        @Html.AntiForgeryToken()
+                                      <input type="submit" value="Remove" class="btn btn-danger" />
                         }
                     }
                     else
                     {
-                        <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
+                       @Html.ActionLink("Add", "AddPhoneNumber", new { }, new {@class="btn btn-success" })
                     }
                 </td>
 
                 <td>
                     @if (Model.TwoFactor)
-            {
-                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                            <input type="submit" value="Disable" class="btn btn-link" />
+                    {
+                        using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <text>Enabled
+                                <input type="submit" value="Disable" class="btn btn-link" />
                         </text>
                     }
                 }

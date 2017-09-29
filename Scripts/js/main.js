@@ -56,24 +56,6 @@ $(document).ready(function () {
             return;
         }
     });
-      // ----------------------------
-    // scroll top
-    // ----------------------------
-    $(function () {
-        var Scrolltop = $('.scroll-top');
-        if (Scrolltop.style.display="none") {
-            $(window).scroll(function () {
-                if (window.offset().top > 150) {
-                    Scrolltop.style.display = "block";
-                } else {
-                    Scrolltop.style.display = "none";
-                }
-            });
-        } else {
-            return;
-        }
-    });
-
 
     // ----------------------------
     // masonry
@@ -105,10 +87,8 @@ $(document).ready(function () {
                 sortAscending: {
                     newest: false
                 }
-
             });
         });
-
         // filter items when filter link is clicked
         $('#filter').on('click', 'a', function () {
             var selector = $(this).attr('data-filter');
@@ -145,7 +125,7 @@ $(document).ready(function () {
         autoplaySpeed: 3000,
         slidesToShow: 6,
         slidesToScroll: 3,
-        arrows: false,
+        arrows: true,
         responsive: [
             {
                 breakpoint: 640,
@@ -201,7 +181,7 @@ $(document).ready(function () {
             $('.statistic').each(function () {
                 var value = $(this).find('.stat-item').attr('data-percent');
                 $(this).find('.stat-number').prop("Counter", 0).animate({
-                    Counter: value 
+                    Counter: value
                 }, {
                         duration: 1600,
                         step: function (now) {
@@ -260,26 +240,26 @@ $(document).ready(function () {
 
     /* Add Like And Unlick */
 
-        //LIKE
-          /*  $("a.like").click(function ()*/
-    $('.like').on('click', 'a', function (){
+    //LIKE
+    /*  $("a.like").click(function ()*/
+    $('.like').on('click', 'a', function () {
         var id = $(this).attr('data-id');
-            var link = "/Home/LikeBook/" + id;
-            var a = $(this);
-            $.ajax({
-                type: "GET",
-                url: link,
-                success: function (result) {
-                    a.html('<i glyphicon glyphicon-heart  text-danger"></i> ' + result).removeClass("like").addClass("unlike");
-                }
-            });
+        var link = "/Home/LikeBook/" + id;
+        var a = $(this);
+        $.ajax({
+            type: "GET",
+            url: link,
+            success: function (result) {
+                a.html('<i glyphicon glyphicon-heart  text-danger"></i> ' + result).removeClass("like").addClass("unlike");
+            }
         });
-        //UNLIKE
-   // $("a.unlike").click(function ()
+    });
+    //UNLIKE
+    // $("a.unlike").click(function ()
     $('.unlike').on('click', 'a',
-     function (){
+        function () {
             //var id = $(this).data("id");
-         var id = $(this).attr('data-id');
+            var id = $(this).attr('data-id');
             var link = "/Home/UnlikeBook/" + id;
             var a = $(this);
             $.ajax({
@@ -296,75 +276,82 @@ $(document).ready(function () {
     /* =================================
     ====    Books Details  Page
     ===================================
-    */ 
-    var comment_id = $("#comment_id").val();
-    $("#ShowEditComment").click(function () {
+    */
+
+    $('#ShowEditComment').on('click', function () {
+        var comment_id = $(this).val('data-id');
+        if ($("#edit_it").css("disabled", "false")) {
         $("#div_AddComment").toggle(100);
         $("#div_EditComment_" + comment_id).show(100);
-    });
-    $("#Edit").click(function () {
-        $("#div_AddComment").show(100);
-        $("#div_EditComment_" + comment_id).toggle(100);
-    });
-function ShowEditComment(comment_id) {
-    $("#div_AddComment").toggle(100);
-    $("#div_EditComment_" + comment_id).show(100);
-}
-function Addcomment() {
-    var comment = $("#Addcomment").val();
-    var book_Id = $("#book_id").val();
-    $.ajax({
-        type: "Post",
-        url: "/Home/AddComment",
-        data: JSON.stringify({ Comment: comment, id: book_Id }),
-        contentType: "application/json",
-        success: function (result) {
-            $("#newCom").append("<div class=" + "comment" + ">" +
-                "<div class=" + "comment-user-img" + ">" +
-                "<img class=" + "img-circle" + " src=" + "/Content/images/Nophoto.png" + ">" +
-                " </div>" +
-                "<div class=" + "comment-content" + ">" +
-                "<p id=" + "comment_" + ">" + result.comment + "</p>" +
-                "</div> </div>"
-            );
-            $("#Addcomment").val("");
-        }, error: function () {
-            alert("Failed added");
+        } else {
+            return;
         }
-    })
-}
-function EditComment(comment_id) {
-    $("#div_AddComment").show(100);
-    $("#div_EditComment_" + comment_id).toggle(100);
+        
+    });
+    $('#add_it').on('click',  function () {
+        var comment = $("#Addcomment").val();
+        var book_Id = $("#book_id").val();
+        $.ajax({
+            type: "Post",
+            url: "/Home/AddComment",
+            data: JSON.stringify({ Comment: comment, id: book_Id }),
+            contentType: "application/json",
+            success: function (result) {
+                $("#newCom").append("<div class=" + "comment" + ">" +
+                    "<div class=" + "comment-user-img" + ">" +
+                    "<img class=" + "img-circle" + " src=" + "/Content/images/Nophoto.png" + ">" +
+                    " </div>" +
+                    "<div class=" + "comment-content" + ">" +
+                    "<p id=" + "comment_" + ">" + result.comment + "</p>" +
+                    "</div> </div>"
+                );
+                $("#Addcomment").val("");
+            }, error: function () {
+                alert("Failed added");
+            }
+        })
+    });
+    $('.edit_it').on('click', function () {
+        var comment_id = $(this).val('data-id');
+        if ($("#edit_it").css("disabled", "true")) {
+            $("#div_AddComment").show(100);
+            $("#div_EditComment_" + comment_id).toggle(100);
+        }
+        else {
+            alert("#edit  it false");
+        }
+        var comment = $("#edit_Comment_" + comment_id).val();
+        $.ajax({
+            type: "Post",
+            url: "/Home/EditComment",
+            data: JSON.stringify({ Comment: comment, id: comment_id }),
+            contentType: "application/json",
+            success: function (result) {
+                alert("Sucsessfully Edit  ");
+                $("#comment_Cont_" + comment_id).replaceWith("<p id=" + "comment_Cont_" + comment_id + ">" + comment + "</p>");
+                $("#edit_Comment_" + comment_id).val("");
+            }
+            , error: function (result) {
+                $("#comment_Cont_" + comment_id).replaceWith("<p id=" + "comment_Cont_" + comment_id + ">" + comment + "</p>");
+                $("#edit_Comment_" + comment_id).val("");
+            }
+        })
+    });
+    $('.delete_it').on('click', function () {
+        var comment_id = $(this).val('data-id');
+      $.ajax({
+            type: "Post",
+            url: "/Home/DeleteComment",
+            data: JSON.stringify({ id: comment_id }),
+            contentType: "application/json",
+            success: function (result) {
+                alert("successfuly Deleted  " + result);
+                $("#comment_" + comment_id).toggle(100);
+            }, error: function () {
+                alert("failed Deleted  " + result);
+            }
+        })
+    });
+   
+});
 
-    var comment = $("#edit_Comment_" + comment_id).val();
-    $.ajax({
-        type: "Post",
-        url: "/Home/EditComment",
-        data: JSON.stringify({ Comment: comment, id: comment_id }),
-        contentType: "application/json",
-        success: function (result) {
-            alert("Sucsessfully Edit  ");
-            $("#comment_Cont_" + comment_id).replaceWith("<p id=" + "comment_Cont_" + comment_id + ">" + comment + "</p>");
-            $("#edit_Comment_" + comment_id).val("");
-        }
-        , error: function (result) {
-            $("#comment_Cont_" + comment_id).replaceWith("<p id=" + "comment_Cont_" + comment_id + ">" + comment + "</p>");
-            $("#edit_Comment_" + comment_id).val("");
-        }
-    })
-}
-function DeleteComment(comment_id) {
-    $("#comment_" + comment_id).toggle(100);
-    $.ajax({
-        type: "Post",
-        url: "/Home/DeleteComment",
-        data: JSON.stringify({ id: comment_id }),
-        contentType: "application/json",
-        success: function (result) {
-            alert("successfuly Deleted  " + result);
-        }, error: function () {
-            alert("failed Deleted  " + result);
-        }
-    })
-}

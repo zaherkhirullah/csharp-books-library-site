@@ -1833,3 +1833,32 @@ li > a:hover .label {
             font-family: serif;
             font-weight: 500;
         }*/
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .pdf .card-header img {
+        width: 50%;
+        height: 200px;
+        border-radius: 10px;
+        clear: both;
+        margin: 0 25%;
+    }
+
+    .pdf .card-header .header-content {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .pdf .card-header img {
+        width: 50%;
+        height: 200px;
+        border-radius: 10px;
+        clear: both;
+        margin: 0 100px;
+        display: none;
+    }
+
+    .pdf .card-header .header-content {
+        width: 100%;
+    }
+}

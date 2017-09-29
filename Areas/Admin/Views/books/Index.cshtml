@@ -15,7 +15,7 @@
     <div class="card-content table-responsive">
         <div>
             <form action="/Admin/Books/Index" method="post">
-                    Search By :
+                Search By :
                 <select name="filter">
                     <option value="">Please select :</option>
                     <option value="Name">Book Name</option>
@@ -69,16 +69,16 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        @if (item.image == null)
-                        {
-                            <td><img class="img-table" src="~/Content/images/Nophoto.png" alt="" /></td>
-                        }
-                        else
-                        {
-                            <td>
+                        <td>
+                            @if (item.image == null)
+                            {
+                                <img class="img-table" src="~/Content/images/Nophoto.png" alt="" />
+                            }
+                            else
+                            {
                                 <img class="img-table" src="~/Uploads/images/Books/@item.image" alt="@item.image" />
-                            </td>
-                        }
+                            }
+                        </td>
                         @*<td>
                                 @Html.DisplayFor(modelItem => item.AspNetUsers.UserName)
                             </td>*@

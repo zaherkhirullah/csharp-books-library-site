@@ -11,7 +11,6 @@
     <div class="card-content ">
 
         @using (Html.BeginForm("Edit", "books", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
-
         {
             @Html.AntiForgeryToken()
 

@@ -21,6 +21,7 @@ input,
 select,
 textarea {
     /*max-width: 280px;*/
+    color:none;
 }
 .navbar {
     box-shadow:1px 6px 23px -5px rgba(200, 200, 200, 1);
@@ -96,26 +97,31 @@ li:hover span label-danger{
         color: #159;
         border: 1px solid #cecece;
     }
-
+        .pdf .pdf-detail li,
         .pdf .pdf-detail p > * {
-            padding: 10px 7px;
+            margin: 5px;
+            padding: 7px;
+            display: inline-block;
             border-radius: 25px;
             border: 1px solid #cecece;
             font-size: 13px;
             box-shadow: 0px 15px 18px -16px rgba(100,100,100,0.5);
         }
+    .pdf .pdf-detail p > b,
+    .pdf .pdf-detail p > abbr > b,
+    .pdf .pdf-detail li> b
+    {
+        color: #e11;
+    }
 
-        .pdf .pdf-detail p > b, .pdf .pdf-detail p > abbr > b {
-            color: #e11;
-        }
-
-    .pdf .pdf-detail div > p > i, .pdf .pdf-detail abbr > i {
+    .pdf .pdf-detail div > p > i, .pdf .pdf-detail abbr > i, .pdf .pdf-detail li > i {
         padding: 4px;
         color: #fff;
         border-radius: 5px;
         box-shadow: 0px 3px 5px -4px #111;
         background-color: #e11;
     }
+
 
 ::-webkit-scrollbar {
     width: 12px;
@@ -153,6 +159,7 @@ li:hover span label-danger{
         padding: 9px;
     }
 
+    .add-comment .input-comment a,
     .add-comment .input-comment button,
     .input-comment input[type="button"],
     .input-comment input[type="submit"] {
@@ -167,10 +174,9 @@ li:hover span label-danger{
     padding-bottom: 13px;
 }
 
-    .add-comment .input-comment:hover, .add-comment .input-comment:focus {
-        box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.5);
-    }
-
+.add-comment .input-comment:hover, .add-comment .input-comment:focus {
+    box-shadow: -5px 10px 10px -10px rgba(0,0,0,0.5);
+}
     .add-comment .input-comment span {
         padding-left: 0px;
     }
@@ -217,3 +223,183 @@ li:hover span label-danger{
     .comment .comment-footer {
         float: right;
     }
+.slick-prev,
+.slick-next {
+    background-color: #aaa;
+    box-shadow: 0px 5px 7px -3px rgba(0,0,0,.4);
+}
+
+    .slick-prev:hover,
+    .slick-next:hover, .slick-prev:focus, .slick-next:focus {
+        background-color: #aaa;
+        box-shadow: 0px 5px 7px -1px rgba(0,0,0,.7);
+    }
+.post {
+    width: 100%;
+    border: 1px solid #eee;
+    background-color: #FFF;
+    overflow: hidden;
+    margin: 15px;
+    border-radius: 5px;
+}
+    .post:hover {
+        box-shadow: 1px 10px 10px -7px rgba(100,100,100,0.5);
+    }
+    .post .post-img {
+        max-width: 300px;
+        border: 1px solid #eee;
+    }
+        .post .post-img a > img {
+            width: 100%;
+            height: 100%;
+        }
+    .post .post-content {
+        width: 72%;
+        padding: 10px;
+        margin-bottom: 15px;
+        float: right;
+    }
+    .post .post-footer {
+        width: 73%;
+        float: right;
+        border: 3px solid #eee;
+        padding: 10px;
+        border-radius: 50px;
+    }
+     /**************************************
+         * Card User Profile
+     */
+
+.card-user .header .image {
+background-size:cover;
+    position: relative;
+    overflow: hidden;
+}
+
+    .card-user .header .image img {
+        width: 100%;
+    }
+
+.card-user .image-plain {
+    height: 0;
+    margin-top: 110px;
+}
+
+.card-user .author {
+    text-align: center;
+    text-transform: none;
+    margin-top: -65px;
+}
+
+    .card-user .author .title {
+        color: #403D39;
+    }
+
+        .card-user .author .title small {
+            color: #ccc5b9;
+        }
+
+.card-user .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 15px;
+}
+.card-user .cover {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.avatar .avatar12 {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.card-user .avatar.border-white {
+    border: 5px solid #FFFFFF;
+}
+
+.card-user .avatar.border-gray {
+    border: 5px solid #ccc5b9;
+}
+
+.card-user .title {
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.card-user .description {
+    margin-top: 10px;
+}
+
+.card-user .content {
+    min-height: 200px;
+}
+
+.card-user.card-plain .avatar {
+    height: 190px;
+    width: 190px;
+}
+
+.card-map .map {
+    height: 500px;
+    padding-top: 20px;
+}
+
+    .card-map .map > div {
+        height: 100%;
+    }
+
+.card-user .footer,
+.card-price .footer {
+    padding: 5px 15px 10px;
+}
+
+.card-user hr,
+.card-price hr {
+    margin: 5px 15px;
+}
+
+.card-plain {
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+    .card-plain .image {
+        border-radius: 4px;
+    }
+
+
+
+    /********************************
+        ** Non Any Thing Notification
+    */
+.Non, 
+.Non-black,
+.Non-red,
+.Non-blue {
+    border-radius:100px;
+}
+    .Non > *,
+    .Non-black > *,
+    .Non-red > *,
+    .Non-blue > * {
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .Non-black > * {
+        color: black;
+    }
+.Non-red > * {
+    color: red;
+}
+.Non-blue > * {
+    color: darkblue;
+}

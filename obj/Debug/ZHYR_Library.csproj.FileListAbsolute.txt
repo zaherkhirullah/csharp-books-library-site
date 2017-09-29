@@ -105,3 +105,7 @@ C:\Users\HAYRULLAH\Documents\Visual Studio 2017\Projects\ZHYR_Library\ZHYR_Libra
 C:\Users\HAYRULLAH\Documents\Visual Studio 2017\Projects\ZHYR_Library\ZHYR_Library\obj\Debug\ZHYR_Library.Migrations.edit_int_downloaded.resources
 C:\Users\HAYRULLAH\Documents\Visual Studio 2017\Projects\ZHYR_Library\ZHYR_Library\obj\Debug\ZHYR_Library.Migrations.Edit_like_Tolikedinbooks.resources
 C:\Users\HAYRULLAH\Documents\Visual Studio 2017\Projects\ZHYR_Library\ZHYR_Library\obj\Debug\ZHYR_Library.Migrations.Edit_categoriesinpost.resources
+C:\Users\HAYRULLAH\Documents\Visual Studio 2017\Projects\ZHYR_Library\ZHYR_Library\obj\Debug\ZHYR_Library.Migrations.Addreplayes.resources
+C:\Users\HAYRULLAH\Documents\Visual Studio 2017\Projects\ZHYR_Library\ZHYR_Library\obj\Debug\ZHYR_Library.Migrations.AddlikedreadedToposts.resources
+C:\Users\HAYRULLAH\Documents\Visual Studio 2017\Projects\ZHYR_Library\ZHYR_Library\obj\Debug\ZHYR_Library.Migrations.Edittonullableinlikestable.resources
+C:\Users\HAYRULLAH\Documents\Visual Studio 2017\Projects\ZHYR_Library\ZHYR_Library\obj\Debug\ZHYR_Library.Migrations.Edittonullableincommentstable.resources
